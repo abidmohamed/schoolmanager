@@ -72,7 +72,7 @@ greenlet~=0.4.15
 py~=1.8.0
 chardet~=3.0.4
 ply~=3.11
-tables~=3.6.1
+tables
 Pyphen~=0.9.5
 setuptools~=41.2.0
 Cython~=0.29.13
