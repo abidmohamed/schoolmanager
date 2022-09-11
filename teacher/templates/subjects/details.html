@@ -1,0 +1,177 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block main %}
+<br>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">{% trans "Subject Details" %}</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group me-2">
+                    <button href="#addSubjectModal" type="button" class="btn btn-warning" data-bs-toggle="modal">
+                        <i class="fa-solid fa-pen"></i>
+                            {% trans "Update Subject" %}
+                    </button>
+                </div>
+            </div>
+        </div>
+            <hr>
+            <br>
+            <a class="btn btn-danger text-white" href=""><i class="fa-solid fa-file-pdf"></i> {% trans "Print" %} </a>
+        </div>
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>{% trans "Name" %}: </h4>
+                    <td class="fs-4">
+                        <p class="fs-4">{{subject.name}}</p>
+
+                    </td>
+                </div>
+                <div class="col-md-4">
+                    <h4>{% trans "Price" %}: </h4>
+                    <td>
+                        <p class="fs-4">{{subject.price}} DA</p>
+
+                    </td>
+                </div>
+                <div class="col-md-4">
+                    <h4>{% trans "N° Sessions" %}: </h4>
+                    <td>
+                        <p class="fs-4">{{subject.n_sessions}}</p>
+                    </td>
+                </div>
+
+            </div>
+            <hr>
+
+            <h2> {% trans "Groups" %} </h2>
+            <table class="table display table-dark text-center">
+                <thead class="thead-light">
+                    <tr>
+                        <th>{% trans "Name" %}</th>
+                        <th>{% trans "Subject" %}</th>
+                        <th>{% trans "Room" %}</th>
+                        <th>{% trans "Teacher" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in subject.group_subjects.all %}
+                <tr>
+                    <td class="">
+                        {{item.name}}
+                    </td>
+                    <td class="">
+                        {{item.subject}}
+                    </td>
+                    <td class="">
+                        {{item.room}}
+                    </td>
+                    <td class="">
+                        {{item.teacher}}
+                    </td>
+                    <tr>
+                    <td colspan="4">
+                        <table class="table table-light mb-0">
+                            <thead>
+                            <tr>
+                                <th>{% trans "Day" %}</th>
+                                <th>{% trans "Starts" %}</th>
+                                <th>{% trans "Ends" %}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for time in item.times.all %}
+                                <tr>
+                                    <td>
+                                        {{time.weekday}}
+                                    </td>
+                                    <td>
+                                        {{time.start_time}}
+                                    </td>
+                                    <td>
+                                        {{time.end_time}}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </td>
+                    </tr>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <br>
+            <hr>
+            <h2> {% trans "Teachers" %} </h2>
+            <table class="table display table-secondary text-center">
+                <thead>
+                    <tr>
+                        <th>{% trans "Name" %}</th>
+                        <th>{% trans "Address" %}</th>
+                        <th>{% trans "Phone" %}</th>
+                        <th>{% trans "Date joined" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in subject.sub_teachers.all %}
+                <tr>
+                    <td>
+                        {{item.name}}
+                    </td>
+                    <td>
+                        {{item.address}}
+                    </td>
+                    <td>
+                        {{item.phone}}
+                    </td>
+                    <td>
+                        {{item.date_joined}}
+                    </td>
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<!-- MODALS MODALS -->
+  <!-- Modals Start Here -->
+  <div class="modal modal-sheet py-5" tabindex="-1" id="addSubjectModal">
+  <div class="modal-dialog">
+    <div class="modal-content rounded-6 shadow">
+
+      <form class="" action="#" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title">{% trans "Update subject" %}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body py-0">
+
+
+        {{form|crispy}}
+
+
+      </div>
+      <div class="modal-footer flex-column border-top-0">
+        <button type="submit" class="btn btn-lg btn-primary w-100 mx-0 mb-2">{% trans "Save changes" %}</button>
+      </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Time Table</title>
+    <style>
+        table {
+          table-layout: fixed;
+          width: 100%;
+          border: 2px dashed black;
+        }
+
+        thead th:nth-child(1) {
+          width: 30%;
+          border-style: hidden;
+        }
+
+        thead th:nth-child(2) {
+          width: 20%;
+          border-style: hidden;
+        }
+
+        thead th:nth-child(3) {
+          width: 15%;
+          border-style: hidden;
+        }
+
+        thead th:nth-child(4) {
+          width: 35%;
+          border-style: hidden;
+        }
+
+        th, td {
+          padding: 6px;
+          text-align: center;
+        }
+
+        th {
+        font-size: 12px;
+        }
+
+        td {
+        font-size: 10px;
+        text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>{{kid}}</h1>
+<h2>Groups</h2>
+    <table class="table display table-dark text-center">
+                <thead class="thead-light">
+                    <tr>
+                        <th> Group</th>
+                        <th> Teacher</th>
+                        <th> Room</th>
+                        <th> Subject</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in groups %}
+                <tr>
+                    <td class="">
+                        {{item.group.name}}
+                    </td>
+                    <td class="">
+                        {{item.group.teacher.name}}
+                    </td>
+                    <td class="">
+                        {{item.group.room}}
+                    </td>
+                    <td class="">
+                        {{item.group.subject}}
+                    </td>
+                <tr>
+                    <td colspan="4">
+                        <table class="table table-light mb-0">
+                            <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Starts</th>
+                                <th>Ends</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for time in item.group.times.all %}
+                                <tr>
+                                    <td>
+                                        {{time.weekday}}
+                                    </td>
+                                    <td>
+                                        {{time.start_time}}
+                                    </td>
+                                    <td>
+                                        {{time.end_time}}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </td>
+                    </tr>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+    <br>
+
+</body>
+</html>

@@ -1,0 +1,1401 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-11 12:49+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\accounts\templates\accounts\dashboard.html:11
+#: .\accounts\templates\partials\base.html:78
+msgid "Dashboard"
+msgstr "لوحة القيادة"
+
+#: .\accounts\templates\accounts\dashboard.html:24
+#: .\accounts\templates\accounts\dashboard.html:180
+#: .\accounts\templates\partials\base.html:106
+#: .\group\templates\groups\details.html:106
+#: .\student\templates\students\students.html:17
+msgid "Students"
+msgstr "الطلاب"
+
+#: .\accounts\templates\accounts\dashboard.html:35
+#: .\accounts\templates\accounts\dashboard.html:79
+msgid "Active"
+msgstr " نشط"
+
+#: .\accounts\templates\accounts\dashboard.html:46
+#: .\accounts\templates\accounts\dashboard.html:90
+msgid "Inactive"
+msgstr "غير نشط"
+
+#: .\accounts\templates\accounts\dashboard.html:57
+#: .\accounts\templates\accounts\dashboard.html:101
+#: .\caisse\templates\category\list.html:49
+msgid "Total"
+msgstr "المجموع"
+
+#: .\accounts\templates\accounts\dashboard.html:68
+#: .\accounts\templates\partials\base.html:100
+#: .\student\templates\kids\kids.html:17
+msgid "Kids"
+msgstr "أطفال"
+
+#: .\accounts\templates\accounts\dashboard.html:112
+#: .\group\templates\groups\details.html:122
+#: .\student\templates\parent\parents.html:51
+#: .\student\templates\students\details.html:57
+#: .\student\templates\students\students.html:51
+msgid "Debt"
+msgstr "دَين"
+
+#: .\accounts\templates\accounts\dashboard.html:158
+#: .\attendance\templates\attendances\attendances.html:30
+#: .\attendance\templates\attendances\groups.html:49
+#: .\employee\templates\employees\details.html:130
+#: .\student\templates\kids\details.html:148
+#: .\student\templates\students\details.html:167
+#: .\teacher\templates\teachers\details.html:176
+msgid "Attendance"
+msgstr " الحضور"
+
+#: .\accounts\templates\accounts\dashboard.html:163
+#: .\accounts\templates\accounts\dashboard.html:206
+#: .\accounts\templates\partials\base.html:169
+#: .\attendance\templates\attendance_employees\details.html:15
+#: .\attendance\templates\attendance_employees\employees.html:15
+#: .\attendance\templates\attendance_employees\employees_leave.html:16
+#: .\employee\templates\employees\employees.html:17
+#: .\employee\templates\roles\details.html:41
+msgid "Employees"
+msgstr "الموظفين"
+
+#: .\accounts\templates\accounts\dashboard.html:167
+#: .\accounts\templates\accounts\dashboard.html:184
+#: .\accounts\templates\accounts\dashboard.html:212
+#: .\accounts\templates\accounts\dashboard.html:233
+#: .\attendance\templates\attendance_employees\attendances.html:42
+#: .\attendance\templates\attendances\attendances.html:36
+#: .\attendance\templates\attendances\group_attendances.html:28
+#: .\caisse\templates\category\details.html:44
+#: .\caisse\templates\transaction\details.html:48
+#: .\caisse\templates\transaction\list.html:64
+#: .\employee\templates\employees\details.html:139
+#: .\employee\templates\employees\details.html:193
+#: .\payments\templates\parents_payments\details.html:46
+#: .\payments\templates\payrolls\details.html:48
+#: .\payments\templates\students_payments\details.html:46
+#: .\student\templates\kids\details.html:153
+#: .\student\templates\kids\details.html:223
+#: .\student\templates\parent\details.html:116
+#: .\student\templates\students\details.html:176
+#: .\student\templates\students\details.html:246
+#: .\teacher\templates\teachers\details.html:185
+#: .\teacher\templates\teachers\details.html:237
+msgid "Date"
+msgstr "تاريخ"
+
+#: .\accounts\templates\accounts\dashboard.html:201
+#: .\payments\templates\payrolls\details.html:14
+msgid "Payroll"
+msgstr "كشف رواتب"
+
+#: .\accounts\templates\accounts\dashboard.html:210
+#: .\accounts\templates\accounts\dashboard.html:231
+#: .\attendance\templates\attendances\attendances.html:35
+#: .\attendance\templates\attendances\students.html:37
+#: .\attendance\templates\attendances\students_details.html:32
+#: .\caisse\templates\category\details.html:41
+#: .\employee\templates\employees\details.html:41
+#: .\employee\templates\roles\details.html:31
+#: .\employee\templates\roles\details.html:46
+#: .\group\templates\groups\details.html:40
+#: .\group\templates\groups\details.html:65
+#: .\group\templates\groups\details.html:119
+#: .\group\templates\groups\select-kids.html:85
+#: .\group\templates\groups\select-students.html:84
+#: .\student\templates\kids\details.html:31
+#: .\student\templates\kids\details.html:93
+#: .\student\templates\kids\details.html:152
+#: .\student\templates\kids\details.html:187
+#: .\student\templates\kids\kids.html:44
+#: .\student\templates\parent\details.html:40
+#: .\student\templates\students\details.html:37
+#: .\student\templates\students\details.html:112
+#: .\student\templates\students\details.html:175
+#: .\student\templates\students\details.html:210
+#: .\teacher\templates\subjects\details.html:28
+#: .\teacher\templates\subjects\details.html:55
+#: .\teacher\templates\subjects\details.html:114
+#: .\teacher\templates\teachers\details.html:29
+#: .\teacher\templates\teachers\details.html:121
+#: .\teacher\templates\teachers\details.html:184
+msgid "Name"
+msgstr "الاسم"
+
+#: .\accounts\templates\accounts\dashboard.html:211
+#: .\accounts\templates\accounts\dashboard.html:232
+#: .\caisse\templates\category\details.html:42
+#: .\caisse\templates\transaction\details.html:31
+#: .\caisse\templates\transaction\list.html:62
+#: .\employee\templates\employees\details.html:194
+#: .\payments\templates\parents_payments\details.html:29
+#: .\payments\templates\parents_payments\payments.html:49
+#: .\payments\templates\payrolls\payrolls.html:39
+#: .\payments\templates\students_payments\details.html:29
+#: .\payments\templates\students_payments\payments.html:49
+#: .\student\templates\kids\details.html:224
+#: .\student\templates\parent\details.html:117
+#: .\student\templates\students\details.html:247
+#: .\teacher\templates\teachers\details.html:238
+msgid "Amount"
+msgstr "مبلغ"
+
+#: .\accounts\templates\accounts\dashboard.html:227
+#: .\accounts\templates\partials\base.html:118
+#: .\teacher\templates\subjects\details.html:110
+#: .\teacher\templates\teachers\teachers.html:17
+msgid "Teachers"
+msgstr "المعلمون"
+
+#: .\accounts\templates\accounts\login.html:49
+msgid "Please sign in"
+msgstr "الرجاء تسجيل الدخول"
+
+#: .\accounts\templates\accounts\login.html:75
+#: .\accounts\templates\user\users.html:43
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: .\accounts\templates\accounts\login.html:79
+msgid "Password"
+msgstr "كلمة السر"
+
+#: .\accounts\templates\accounts\login.html:83
+msgid "Sign in"
+msgstr "تسجيل الدخول"
+
+#: .\accounts\templates\partials\base.html:65
+msgid "Log Out"
+msgstr "تسجيل خروج"
+
+#: .\accounts\templates\partials\base.html:85
+#: .\accounts\templates\user\users.html:18
+msgid "Users"
+msgstr "المستخدمون"
+
+#: .\accounts\templates\partials\base.html:94
+#: .\student\templates\parent\parents.html:17
+msgid "Parents"
+msgstr "اولياء"
+
+#: .\accounts\templates\partials\base.html:112
+#: .\teacher\templates\subjects\subjects.html:17
+msgid "Subjects"
+msgstr "المواد الدراسيه"
+
+#: .\accounts\templates\partials\base.html:125
+#: .\group\templates\rooms\rooms.html:17
+msgid "Rooms"
+msgstr "قاعات"
+
+#: .\accounts\templates\partials\base.html:132
+#: .\group\templates\groups\groups.html:17
+#: .\student\templates\kids\details.html:89
+#: .\student\templates\students\details.html:104
+#: .\teacher\templates\subjects\details.html:51
+#: .\teacher\templates\teachers\details.html:113
+msgid "Groups"
+msgstr "الافواج"
+
+#: .\accounts\templates\partials\base.html:140
+msgid "Timetable"
+msgstr "الجدول الزمني"
+
+#: .\accounts\templates\partials\base.html:147
+msgid "Transportation"
+msgstr " النقل"
+
+#: .\accounts\templates\partials\base.html:154
+msgid "Calendar"
+msgstr "تقويم"
+
+#: .\accounts\templates\partials\base.html:161
+msgid "Students Attendances"
+msgstr "حضور الطلاب"
+
+#: .\accounts\templates\partials\base.html:175
+#: .\employee\templates\roles\roles.html:17
+msgid "Roles"
+msgstr "الوظائف"
+
+#: .\accounts\templates\partials\base.html:183
+msgid "Employees Attendance"
+msgstr "حضور الموظفين"
+
+#: .\accounts\templates\partials\base.html:192
+#: .\payments\templates\parents_payments\payments.html:18
+#: .\payments\templates\payments\payments.html:14
+#: .\payments\templates\students_payments\payments.html:18
+#: .\student\templates\kids\details.html:218
+#: .\student\templates\parent\details.html:111
+#: .\student\templates\students\details.html:241
+msgid "Payments"
+msgstr "المدفوعات"
+
+#: .\accounts\templates\partials\base.html:201
+#: .\caisse\templates\caisse\transaction_list.html:82
+#: .\employee\templates\employees\details.html:188
+#: .\payments\templates\payrolls\payrolls.html:17
+#: .\teacher\templates\teachers\details.html:232
+msgid "Payrolls"
+msgstr "كشوف المرتبات"
+
+#: .\accounts\templates\partials\base.html:210
+msgid "Caisse"
+msgstr "صندوق النقود"
+
+#: .\accounts\templates\partials\base.html:220
+msgid "Logout"
+msgstr "تسجيل خروج"
+
+#: .\accounts\templates\user\users.html:21
+msgid "Add New User"
+msgstr "إضافة مستخدم جديد"
+
+#: .\accounts\templates\user\users.html:34
+#: .\attendance\templates\attendance_employees\attendances.html:32
+#: .\attendance\templates\attendances\attendances.html:25
+#: .\attendance\templates\attendances\groups.html:33
+#: .\caisse\templates\category\details.html:32
+#: .\caisse\templates\category\list.html:38
+#: .\caisse\templates\transaction\list.html:51
+#: .\employee\templates\employees\employees.html:36
+#: .\employee\templates\roles\roles.html:36
+#: .\group\templates\groups\select-kids.html:72
+#: .\group\templates\groups\select-students.html:72
+#: .\payments\templates\parents_payments\payments.html:38
+#: .\payments\templates\payrolls\payrolls.html:28
+#: .\payments\templates\students_payments\payments.html:38
+#: .\student\templates\kids\kids.html:33
+#: .\student\templates\parent\parents.html:36
+#: .\teacher\templates\subjects\subjects.html:36
+#: .\teacher\templates\teachers\teachers.html:36
+msgid "Search"
+msgstr "بحث"
+
+#: .\accounts\templates\user\users.html:44
+msgid "First Name"
+msgstr "الاسم"
+
+#: .\accounts\templates\user\users.html:45
+msgid "Last Name"
+msgstr "اسم العائلة"
+
+#: .\accounts\templates\user\users.html:46
+#: .\employee\templates\employees\details.html:45
+#: .\group\templates\groups\select-students.html:86
+#: .\student\templates\parent\details.html:44
+#: .\student\templates\students\details.html:41
+#: .\teacher\templates\teachers\details.html:33
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: .\accounts\templates\user\users.html:87
+#: .\accounts\templates\user\users.html:95
+msgid "Previous"
+msgstr ""
+
+#: .\accounts\templates\user\users.html:113
+msgid "current"
+msgstr ""
+
+#: .\accounts\templates\user\users.html:139
+#: .\accounts\templates\user\users.html:147
+msgid "Next"
+msgstr ""
+
+#: .\accounts\templates\user\users.html:161
+msgid "Add First User"
+msgstr "أضف المستخدم الأول"
+
+#: .\accounts\templates\user\users.html:183
+msgid "Add new user"
+msgstr "إضافة مستخدم جديد"
+
+#: .\accounts\templates\user\users.html:191
+msgid "Select A Group"
+msgstr "حدد مجموعة"
+
+#: .\accounts\templates\user\users.html:196
+msgid "None"
+msgstr "لا أحد"
+
+#: .\accounts\templates\user\users.html:203
+#: .\caisse\templates\category\list.html:193
+#: .\caisse\templates\transaction\list.html:225
+#: .\employee\templates\employees\details.html:248
+#: .\employee\templates\employees\employees.html:199
+#: .\employee\templates\roles\details.html:109
+#: .\employee\templates\roles\roles.html:187
+#: .\events\templates\events\details.html:79
+#: .\events\templates\events\events.html:116
+#: .\group\templates\groups\details.html:188
+#: .\group\templates\groups\groups.html:193
+#: .\group\templates\rooms\rooms.html:166
+#: .\group\templates\times\times.html:1455
+#: .\group\templates\times\update.html:48
+#: .\payments\templates\parents_payments\details.html:88
+#: .\payments\templates\parents_payments\payments.html:191
+#: .\payments\templates\students_payments\details.html:88
+#: .\payments\templates\students_payments\payments.html:191
+#: .\student\templates\kids\details.html:268
+#: .\student\templates\parent\details.html:165
+#: .\student\templates\parent\parents.html:208
+#: .\student\templates\parent\update.html:31
+#: .\student\templates\students\details.html:295
+#: .\student\templates\students\students.html:202
+#: .\student\templates\transportation\times.html:1501
+#: .\teacher\templates\subjects\details.html:168
+#: .\teacher\templates\subjects\subjects.html:187
+#: .\teacher\templates\teachers\details.html:294
+#: .\teacher\templates\teachers\teachers.html:195
+msgid "Save changes"
+msgstr "احفظ التغييرات"
+
+#: .\attendance\templates\attendance_employees\attendances.html:17
+#: .\attendance\templates\attendances\groups.html:18
+msgid "Attendances"
+msgstr "الحضور"
+
+#: .\attendance\templates\attendance_employees\attendances.html:41
+#: .\attendance\templates\attendances\groups.html:42
+#: .\employee\templates\employees\details.html:138
+#: .\employee\templates\employees\details.html:192
+#: .\employee\templates\employees\employees.html:45
+#: .\employee\templates\roles\details.html:45
+#: .\employee\templates\roles\roles.html:45
+#: .\group\templates\groups\details.html:63
+#: .\group\templates\groups\details.html:118
+#: .\group\templates\groups\groups.html:45
+#: .\group\templates\groups\select-kids.html:19
+#: .\group\templates\groups\select-students.html:19
+#: .\payments\templates\parents_payments\payments.html:47
+#: .\payments\templates\payrolls\payrolls.html:37
+#: .\payments\templates\students_payments\payments.html:47
+#: .\student\templates\kids\details.html:27
+#: .\student\templates\kids\details.html:222
+#: .\student\templates\kids\kids.html:42
+#: .\student\templates\parent\details.html:76
+#: .\student\templates\parent\details.html:115
+#: .\student\templates\parent\parents.html:45
+#: .\student\templates\students\details.html:245
+#: .\student\templates\students\students.html:45
+#: .\teacher\templates\teachers\details.html:236
+#: .\teacher\templates\teachers\teachers.html:45
+msgid "Registered By"
+msgstr "مسجل من قبل"
+
+#: .\attendance\templates\attendance_employees\attendances.html:167
+msgid "Add First Attendance"
+msgstr "إضافة الحضور الأول"
+
+#: .\attendance\templates\attendance_employees\details.html:29
+msgid "Attending"
+msgstr "حضور"
+
+#: .\attendance\templates\attendance_employees\details.html:34
+#: .\attendance\templates\attendances\students.html:86
+#: .\attendance\templates\attendances\students.html:97
+#: .\payments\templates\payrolls\details.html:72
+#: .\teacher\templates\teachers\details.html:80
+msgid "Present"
+msgstr "حاضر"
+
+#: .\attendance\templates\attendance_employees\details.html:37
+#: .\attendance\templates\attendance_employees\employees.html:51
+#: .\attendance\templates\attendances\students.html:58
+msgid "ABSENT"
+msgstr "غائب"
+
+#: .\attendance\templates\attendance_employees\details.html:40
+#: .\attendance\templates\attendance_employees\employees.html:54
+#: .\attendance\templates\attendances\students.html:61
+msgid "UNAPPROVED ABSENT"
+msgstr "الغياب غير المصرح به"
+
+#: .\attendance\templates\attendance_employees\details.html:43
+#: .\attendance\templates\attendance_employees\employees.html:57
+msgid "MISSION"
+msgstr "مهمة"
+
+#: .\attendance\templates\attendance_employees\details.html:51
+#: .\attendance\templates\attendance_employees\details.html:130
+#: .\attendance\templates\attendance_employees\employees.html:31
+#: .\attendance\templates\attendance_employees\employees_leave.html:32
+#: .\employee\templates\employees\employees.html:46
+msgid "Employee Name"
+msgstr "اسم الموظف"
+
+#: .\attendance\templates\attendance_employees\details.html:52
+#: .\attendance\templates\attendance_employees\details.html:131
+#: .\attendance\templates\attendances\group_attendances.html:29
+#: .\student\templates\kids\details.html:154
+#: .\student\templates\students\details.html:177
+msgid "Time"
+msgstr "زمن"
+
+#: .\attendance\templates\attendance_employees\details.html:111
+msgid "Leaving"
+msgstr "مغادرة"
+
+#: .\attendance\templates\attendance_employees\details.html:116
+#: .\attendance\templates\attendance_employees\employees_leave.html:51
+#: .\attendance\templates\attendances\leave.html:50
+msgid "APPROVED"
+msgstr "موافق عليه"
+
+#: .\attendance\templates\attendance_employees\details.html:119
+#: .\attendance\templates\attendance_employees\employees_leave.html:54
+#: .\attendance\templates\attendances\leave.html:53
+msgid "UNAPPROVED"
+msgstr "غير معتمد"
+
+#: .\attendance\templates\attendance_employees\details.html:122
+#: .\attendance\templates\attendance_employees\employees_leave.html:57
+#: .\attendance\templates\attendances\leave.html:56
+msgid "DECLINED"
+msgstr "رفض"
+
+#: .\attendance\templates\attendance_employees\details.html:185
+#: .\attendance\templates\attendance_employees\employees.html:76
+#: .\attendance\templates\attendance_employees\employees_leave.html:77
+#: .\employee\templates\employees\employees.html:165
+msgid "Add First Employee"
+msgstr "إضافة أول موظف"
+
+#: .\attendance\templates\attendance_employees\employees.html:42
+#: .\attendance\templates\attendance_employees\employees_leave.html:45
+#: .\attendance\templates\attendances\leave.html:44
+#: .\attendance\templates\attendances\students.html:50
+msgid "Office hours are 7am to 10pm"
+msgstr "ساعات العمل من 7 صباحًا إلى 10 مساءً"
+
+#: .\attendance\templates\attendance_employees\employees.html:48
+#: .\attendance\templates\attendances\students.html:55
+msgid "PRESENT"
+msgstr " حاضر"
+
+#: .\attendance\templates\attendance_employees\employees_leave.html:33
+#: .\attendance\templates\attendances\leave.html:33
+#: .\attendance\templates\attendances\students.html:39
+msgid "Entering time"
+msgstr "الدخول في الوقت"
+
+#: .\attendance\templates\attendance_employees\employees_leave.html:34
+#: .\attendance\templates\attendances\leave.html:34
+msgid "Leaving time"
+msgstr "وقت المغادرة"
+
+#: .\attendance\templates\attendances\attendances.html:10
+msgid "Attendances Details"
+msgstr "تفاصيل الحضور"
+
+#: .\attendance\templates\attendances\attendances.html:37
+#: .\employee\templates\employees\details.html:142
+#: .\employee\templates\employees\details.html:195
+#: .\student\templates\kids\details.html:155
+#: .\student\templates\students\details.html:178
+#: .\teacher\templates\teachers\details.html:188
+#: .\teacher\templates\teachers\details.html:239
+msgid "Status"
+msgstr "حالة"
+
+#: .\attendance\templates\attendances\group_attendances.html:14
+#: .\attendance\templates\attendances\students.html:16
+#: .\attendance\templates\attendances\students_details.html:16
+msgid "Group Attendance"
+msgstr "حضور الفوج"
+
+#: .\attendance\templates\attendances\group_attendances.html:27
+#: .\attendance\templates\attendances\groups.html:43
+#: .\group\templates\groups\groups.html:46
+msgid "Group Name"
+msgstr "اسم الفوج"
+
+#: .\attendance\templates\attendances\group_attendances.html:76
+msgid "No Attendance to show"
+msgstr "لا يوجد حضور للعرض"
+
+#: .\attendance\templates\attendances\groups.html:44
+#: .\attendance\templates\attendances\leave.html:16
+#: .\attendance\templates\attendances\students.html:30
+#: .\attendance\templates\attendances\students_details.html:26
+#: .\group\templates\groups\details.html:26
+#: .\group\templates\groups\groups.html:47
+#: .\student\templates\kids\details.html:94
+#: .\student\templates\students\details.html:113
+#: .\teacher\templates\subjects\details.html:58
+#: .\teacher\templates\teachers\details.html:122
+msgid "Teacher"
+msgstr "معلم"
+
+#: .\attendance\templates\attendances\groups.html:45
+#: .\group\templates\groups\details.html:30
+#: .\group\templates\groups\groups.html:48
+#: .\student\templates\kids\details.html:95
+#: .\student\templates\students\details.html:114
+#: .\teacher\templates\subjects\details.html:57
+#: .\teacher\templates\teachers\details.html:123
+msgid "Room"
+msgstr "قاعة"
+
+#: .\attendance\templates\attendances\groups.html:46
+#: .\group\templates\groups\details.html:36
+#: .\group\templates\groups\groups.html:49
+#: .\student\templates\kids\details.html:96
+#: .\student\templates\kids\details.html:188
+#: .\student\templates\students\details.html:115
+#: .\student\templates\students\details.html:211
+#: .\teacher\templates\subjects\details.html:56
+#: .\teacher\templates\teachers\details.html:53
+#: .\teacher\templates\teachers\details.html:124
+msgid "Subject"
+msgstr "المادة"
+
+#: .\attendance\templates\attendances\groups.html:47
+#: .\caisse\templates\category\details.html:43
+#: .\caisse\templates\transaction\list.html:63
+#: .\events\templates\events\details.html:40
+#: .\group\templates\groups\details.html:44
+#: .\group\templates\groups\groups.html:50
+#: .\payments\templates\payrolls\payrolls.html:40
+msgid "Type"
+msgstr "نوع"
+
+#: .\attendance\templates\attendances\groups.html:48
+msgid "Details"
+msgstr "تفاصيل"
+
+#: .\attendance\templates\attendances\groups.html:162
+#: .\group\templates\groups\groups.html:159
+msgid "Add First Group"
+msgstr "أضف الفوج الأولى"
+
+#: .\attendance\templates\attendances\leave.html:32
+#: .\teacher\templates\teachers\teachers.html:46
+msgid "Teacher Name"
+msgstr "اسم المعلم"
+
+#: .\attendance\templates\attendances\leave.html:73
+msgid "Add Attendance First"
+msgstr "إضافة الحضور أولا"
+
+#: .\attendance\templates\attendances\students.html:75
+#: .\attendance\templates\attendances\students_details.html:89
+#: .\student\templates\students\students.html:46
+msgid "Student Name"
+msgstr "أسم الطالب"
+
+#: .\attendance\templates\attendances\students.html:89
+#: .\attendance\templates\attendances\students.html:101
+#: .\payments\templates\payrolls\details.html:83
+#: .\teacher\templates\teachers\details.html:91
+msgid "Absent"
+msgstr "غائب"
+
+#: .\attendance\templates\attendances\students.html:121
+#: .\attendance\templates\attendances\students_details.html:144
+#: .\group\templates\groups\select-students.html:202
+#: .\student\templates\students\students.html:169
+msgid "Add First Student"
+msgstr "إضافة أول طالب"
+
+#: .\attendance\templates\attendances\students_details.html:33
+#: .\employee\templates\employees\details.html:140
+#: .\teacher\templates\teachers\details.html:186
+msgid "Entering Time"
+msgstr "وقت الدخول"
+
+#: .\attendance\templates\attendances\students_details.html:34
+#: .\employee\templates\employees\details.html:141
+#: .\teacher\templates\teachers\details.html:187
+msgid "Leaving Time"
+msgstr "وقت المغادرة"
+
+#: .\caisse\templates\caisse\transaction_delete.html:13
+msgid "ARE YOU SURE YOU WANT TO DELETE"
+msgstr ""
+
+#: .\caisse\templates\caisse\transaction_delete.html:21
+msgid "Cancel"
+msgstr "الغاء"
+
+#: .\caisse\templates\caisse\transaction_list.html:14
+#: .\caisse\templates\category\details.html:15
+msgid "Cash Register"
+msgstr "مسجلة النقد"
+
+#: .\caisse\templates\caisse\transaction_list.html:40
+#: .\payments\templates\payments\payments.html:33
+msgid "Students Payment"
+msgstr "مدفوعات الطلاب"
+
+#: .\caisse\templates\caisse\transaction_list.html:54
+#: .\payments\templates\payments\payments.html:49
+msgid "Parent Payment"
+msgstr "مدفوعات الاولياء"
+
+#: .\caisse\templates\caisse\transaction_list.html:68
+msgid "Cash Transactions"
+msgstr "المعاملات النقدية"
+
+#: .\caisse\templates\category\details.html:20
+#: .\caisse\templates\transaction\list.html:17
+msgid "Transactions"
+msgstr "المعاملات"
+
+#: .\caisse\templates\category\details.html:22
+msgid "Income"
+msgstr "دخل"
+
+#: .\caisse\templates\category\details.html:22
+#: .\caisse\templates\category\details.html:24
+#: .\caisse\templates\category\details.html:26
+msgid "DA"
+msgstr "دج"
+
+#: .\caisse\templates\category\details.html:24
+msgid "Expense"
+msgstr "مصروف"
+
+#: .\caisse\templates\category\details.html:26
+#: .\caisse\templates\transaction\list.html:33
+msgid "TOTAL"
+msgstr "المجموع"
+
+#: .\caisse\templates\category\details.html:37
+#: .\caisse\templates\transaction\details.html:24
+#: .\caisse\templates\transaction\list.html:60
+msgid "Transaction"
+msgstr " تعامل"
+
+#: .\caisse\templates\category\details.html:45
+#: .\caisse\templates\category\list.html:47
+#: .\caisse\templates\transaction\list.html:61
+msgid "Category"
+msgstr "فئة"
+
+#: .\caisse\templates\category\details.html:46
+msgid "Date Created"
+msgstr "تاريخ الإنشاء"
+
+#: .\caisse\templates\category\details.html:63
+msgid "Delete"
+msgstr "حذف"
+
+#: .\caisse\templates\category\details.html:67
+msgid "Update"
+msgstr "تعديل"
+
+#: .\caisse\templates\category\details.html:72
+msgid "No Elements"
+msgstr "لا توجد عناصر"
+
+#: .\caisse\templates\category\list.html:18
+msgid "Categories"
+msgstr "فئات"
+
+#: .\caisse\templates\category\list.html:23
+msgid "Add New Category"
+msgstr "إضافة فئة جديدة"
+
+#: .\caisse\templates\category\list.html:159
+msgid "Add First Category"
+msgstr "أضف الفئة الأولى"
+
+#: .\caisse\templates\category\list.html:181
+#: .\caisse\templates\transaction\list.html:213
+msgid "Add new Category"
+msgstr "إضافة فئة جديدة"
+
+#: .\caisse\templates\transaction\details.html:10
+msgid "Transaction Details"
+msgstr "تفاصيل المعاملة"
+
+#: .\caisse\templates\transaction\details.html:41
+#: .\payments\templates\parents_payments\details.html:39
+#: .\payments\templates\payrolls\details.html:41
+#: .\payments\templates\students_payments\details.html:39
+msgid "Created By"
+msgstr "انشأ من قبل"
+
+#: .\caisse\templates\transaction\list.html:22
+msgid "Add New Transaction"
+msgstr "أضف معاملة جديدة"
+
+#: .\caisse\templates\transaction\list.html:31
+msgid "INCOME"
+msgstr "الإيرادات"
+
+#: .\caisse\templates\transaction\list.html:32
+msgid "EXPENSE"
+msgstr "مصروف"
+
+#: .\caisse\templates\transaction\list.html:191
+msgid "Add First Transaction"
+msgstr "أضف أول معاملة"
+
+#: .\employee\templates\employees\details.html:12
+msgid "Employee Details"
+msgstr "تفاصيل الموظف"
+
+#: .\employee\templates\employees\details.html:17
+msgid "Update Employee"
+msgstr "تحديث الموظف"
+
+#: .\employee\templates\employees\details.html:28
+#: .\student\templates\parent\details.html:27
+#: .\student\templates\students\details.html:25
+msgid "PayDebt"
+msgstr "دفع الديون"
+
+#: .\employee\templates\employees\details.html:35
+#: .\employee\templates\roles\details.html:25
+#: .\student\templates\kids\details.html:22
+#: .\student\templates\parent\details.html:34
+#: .\student\templates\students\details.html:31
+#: .\teacher\templates\subjects\details.html:23
+#: .\teacher\templates\teachers\details.html:24
+msgid "Print"
+msgstr "طباعة"
+
+#: .\employee\templates\employees\details.html:49
+#: .\employee\templates\roles\details.html:47
+#: .\group\templates\groups\details.html:121
+#: .\group\templates\groups\select-students.html:85
+#: .\student\templates\parent\details.html:48
+#: .\student\templates\students\details.html:45
+#: .\teacher\templates\subjects\details.html:116
+#: .\teacher\templates\teachers\details.html:37
+msgid "Phone"
+msgstr "هاتف"
+
+#: .\employee\templates\employees\details.html:53
+#: .\employee\templates\employees\employees.html:49
+#: .\group\templates\groups\details.html:120
+#: .\student\templates\parent\parents.html:49
+#: .\student\templates\students\students.html:49
+#: .\teacher\templates\subjects\details.html:115
+#: .\teacher\templates\teachers\teachers.html:49
+msgid "Address"
+msgstr "عنوان"
+
+#: .\employee\templates\employees\details.html:57
+#: .\employee\templates\employees\employees.html:51
+msgid "Gender"
+msgstr "جنس"
+
+#: .\employee\templates\employees\details.html:61
+msgid "Martial Status"
+msgstr "الحالة الإجتماعية"
+
+#: .\employee\templates\employees\details.html:65
+msgid "Date of Birth"
+msgstr "تاريخ الميلاد"
+
+#: .\employee\templates\employees\details.html:69
+#: .\employee\templates\roles\details.html:49
+msgid "Is Active"
+msgstr "نشط"
+
+#: .\employee\templates\employees\details.html:73
+#: .\student\templates\parent\details.html:64
+#: .\student\templates\students\details.html:61
+#: .\teacher\templates\teachers\details.html:57
+msgid "Join Date"
+msgstr "تاريخ الانضمام"
+
+#: .\employee\templates\employees\details.html:238
+msgid "Update employee"
+msgstr "تحديث الموظف"
+
+#: .\employee\templates\employees\employees.html:22
+msgid "Add New Employee"
+msgstr "إضافة موظف جديد"
+
+#: .\employee\templates\employees\employees.html:47
+#: .\student\templates\parent\parents.html:47
+#: .\student\templates\students\students.html:47
+#: .\teacher\templates\teachers\teachers.html:47
+msgid "Email Address"
+msgstr "البريد الإلكتروني"
+
+#: .\employee\templates\employees\employees.html:48
+#: .\student\templates\parent\parents.html:48
+#: .\student\templates\students\students.html:48
+#: .\teacher\templates\teachers\teachers.html:48
+msgid "Phone Number"
+msgstr "هاتف"
+
+#: .\employee\templates\employees\employees.html:50
+#: .\student\templates\parent\details.html:56
+#: .\student\templates\parent\parents.html:50
+#: .\student\templates\students\details.html:53
+#: .\student\templates\students\students.html:50
+msgid "Province"
+msgstr "ولاية"
+
+#: .\employee\templates\employees\employees.html:52
+#: .\student\templates\kids\kids.html:47
+#: .\student\templates\students\students.html:52
+#: .\teacher\templates\teachers\teachers.html:50
+msgid "Birth Date"
+msgstr "تاريخ الميلاد"
+
+#: .\employee\templates\employees\employees.html:53
+#: .\student\templates\parent\parents.html:52
+#: .\student\templates\students\students.html:53
+#: .\teacher\templates\subjects\details.html:117
+#: .\teacher\templates\teachers\teachers.html:51
+msgid "Date joined"
+msgstr "تاريخ الانضمام"
+
+#: .\employee\templates\employees\employees.html:187
+msgid "Add new employee"
+msgstr "إضافة موظف جديد"
+
+#: .\employee\templates\roles\details.html:11
+msgid "Role Details"
+msgstr "تفاصيل الوظيفة"
+
+#: .\employee\templates\roles\details.html:16
+msgid "Update Role"
+msgstr "تحديث الوظيفة"
+
+#: .\employee\templates\roles\details.html:35
+#: .\employee\templates\roles\roles.html:47
+#: .\payments\templates\payrolls\details.html:24
+msgid "Salary"
+msgstr "مرتب"
+
+#: .\employee\templates\roles\details.html:48
+#: .\group\templates\groups\details.html:123
+msgid "Date Joined"
+msgstr "تاريخ الانضمام"
+
+#: .\employee\templates\roles\details.html:99
+msgid "Update role"
+msgstr "تحديث الوظيفة"
+
+#: .\employee\templates\roles\roles.html:22
+msgid "Add New Role"
+msgstr "أضف وظيفة جديدة"
+
+#: .\employee\templates\roles\roles.html:46
+msgid "Role Name"
+msgstr "اسم الوظيفة"
+
+#: .\employee\templates\roles\roles.html:153
+msgid "Add First Role"
+msgstr "أضف الوظيفة الأولى"
+
+#: .\employee\templates\roles\roles.html:175
+msgid "Add new role"
+msgstr "أضف وظيفة جديدة"
+
+#: .\events\templates\events\details.html:7
+msgid "Event Details"
+msgstr "تفاصيل الحدث"
+
+#: .\events\templates\events\details.html:12
+msgid "Update Event"
+msgstr "تحديث الحدث"
+
+#: .\events\templates\events\details.html:23
+#: .\group\templates\groups\details.html:23
+msgid "Registered by"
+msgstr "مسجل من قبل"
+
+#: .\events\templates\events\details.html:26
+#: .\group\templates\times\update.html:26
+#: .\teacher\templates\subjects\details.html:81
+msgid "Day"
+msgstr "يوم"
+
+#: .\events\templates\events\details.html:30
+msgid "Start Time"
+msgstr "وقت البدء"
+
+#: .\events\templates\events\details.html:36
+msgid "End Time"
+msgstr "وقت النهاية"
+
+#: .\events\templates\events\details.html:67
+msgid "Add new event"
+msgstr "أضف حدثًا جديدًا"
+
+#: .\events\templates\events\events.html:76
+msgid "Previous month"
+msgstr "الشهر الماضى"
+
+#: .\events\templates\events\events.html:80
+msgid "Next month"
+msgstr "الشهر القادم"
+
+#: .\events\templates\events\events.html:84
+msgid "New Event"
+msgstr "حدث جديد"
+
+#: .\events\templates\events\events.html:104
+msgid "Add new Event"
+msgstr "إضافة حدث جديد"
+
+#: .\group\templates\groups\details.html:7
+msgid "Group Details"
+msgstr "تفاصيل الفوج"
+
+#: .\group\templates\groups\details.html:12
+msgid "Update Group"
+msgstr "تحديث الفوج"
+
+#: .\group\templates\groups\details.html:51
+#: .\student\templates\parent\details.html:71
+msgid "KIDS"
+msgstr "أطفال"
+
+#: .\group\templates\groups\details.html:58
+msgid "Add Kids"
+msgstr "أضف الاطفال"
+
+#: .\group\templates\groups\details.html:64
+#: .\group\templates\groups\select-kids.html:84
+#: .\payments\templates\parents_payments\payments.html:48
+#: .\student\templates\kids\kids.html:43
+msgid "Parent"
+msgstr "الولي"
+
+#: .\group\templates\groups\details.html:66
+#: .\group\templates\groups\select-kids.html:86
+#: .\student\templates\kids\details.html:35
+#: .\student\templates\kids\kids.html:45
+msgid "Grade"
+msgstr "صف دراسي"
+
+#: .\group\templates\groups\details.html:67
+#: .\group\templates\groups\select-kids.html:87
+#: .\student\templates\kids\kids.html:46
+msgid "Sick"
+msgstr "مريض"
+
+#: .\group\templates\groups\details.html:113
+msgid "Add Students"
+msgstr "أضف الطلاب"
+
+#: .\group\templates\groups\details.html:176
+#: .\group\templates\groups\groups.html:181
+msgid "Add new group"
+msgstr "أضف فوج جديد"
+
+#: .\group\templates\groups\groups.html:22
+msgid "Add New Group"
+msgstr "أضف فوج جديد"
+
+#: .\group\templates\groups\select-kids.html:20
+#: .\group\templates\groups\select-students.html:20
+#: .\student\templates\parent\details.html:77
+msgid "name"
+msgstr "اسم"
+
+#: .\group\templates\groups\select-kids.html:21
+#: .\group\templates\groups\select-students.html:21
+#: .\student\templates\parent\details.html:78
+msgid "grade"
+msgstr "صف دراسي"
+
+#: .\group\templates\groups\select-kids.html:22
+#: .\group\templates\groups\select-students.html:22
+#: .\student\templates\parent\details.html:79
+msgid "sick"
+msgstr "مريض"
+
+#: .\group\templates\groups\select-kids.html:56
+msgid "No previous Kids"
+msgstr "لا يوجد أطفال سابقون"
+
+#: .\group\templates\groups\select-kids.html:197
+#: .\group\templates\groups\select-students.html:190
+msgid "Submit"
+msgstr "إرسال"
+
+#: .\group\templates\groups\select-kids.html:209
+#: .\student\templates\kids\kids.html:165
+msgid "Add First Kid"
+msgstr "أضف الطفل الأول"
+
+#: .\group\templates\groups\select-students.html:56
+msgid "No previous Students"
+msgstr "لا يوجد طلاب سابقون"
+
+#: .\group\templates\rooms\rooms.html:22
+msgid "Add New Room"
+msgstr "أضف قاعة جديدة"
+
+#: .\group\templates\rooms\rooms.html:35
+msgid "Room Name"
+msgstr "اسم القاعة"
+
+#: .\group\templates\rooms\rooms.html:133
+msgid "Add First Room"
+msgstr "أضف القاعة الأولى"
+
+#: .\group\templates\rooms\rooms.html:154
+msgid "Add new room"
+msgstr "أضف قاعة جديدة"
+
+#: .\group\templates\times\times.html:7
+msgid "Groups Times"
+msgstr "أوقات الافواج"
+
+#: .\group\templates\times\times.html:12
+msgid "Add Group Time"
+msgstr "أضف وقت الفوج"
+
+#: .\group\templates\times\times.html:28
+#: .\student\templates\transportation\times.html:24
+msgid "Times/Days"
+msgstr "الأوقات / الأيام"
+
+#: .\group\templates\times\times.html:29
+#: .\student\templates\transportation\times.html:25
+msgid "Saturday"
+msgstr "السبت"
+
+#: .\group\templates\times\times.html:30
+#: .\student\templates\transportation\times.html:26
+msgid "Sunday"
+msgstr "الأحد"
+
+#: .\group\templates\times\times.html:31
+#: .\student\templates\transportation\times.html:27
+msgid "Monday"
+msgstr "الاثنين"
+
+#: .\group\templates\times\times.html:32
+#: .\student\templates\transportation\times.html:28
+msgid "Tuesday"
+msgstr " الثلاثاء"
+
+#: .\group\templates\times\times.html:33
+#: .\student\templates\transportation\times.html:29
+msgid "Wednesday"
+msgstr "الأربعاء"
+
+#: .\group\templates\times\times.html:34
+#: .\student\templates\transportation\times.html:30
+msgid "Thursday"
+msgstr "الخميس"
+
+#: .\group\templates\times\times.html:35
+#: .\student\templates\transportation\times.html:31
+msgid "Friday"
+msgstr "جمعة"
+
+#: .\group\templates\times\times.html:1443
+#: .\student\templates\transportation\times.html:1489
+msgid "Add new group time"
+msgstr "أضف وقت الفوج الجديد"
+
+#: .\group\templates\times\update.html:17
+msgid "Update Time"
+msgstr "تحديث الوقت"
+
+#: .\group\templates\times\update.html:20
+msgid "Old Data"
+msgstr "البيانات القديمة"
+
+#: .\group\templates\times\update.html:23
+msgid "Group"
+msgstr "الفوج"
+
+#: .\group\templates\times\update.html:29
+msgid "Start time"
+msgstr "وقت البدء"
+
+#: .\group\templates\times\update.html:32
+msgid "End time"
+msgstr "وقت النهاية"
+
+#: .\payments\templates\parents_payments\details.html:7
+#: .\payments\templates\students_payments\details.html:7
+msgid "Payment Details"
+msgstr "تفاصيل الدفع"
+
+#: .\payments\templates\parents_payments\details.html:12
+#: .\payments\templates\students_payments\details.html:12
+msgid "Update Payment"
+msgstr "تحديث الدفع"
+
+#: .\payments\templates\parents_payments\details.html:22
+#: .\payments\templates\students_payments\details.html:22
+msgid "Payment"
+msgstr "دفع"
+
+#: .\payments\templates\parents_payments\details.html:76
+msgid "Update parent"
+msgstr "تحديث الولي"
+
+#: .\payments\templates\parents_payments\payments.html:23
+#: .\payments\templates\students_payments\payments.html:23
+msgid "Add New Payment"
+msgstr "إضافة دفعة جديدة"
+
+#: .\payments\templates\parents_payments\payments.html:50
+#: .\payments\templates\payrolls\payrolls.html:41
+#: .\payments\templates\students_payments\payments.html:50
+msgid "Pay Date"
+msgstr "تاريخ الدفع"
+
+#: .\payments\templates\parents_payments\payments.html:158
+#: .\payments\templates\students_payments\payments.html:158
+msgid "Add First Payment"
+msgstr "أضف الدفعة الأولى"
+
+#: .\payments\templates\parents_payments\payments.html:179
+#: .\payments\templates\students_payments\payments.html:179
+msgid "Add new payment"
+msgstr "إضافة دفعة جديدة"
+
+#: .\payments\templates\payrolls\details.html:7
+msgid "Payroll Details"
+msgstr "تفاصيل الرواتب"
+
+#: .\payments\templates\payrolls\details.html:31
+msgid "Daily Salary"
+msgstr "الراتب اليومي"
+
+#: .\payments\templates\payrolls\details.html:61
+#: .\teacher\templates\teachers\details.html:69
+msgid "All sessions"
+msgstr "كل الحصص"
+
+#: .\payments\templates\payrolls\details.html:94
+#: .\teacher\templates\teachers\details.html:102
+msgid "Unapproved Absent"
+msgstr "الغياب غير الموافق عليه"
+
+#: .\payments\templates\payrolls\details.html:105
+msgid "Mission"
+msgstr "بعثة"
+
+#: .\payments\templates\payrolls\payrolls.html:38
+msgid "Employee"
+msgstr "موظف"
+
+#: .\payments\templates\payrolls\payrolls.html:163
+msgid "No Payroll Calculated return on 26th"
+msgstr "لم يتم احتساب كشوف المرتبات عد يوم 26"
+
+#: .\payments\templates\students_payments\details.html:76
+msgid "Update student payment"
+msgstr "تحديث دفعة الطالب"
+
+#: .\payments\templates\students_payments\payments.html:48
+msgid "Student"
+msgstr " طالب"
+
+#: .\student\templates\kids\details.html:11
+msgid "Kid Details"
+msgstr "تفاصيل الطفل"
+
+#: .\student\templates\kids\details.html:16
+msgid "Update Kid"
+msgstr "تحديث الطفل"
+
+#: .\student\templates\kids\details.html:40
+#: .\student\templates\parent\details.html:61
+#: .\student\templates\parent\details.html:65
+#: .\student\templates\students\details.html:58
+#: .\student\templates\students\details.html:62
+msgid "DZD"
+msgstr "دج"
+
+#: .\student\templates\kids\details.html:183
+#: .\student\templates\students\details.html:206
+msgid "Sessions"
+msgstr "الحصص"
+
+#: .\student\templates\kids\details.html:189
+#: .\student\templates\students\details.html:212
+msgid "Start Date"
+msgstr "تاريخ البدء"
+
+#: .\student\templates\kids\details.html:190
+#: .\student\templates\students\details.html:213
+msgid "Last Date"
+msgstr "التاريخ الأخير"
+
+#: .\student\templates\kids\details.html:191
+#: .\student\templates\students\details.html:214
+msgid "N° sessions"
+msgstr "عدد الحصص"
+
+#: .\student\templates\kids\details.html:260
+msgid "Update kid"
+msgstr "تحديث الطفل"
+
+#: .\student\templates\kids\kids.html:48
+#: .\student\templates\parent\details.html:80
+msgid "Created"
+msgstr "تم إنشاؤه"
+
+#: .\student\templates\parent\details.html:11
+msgid "Parent Details"
+msgstr "تفاصيل الولي"
+
+#: .\student\templates\parent\details.html:16
+msgid "Add New Kid"
+msgstr "اضافة طفل جديد"
+
+#: .\student\templates\parent\details.html:52
+#: .\student\templates\students\details.html:49
+#: .\teacher\templates\teachers\details.html:41
+msgid "Adress"
+msgstr "العنوان"
+
+#: .\student\templates\parent\details.html:153
+#: .\student\templates\students\details.html:283
+msgid "Add new kid"
+msgstr "اضافة طفل جديد"
+
+#: .\student\templates\parent\parents.html:22
+msgid "Add New Parent"
+msgstr "أضف ولي جديدًا"
+
+#: .\student\templates\parent\parents.html:46
+msgid "Parent Name"
+msgstr "اسم الولي"
+
+#: .\student\templates\parent\parents.html:196
+msgid "Add new parent"
+msgstr "أضف ولي جديدًا"
+
+#: .\student\templates\parent\update.html:17
+msgid "Update Parent"
+msgstr "تحديث الولي"
+
+#: .\student\templates\students\details.html:11
+msgid "Student Details"
+msgstr "تفاصيل الطالب"
+
+#: .\student\templates\students\details.html:16
+msgid "Update Student"
+msgstr "تحديث الطالب"
+
+#: .\student\templates\students\students.html:22
+msgid "Add New Student"
+msgstr "إضافة طالب جديد"
+
+#: .\student\templates\students\students.html:190
+msgid "Add new student"
+msgstr "إضافة طالب جديد"
+
+#: .\student\templates\transportation\times.html:7
+msgid "Transportation Times"
+msgstr "أوقات النقل"
+
+#: .\teacher\templates\subjects\details.html:11
+msgid "Subject Details"
+msgstr "تفاصيل المادة"
+
+#: .\teacher\templates\subjects\details.html:16
+msgid "Update Subject"
+msgstr "تحديث المادة"
+
+#: .\teacher\templates\subjects\details.html:35
+msgid "Price"
+msgstr "سعر"
+
+#: .\teacher\templates\subjects\details.html:42
+msgid "N° Sessions"
+msgstr "عدد الحصص"
+
+#: .\teacher\templates\subjects\details.html:82
+msgid "Starts"
+msgstr "يبدأ"
+
+#: .\teacher\templates\subjects\details.html:83
+msgid "Ends"
+msgstr "ينتهي"
+
+#: .\teacher\templates\subjects\details.html:156
+msgid "Update subject"
+msgstr "تحديث المادة"
+
+#: .\teacher\templates\subjects\subjects.html:22
+msgid "Add New Subject"
+msgstr "أضف مادة جديد"
+
+#: .\teacher\templates\subjects\subjects.html:45
+msgid "Subject Name"
+msgstr "اسم المادة"
+
+#: .\teacher\templates\subjects\subjects.html:46
+msgid "Subject Price"
+msgstr "سعر"
+
+#: .\teacher\templates\subjects\subjects.html:47
+msgid "Subject N° sessions"
+msgstr "عدد الحصص"
+
+#: .\teacher\templates\subjects\subjects.html:153
+msgid "Add First Subject"
+msgstr "أضف المادة الأولى"
+
+#: .\teacher\templates\subjects\subjects.html:175
+msgid "Add new subject"
+msgstr "أضف مادة جديدة"
+
+#: .\teacher\templates\teachers\details.html:12
+msgid "Teacher Details"
+msgstr "تفاصيل المعلم"
+
+#: .\teacher\templates\teachers\details.html:17
+msgid "Update Teacher"
+msgstr "تحديث المعلم"
+
+#: .\teacher\templates\teachers\details.html:45
+msgid "Certificate"
+msgstr "شهادة"
+
+#: .\teacher\templates\teachers\details.html:282
+msgid "Update teacher"
+msgstr "تحديث المعلم"
+
+#: .\teacher\templates\teachers\teachers.html:22
+msgid "Add New Teacher"
+msgstr "إضافة معلم جديد"
+
+#: .\teacher\templates\teachers\teachers.html:161
+msgid "Add First Teacher"
+msgstr "إضافة معلم أول"
+
+#: .\teacher\templates\teachers\teachers.html:183
+msgid "Add new teacher"
+msgstr "إضافة معلم جديد"
+
+#~ msgid "Email address"
+#~ msgstr "البريد الالكترونى"

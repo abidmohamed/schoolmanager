@@ -1,0 +1,285 @@
+{% load static %}
+{% load i18n %}
+{% load erpextra %}
+<!-- how the translation is done
+1- django-admin makemessages -l fr
+2- django-admin compilemessages
+-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{company.clientName}} Invoicing System Create your own invoice online">
+    <meta name="author" content="{{company.clientName}}">
+    <title>{{company.clientName}}</title>
+
+    <link rel="canonical" href="">
+
+  <!-- ICONS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'assets/css/dashboard.css' %}" rel="stylesheet">
+
+    {% block css %}
+    {% endblock %}
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+  </head>
+  <body>
+
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">
+    {% if company.clientName %}
+      {{company.clientName}}
+    {% else %}
+      Company Name
+    {% endif %}
+  </a>
+  <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+  <div class="navbar-nav">
+
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3 text-danger fw-bold" href="{% url 'accounts:logout' %}">{% trans "Log Out" %}</a>
+    </div>
+  </div>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:dashboard' %}">
+              <span><i class="fa-solid fa-house fa-lg"></i></span>
+              {% trans "Dashboard" %}
+            </a>
+          </li>
+          {% if request.user|has_group:'admin, general_manager' %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'accounts:users' %}">
+              <span><i class="fa-solid fa-users fa-lg"></i></span>
+              {% trans "Users" %}
+            </a>
+          </li>
+          {% endif %}
+          <hr>
+          <!-- all -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'students:parents' %}">
+              <span><i class="fa-solid fa-users-line fa-lg"></i></span>
+              {% trans "Parents" %}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'students:kids' %}">
+              <span><i class="fa-solid fa-children fa-lg"></i></span>
+              {% trans "Kids" %}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'students:students' %}">
+              <span><i class="fa-solid fa-people-group fa-lg"></i></span>
+              {% trans "Students" %}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'teachers:subjects' %}">
+              <span><i class="fa-solid fa-laptop-file"></i></span>
+              {% trans "Subjects" %}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'teachers:teachers' %}">
+              <span><i class="fa-solid fa-chalkboard-user fa-lg"></i></span>
+              {% trans "Teachers" %}
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'groups:rooms' %}">
+              <span><i class="fa-solid fa-building-columns fa-lg"></i></span>
+              {% trans "Rooms" %}
+            </a>
+          </li>
+          {% if request.user|has_group:'admin, general_manager, management, accountant, hr_manager' %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'groups:groups' %}">
+              <span><i class="fa-solid fa-users-between-lines fa-lg"></i></span>
+              {% trans "Groups" %}
+            </a>
+          </li>
+          {% endif %}
+          <!-- all -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'groups:groups_times' %}">
+              <span><i class="fa-solid fa-clock fa-lg"></i></span>
+              {% trans "Timetable" %}
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'students:transportation' %}">
+              <span><i class="fa-solid fa-bus fa-lg"></i></span>
+              {% trans "Transportation" %}
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'events:events' %}">
+              <span><i class="fa-solid fa-calendar-days fa-lg"></i></span>
+              {% trans "Calendar" %}
+            </a>
+          </li>
+          {% if request.user|has_group:'admin, general_manager, management, reception' %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'attendances:attendances' %}">
+              <span><i class="fa-solid fa-clipboard-user fa-lg"></i></span>
+              {% trans "Students Attendances" %}
+            </a>
+          </li>
+          {% endif %}
+          {% if request.user|has_group:'admin, general_manager, hr_manager, accountant' %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'employees:employees' %}">
+              <span><i class="fa-solid fa-user-tie fa-lg"></i></span>
+              {% trans "Employees" %}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'employees:roles' %}">
+              <span><i class="fa-solid fa-briefcase fa-lg"></i></span>
+              {% trans "Roles" %}
+            </a>
+          </li>
+          {% endif %}
+          {% if request.user|has_group:'admin, general_manager, hr_manager' %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'attendances:employee_attendances' %}">
+              <span><i class="fa-solid fa-id-card fa-lg"></i></span>
+              {% trans "Employees Attendance" %}
+            </a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'payments:payments' %}">
+              <span><i class="fa-solid fa-file-invoice-dollar fa-lg"></i>
+              </span>
+              {% trans "Payments" %}
+            </a>
+          </li>
+          {% if request.user|has_group:'admin, general_manager, hr_manager, accountant' %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'payments:payrolls' %}">
+              <span>
+                <i class="fa-solid fa-sack-dollar fa-lg"></i>
+              </span>
+              {% trans "Payrolls" %}
+            </a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'caisse:cash_register' %}">
+              <span>
+                <i class="fa-solid fa-wallet fa-lg"></i>
+              </span>
+              {% trans "Caisse" %}
+            </a>
+          </li>
+        </ul>
+        <ul class="nav flex-column mb-2">
+          <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+          <li class="nav-item">
+            <a class="nav-link text-danger fw-bold" href="{% url 'accounts:logout' %}">
+              <span><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i></span>
+              {% trans "Logout" %}
+            </a>
+          </li>
+          <li class="nav-item">
+
+
+            {% get_current_language as LANGUAGE_CODE %}
+                  <form action="{% url 'set_language'%}" method="post" class="mb-3">
+                      {%csrf_token%}
+                      <input type="hidden" name="next" value="{{ redirect_to }}">
+                      <select class="form-control" name="language" id="">
+                          {% get_available_languages as LANGUAGES %}
+                          {% get_language_info_list for LANGUAGES as languages %}
+                          {% for language in languages %}
+                            <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+                               <i class="fas fa-clipboard-list"></i>  {{ language.name_local}} {{ language.code }}
+                            </option>
+                          {% endfor %}
+                      </select>
+                      <input class="btn btn-warning btn-block form-control mt-3" type="submit" value="Go">
+                  </form>
+
+          </li>
+        </ul>
+
+      </div>
+    </nav>
+
+
+
+    <!-- Add the messages here .... -->
+
+
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+      {% for message in messages %}
+      <div class="alert {{ message.tags }} mb-4" role="alert">
+        {{ message }}
+      </div>
+      {% endfor %}
+
+      {% block main %}
+      {% endblock %}
+
+    </main>
+
+
+
+
+
+  </div>
+</div>
+
+
+      <!-- JS starts here  -->
+      <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+      <script src="{% static 'assets/js/dashboard.js' %}"></script>
+
+      {% block scripts %}
+      {% endblock %}
+
+
+  </body>
+</html>

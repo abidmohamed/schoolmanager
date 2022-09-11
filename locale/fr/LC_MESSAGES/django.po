@@ -1,0 +1,1402 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-11 12:49+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\accounts\templates\accounts\dashboard.html:11
+#: .\accounts\templates\partials\base.html:78
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: .\accounts\templates\accounts\dashboard.html:24
+#: .\accounts\templates\accounts\dashboard.html:180
+#: .\accounts\templates\partials\base.html:106
+#: .\group\templates\groups\details.html:106
+#: .\student\templates\students\students.html:17
+msgid "Students"
+msgstr "Étudiants"
+
+#: .\accounts\templates\accounts\dashboard.html:35
+#: .\accounts\templates\accounts\dashboard.html:79
+msgid "Active"
+msgstr "actif"
+
+#: .\accounts\templates\accounts\dashboard.html:46
+#: .\accounts\templates\accounts\dashboard.html:90
+msgid "Inactive"
+msgstr "Inactif"
+
+#: .\accounts\templates\accounts\dashboard.html:57
+#: .\accounts\templates\accounts\dashboard.html:101
+#: .\caisse\templates\category\list.html:49
+msgid "Total"
+msgstr "Total"
+
+#: .\accounts\templates\accounts\dashboard.html:68
+#: .\accounts\templates\partials\base.html:100
+#: .\student\templates\kids\kids.html:17
+msgid "Kids"
+msgstr "Les enfants"
+
+#: .\accounts\templates\accounts\dashboard.html:112
+#: .\group\templates\groups\details.html:122
+#: .\student\templates\parent\parents.html:51
+#: .\student\templates\students\details.html:57
+#: .\student\templates\students\students.html:51
+msgid "Debt"
+msgstr "Dette"
+
+#: .\accounts\templates\accounts\dashboard.html:158
+#: .\attendance\templates\attendances\attendances.html:30
+#: .\attendance\templates\attendances\groups.html:49
+#: .\employee\templates\employees\details.html:130
+#: .\student\templates\kids\details.html:148
+#: .\student\templates\students\details.html:167
+#: .\teacher\templates\teachers\details.html:176
+msgid "Attendance"
+msgstr "Présence"
+
+#: .\accounts\templates\accounts\dashboard.html:163
+#: .\accounts\templates\accounts\dashboard.html:206
+#: .\accounts\templates\partials\base.html:169
+#: .\attendance\templates\attendance_employees\details.html:15
+#: .\attendance\templates\attendance_employees\employees.html:15
+#: .\attendance\templates\attendance_employees\employees_leave.html:16
+#: .\employee\templates\employees\employees.html:17
+#: .\employee\templates\roles\details.html:41
+msgid "Employees"
+msgstr "Les employés"
+
+#: .\accounts\templates\accounts\dashboard.html:167
+#: .\accounts\templates\accounts\dashboard.html:184
+#: .\accounts\templates\accounts\dashboard.html:212
+#: .\accounts\templates\accounts\dashboard.html:233
+#: .\attendance\templates\attendance_employees\attendances.html:42
+#: .\attendance\templates\attendances\attendances.html:36
+#: .\attendance\templates\attendances\group_attendances.html:28
+#: .\caisse\templates\category\details.html:44
+#: .\caisse\templates\transaction\details.html:48
+#: .\caisse\templates\transaction\list.html:64
+#: .\employee\templates\employees\details.html:139
+#: .\employee\templates\employees\details.html:193
+#: .\payments\templates\parents_payments\details.html:46
+#: .\payments\templates\payrolls\details.html:48
+#: .\payments\templates\students_payments\details.html:46
+#: .\student\templates\kids\details.html:153
+#: .\student\templates\kids\details.html:223
+#: .\student\templates\parent\details.html:116
+#: .\student\templates\students\details.html:176
+#: .\student\templates\students\details.html:246
+#: .\teacher\templates\teachers\details.html:185
+#: .\teacher\templates\teachers\details.html:237
+msgid "Date"
+msgstr "Date"
+
+#: .\accounts\templates\accounts\dashboard.html:201
+#: .\payments\templates\payrolls\details.html:14
+msgid "Payroll"
+msgstr "Paie"
+
+#: .\accounts\templates\accounts\dashboard.html:210
+#: .\accounts\templates\accounts\dashboard.html:231
+#: .\attendance\templates\attendances\attendances.html:35
+#: .\attendance\templates\attendances\students.html:37
+#: .\attendance\templates\attendances\students_details.html:32
+#: .\caisse\templates\category\details.html:41
+#: .\employee\templates\employees\details.html:41
+#: .\employee\templates\roles\details.html:31
+#: .\employee\templates\roles\details.html:46
+#: .\group\templates\groups\details.html:40
+#: .\group\templates\groups\details.html:65
+#: .\group\templates\groups\details.html:119
+#: .\group\templates\groups\select-kids.html:85
+#: .\group\templates\groups\select-students.html:84
+#: .\student\templates\kids\details.html:31
+#: .\student\templates\kids\details.html:93
+#: .\student\templates\kids\details.html:152
+#: .\student\templates\kids\details.html:187
+#: .\student\templates\kids\kids.html:44
+#: .\student\templates\parent\details.html:40
+#: .\student\templates\students\details.html:37
+#: .\student\templates\students\details.html:112
+#: .\student\templates\students\details.html:175
+#: .\student\templates\students\details.html:210
+#: .\teacher\templates\subjects\details.html:28
+#: .\teacher\templates\subjects\details.html:55
+#: .\teacher\templates\subjects\details.html:114
+#: .\teacher\templates\teachers\details.html:29
+#: .\teacher\templates\teachers\details.html:121
+#: .\teacher\templates\teachers\details.html:184
+msgid "Name"
+msgstr "Nom"
+
+#: .\accounts\templates\accounts\dashboard.html:211
+#: .\accounts\templates\accounts\dashboard.html:232
+#: .\caisse\templates\category\details.html:42
+#: .\caisse\templates\transaction\details.html:31
+#: .\caisse\templates\transaction\list.html:62
+#: .\employee\templates\employees\details.html:194
+#: .\payments\templates\parents_payments\details.html:29
+#: .\payments\templates\parents_payments\payments.html:49
+#: .\payments\templates\payrolls\payrolls.html:39
+#: .\payments\templates\students_payments\details.html:29
+#: .\payments\templates\students_payments\payments.html:49
+#: .\student\templates\kids\details.html:224
+#: .\student\templates\parent\details.html:117
+#: .\student\templates\students\details.html:247
+#: .\teacher\templates\teachers\details.html:238
+msgid "Amount"
+msgstr "Montant"
+
+#: .\accounts\templates\accounts\dashboard.html:227
+#: .\accounts\templates\partials\base.html:118
+#: .\teacher\templates\subjects\details.html:110
+#: .\teacher\templates\teachers\teachers.html:17
+msgid "Teachers"
+msgstr "Enseignants"
+
+#: .\accounts\templates\accounts\login.html:49
+msgid "Please sign in"
+msgstr "Veuillez vous connecter"
+
+#: .\accounts\templates\accounts\login.html:75
+#: .\accounts\templates\user\users.html:43
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: .\accounts\templates\accounts\login.html:79
+msgid "Password"
+msgstr "Mot de passe"
+
+#: .\accounts\templates\accounts\login.html:83
+msgid "Sign in"
+msgstr "S'identifier"
+
+#: .\accounts\templates\partials\base.html:65
+msgid "Log Out"
+msgstr "Se déconnecter"
+
+#: .\accounts\templates\partials\base.html:85
+#: .\accounts\templates\user\users.html:18
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: .\accounts\templates\partials\base.html:94
+#: .\student\templates\parent\parents.html:17
+msgid "Parents"
+msgstr "Parents"
+
+#: .\accounts\templates\partials\base.html:112
+#: .\teacher\templates\subjects\subjects.html:17
+msgid "Subjects"
+msgstr "Cours"
+
+#: .\accounts\templates\partials\base.html:125
+#: .\group\templates\rooms\rooms.html:17
+msgid "Rooms"
+msgstr "salles"
+
+#: .\accounts\templates\partials\base.html:132
+#: .\group\templates\groups\groups.html:17
+#: .\student\templates\kids\details.html:89
+#: .\student\templates\students\details.html:104
+#: .\teacher\templates\subjects\details.html:51
+#: .\teacher\templates\teachers\details.html:113
+msgid "Groups"
+msgstr "Groupes"
+
+#: .\accounts\templates\partials\base.html:140
+msgid "Timetable"
+msgstr "Horaires"
+
+#: .\accounts\templates\partials\base.html:147
+#, fuzzy
+#| msgid "Transaction"
+msgid "Transportation"
+msgstr "Transaction"
+
+#: .\accounts\templates\partials\base.html:154
+msgid "Calendar"
+msgstr "Calendrier"
+
+#: .\accounts\templates\partials\base.html:161
+msgid "Students Attendances"
+msgstr "Présences d'étudiants"
+
+#: .\accounts\templates\partials\base.html:175
+#: .\employee\templates\roles\roles.html:17
+msgid "Roles"
+msgstr "Les rôles"
+
+#: .\accounts\templates\partials\base.html:183
+msgid "Employees Attendance"
+msgstr "Présence des employés"
+
+#: .\accounts\templates\partials\base.html:192
+#: .\payments\templates\parents_payments\payments.html:18
+#: .\payments\templates\payments\payments.html:14
+#: .\payments\templates\students_payments\payments.html:18
+#: .\student\templates\kids\details.html:218
+#: .\student\templates\parent\details.html:111
+#: .\student\templates\students\details.html:241
+msgid "Payments"
+msgstr "Paiements"
+
+#: .\accounts\templates\partials\base.html:201
+#: .\caisse\templates\caisse\transaction_list.html:82
+#: .\employee\templates\employees\details.html:188
+#: .\payments\templates\payrolls\payrolls.html:17
+#: .\teacher\templates\teachers\details.html:232
+msgid "Payrolls"
+msgstr "Paies"
+
+#: .\accounts\templates\partials\base.html:210
+msgid "Caisse"
+msgstr "Caisse"
+
+#: .\accounts\templates\partials\base.html:220
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: .\accounts\templates\user\users.html:21
+msgid "Add New User"
+msgstr "Ajouter nouvel utilisateur"
+
+#: .\accounts\templates\user\users.html:34
+#: .\attendance\templates\attendance_employees\attendances.html:32
+#: .\attendance\templates\attendances\attendances.html:25
+#: .\attendance\templates\attendances\groups.html:33
+#: .\caisse\templates\category\details.html:32
+#: .\caisse\templates\category\list.html:38
+#: .\caisse\templates\transaction\list.html:51
+#: .\employee\templates\employees\employees.html:36
+#: .\employee\templates\roles\roles.html:36
+#: .\group\templates\groups\select-kids.html:72
+#: .\group\templates\groups\select-students.html:72
+#: .\payments\templates\parents_payments\payments.html:38
+#: .\payments\templates\payrolls\payrolls.html:28
+#: .\payments\templates\students_payments\payments.html:38
+#: .\student\templates\kids\kids.html:33
+#: .\student\templates\parent\parents.html:36
+#: .\teacher\templates\subjects\subjects.html:36
+#: .\teacher\templates\teachers\teachers.html:36
+msgid "Search"
+msgstr "Chercher"
+
+#: .\accounts\templates\user\users.html:44
+msgid "First Name"
+msgstr "Prénom"
+
+#: .\accounts\templates\user\users.html:45
+msgid "Last Name"
+msgstr "Nom de famille"
+
+#: .\accounts\templates\user\users.html:46
+#: .\employee\templates\employees\details.html:45
+#: .\group\templates\groups\select-students.html:86
+#: .\student\templates\parent\details.html:44
+#: .\student\templates\students\details.html:41
+#: .\teacher\templates\teachers\details.html:33
+msgid "Email"
+msgstr "E-mail"
+
+#: .\accounts\templates\user\users.html:87
+#: .\accounts\templates\user\users.html:95
+msgid "Previous"
+msgstr "Précédent"
+
+#: .\accounts\templates\user\users.html:113
+msgid "current"
+msgstr "courant"
+
+#: .\accounts\templates\user\users.html:139
+#: .\accounts\templates\user\users.html:147
+msgid "Next"
+msgstr "Prochain"
+
+#: .\accounts\templates\user\users.html:161
+msgid "Add First User"
+msgstr "Ajouter premier utilisateur"
+
+#: .\accounts\templates\user\users.html:183
+msgid "Add new user"
+msgstr "Ajouter un nouvel utilisateur"
+
+#: .\accounts\templates\user\users.html:191
+msgid "Select A Group"
+msgstr "Sélectionnez un groupe"
+
+#: .\accounts\templates\user\users.html:196
+msgid "None"
+msgstr "Aucun"
+
+#: .\accounts\templates\user\users.html:203
+#: .\caisse\templates\category\list.html:193
+#: .\caisse\templates\transaction\list.html:225
+#: .\employee\templates\employees\details.html:248
+#: .\employee\templates\employees\employees.html:199
+#: .\employee\templates\roles\details.html:109
+#: .\employee\templates\roles\roles.html:187
+#: .\events\templates\events\details.html:79
+#: .\events\templates\events\events.html:116
+#: .\group\templates\groups\details.html:188
+#: .\group\templates\groups\groups.html:193
+#: .\group\templates\rooms\rooms.html:166
+#: .\group\templates\times\times.html:1455
+#: .\group\templates\times\update.html:48
+#: .\payments\templates\parents_payments\details.html:88
+#: .\payments\templates\parents_payments\payments.html:191
+#: .\payments\templates\students_payments\details.html:88
+#: .\payments\templates\students_payments\payments.html:191
+#: .\student\templates\kids\details.html:268
+#: .\student\templates\parent\details.html:165
+#: .\student\templates\parent\parents.html:208
+#: .\student\templates\parent\update.html:31
+#: .\student\templates\students\details.html:295
+#: .\student\templates\students\students.html:202
+#: .\student\templates\transportation\times.html:1501
+#: .\teacher\templates\subjects\details.html:168
+#: .\teacher\templates\subjects\subjects.html:187
+#: .\teacher\templates\teachers\details.html:294
+#: .\teacher\templates\teachers\teachers.html:195
+msgid "Save changes"
+msgstr "Sauvegarder les modifications"
+
+#: .\attendance\templates\attendance_employees\attendances.html:17
+#: .\attendance\templates\attendances\groups.html:18
+msgid "Attendances"
+msgstr "Présences"
+
+#: .\attendance\templates\attendance_employees\attendances.html:41
+#: .\attendance\templates\attendances\groups.html:42
+#: .\employee\templates\employees\details.html:138
+#: .\employee\templates\employees\details.html:192
+#: .\employee\templates\employees\employees.html:45
+#: .\employee\templates\roles\details.html:45
+#: .\employee\templates\roles\roles.html:45
+#: .\group\templates\groups\details.html:63
+#: .\group\templates\groups\details.html:118
+#: .\group\templates\groups\groups.html:45
+#: .\group\templates\groups\select-kids.html:19
+#: .\group\templates\groups\select-students.html:19
+#: .\payments\templates\parents_payments\payments.html:47
+#: .\payments\templates\payrolls\payrolls.html:37
+#: .\payments\templates\students_payments\payments.html:47
+#: .\student\templates\kids\details.html:27
+#: .\student\templates\kids\details.html:222
+#: .\student\templates\kids\kids.html:42
+#: .\student\templates\parent\details.html:76
+#: .\student\templates\parent\details.html:115
+#: .\student\templates\parent\parents.html:45
+#: .\student\templates\students\details.html:245
+#: .\student\templates\students\students.html:45
+#: .\teacher\templates\teachers\details.html:236
+#: .\teacher\templates\teachers\teachers.html:45
+msgid "Registered By"
+msgstr "Enregistré par"
+
+#: .\attendance\templates\attendance_employees\attendances.html:167
+msgid "Add First Attendance"
+msgstr "Ajouter la première présence"
+
+#: .\attendance\templates\attendance_employees\details.html:29
+msgid "Attending"
+msgstr "Participer"
+
+#: .\attendance\templates\attendance_employees\details.html:34
+#: .\attendance\templates\attendances\students.html:86
+#: .\attendance\templates\attendances\students.html:97
+#: .\payments\templates\payrolls\details.html:72
+#: .\teacher\templates\teachers\details.html:80
+msgid "Present"
+msgstr "présente"
+
+#: .\attendance\templates\attendance_employees\details.html:37
+#: .\attendance\templates\attendance_employees\employees.html:51
+#: .\attendance\templates\attendances\students.html:58
+msgid "ABSENT"
+msgstr "ABSENT"
+
+#: .\attendance\templates\attendance_employees\details.html:40
+#: .\attendance\templates\attendance_employees\employees.html:54
+#: .\attendance\templates\attendances\students.html:61
+msgid "UNAPPROVED ABSENT"
+msgstr "ABSENCE NON APPROUVÉE"
+
+#: .\attendance\templates\attendance_employees\details.html:43
+#: .\attendance\templates\attendance_employees\employees.html:57
+msgid "MISSION"
+msgstr "MISSION"
+
+#: .\attendance\templates\attendance_employees\details.html:51
+#: .\attendance\templates\attendance_employees\details.html:130
+#: .\attendance\templates\attendance_employees\employees.html:31
+#: .\attendance\templates\attendance_employees\employees_leave.html:32
+#: .\employee\templates\employees\employees.html:46
+msgid "Employee Name"
+msgstr "Nom de l'employé"
+
+#: .\attendance\templates\attendance_employees\details.html:52
+#: .\attendance\templates\attendance_employees\details.html:131
+#: .\attendance\templates\attendances\group_attendances.html:29
+#: .\student\templates\kids\details.html:154
+#: .\student\templates\students\details.html:177
+msgid "Time"
+msgstr "Temps"
+
+#: .\attendance\templates\attendance_employees\details.html:111
+msgid "Leaving"
+msgstr "En sortant"
+
+#: .\attendance\templates\attendance_employees\details.html:116
+#: .\attendance\templates\attendance_employees\employees_leave.html:51
+#: .\attendance\templates\attendances\leave.html:50
+msgid "APPROVED"
+msgstr "APPROUVÉ"
+
+#: .\attendance\templates\attendance_employees\details.html:119
+#: .\attendance\templates\attendance_employees\employees_leave.html:54
+#: .\attendance\templates\attendances\leave.html:53
+msgid "UNAPPROVED"
+msgstr "DÉSAPPROUVÉ"
+
+#: .\attendance\templates\attendance_employees\details.html:122
+#: .\attendance\templates\attendance_employees\employees_leave.html:57
+#: .\attendance\templates\attendances\leave.html:56
+msgid "DECLINED"
+msgstr "REFUSÉ"
+
+#: .\attendance\templates\attendance_employees\details.html:185
+#: .\attendance\templates\attendance_employees\employees.html:76
+#: .\attendance\templates\attendance_employees\employees_leave.html:77
+#: .\employee\templates\employees\employees.html:165
+msgid "Add First Employee"
+msgstr "Ajouter le premier employé"
+
+#: .\attendance\templates\attendance_employees\employees.html:42
+#: .\attendance\templates\attendance_employees\employees_leave.html:45
+#: .\attendance\templates\attendances\leave.html:44
+#: .\attendance\templates\attendances\students.html:50
+msgid "Office hours are 7am to 10pm"
+msgstr "Les heures de bureau sont de 7h à 22h"
+
+#: .\attendance\templates\attendance_employees\employees.html:48
+#: .\attendance\templates\attendances\students.html:55
+msgid "PRESENT"
+msgstr "présente"
+
+#: .\attendance\templates\attendance_employees\employees_leave.html:33
+#: .\attendance\templates\attendances\leave.html:33
+#: .\attendance\templates\attendances\students.html:39
+msgid "Entering time"
+msgstr "heure d'entrée"
+
+#: .\attendance\templates\attendance_employees\employees_leave.html:34
+#: .\attendance\templates\attendances\leave.html:34
+msgid "Leaving time"
+msgstr "Le temps de sortie"
+
+#: .\attendance\templates\attendances\attendances.html:10
+msgid "Attendances Details"
+msgstr "Détails des présences"
+
+#: .\attendance\templates\attendances\attendances.html:37
+#: .\employee\templates\employees\details.html:142
+#: .\employee\templates\employees\details.html:195
+#: .\student\templates\kids\details.html:155
+#: .\student\templates\students\details.html:178
+#: .\teacher\templates\teachers\details.html:188
+#: .\teacher\templates\teachers\details.html:239
+msgid "Status"
+msgstr "Statut"
+
+#: .\attendance\templates\attendances\group_attendances.html:14
+#: .\attendance\templates\attendances\students.html:16
+#: .\attendance\templates\attendances\students_details.html:16
+msgid "Group Attendance"
+msgstr "Présence de groupe"
+
+#: .\attendance\templates\attendances\group_attendances.html:27
+#: .\attendance\templates\attendances\groups.html:43
+#: .\group\templates\groups\groups.html:46
+msgid "Group Name"
+msgstr "Nom de groupe"
+
+#: .\attendance\templates\attendances\group_attendances.html:76
+msgid "No Attendance to show"
+msgstr "Aucune présence à afficher"
+
+#: .\attendance\templates\attendances\groups.html:44
+#: .\attendance\templates\attendances\leave.html:16
+#: .\attendance\templates\attendances\students.html:30
+#: .\attendance\templates\attendances\students_details.html:26
+#: .\group\templates\groups\details.html:26
+#: .\group\templates\groups\groups.html:47
+#: .\student\templates\kids\details.html:94
+#: .\student\templates\students\details.html:113
+#: .\teacher\templates\subjects\details.html:58
+#: .\teacher\templates\teachers\details.html:122
+msgid "Teacher"
+msgstr "Professeur"
+
+#: .\attendance\templates\attendances\groups.html:45
+#: .\group\templates\groups\details.html:30
+#: .\group\templates\groups\groups.html:48
+#: .\student\templates\kids\details.html:95
+#: .\student\templates\students\details.html:114
+#: .\teacher\templates\subjects\details.html:57
+#: .\teacher\templates\teachers\details.html:123
+msgid "Room"
+msgstr "salle"
+
+#: .\attendance\templates\attendances\groups.html:46
+#: .\group\templates\groups\details.html:36
+#: .\group\templates\groups\groups.html:49
+#: .\student\templates\kids\details.html:96
+#: .\student\templates\kids\details.html:188
+#: .\student\templates\students\details.html:115
+#: .\student\templates\students\details.html:211
+#: .\teacher\templates\subjects\details.html:56
+#: .\teacher\templates\teachers\details.html:53
+#: .\teacher\templates\teachers\details.html:124
+msgid "Subject"
+msgstr "Cours"
+
+#: .\attendance\templates\attendances\groups.html:47
+#: .\caisse\templates\category\details.html:43
+#: .\caisse\templates\transaction\list.html:63
+#: .\events\templates\events\details.html:40
+#: .\group\templates\groups\details.html:44
+#: .\group\templates\groups\groups.html:50
+#: .\payments\templates\payrolls\payrolls.html:40
+msgid "Type"
+msgstr "Type"
+
+#: .\attendance\templates\attendances\groups.html:48
+msgid "Details"
+msgstr "Détails"
+
+#: .\attendance\templates\attendances\groups.html:162
+#: .\group\templates\groups\groups.html:159
+msgid "Add First Group"
+msgstr "Ajouter le premier groupe"
+
+#: .\attendance\templates\attendances\leave.html:32
+#: .\teacher\templates\teachers\teachers.html:46
+msgid "Teacher Name"
+msgstr "Nom de l'enseignant"
+
+#: .\attendance\templates\attendances\leave.html:73
+msgid "Add Attendance First"
+msgstr "Ajouter la présence en premier"
+
+#: .\attendance\templates\attendances\students.html:75
+#: .\attendance\templates\attendances\students_details.html:89
+#: .\student\templates\students\students.html:46
+msgid "Student Name"
+msgstr "Nom d'étudiant"
+
+#: .\attendance\templates\attendances\students.html:89
+#: .\attendance\templates\attendances\students.html:101
+#: .\payments\templates\payrolls\details.html:83
+#: .\teacher\templates\teachers\details.html:91
+msgid "Absent"
+msgstr "Absent"
+
+#: .\attendance\templates\attendances\students.html:121
+#: .\attendance\templates\attendances\students_details.html:144
+#: .\group\templates\groups\select-students.html:202
+#: .\student\templates\students\students.html:169
+msgid "Add First Student"
+msgstr "Ajouter le premier étudiant"
+
+#: .\attendance\templates\attendances\students_details.html:33
+#: .\employee\templates\employees\details.html:140
+#: .\teacher\templates\teachers\details.html:186
+msgid "Entering Time"
+msgstr "Heure d'entrée"
+
+#: .\attendance\templates\attendances\students_details.html:34
+#: .\employee\templates\employees\details.html:141
+#: .\teacher\templates\teachers\details.html:187
+msgid "Leaving Time"
+msgstr "Le temps de sortie"
+
+#: .\caisse\templates\caisse\transaction_delete.html:13
+msgid "ARE YOU SURE YOU WANT TO DELETE"
+msgstr "ETES-VOUS SÛR QUE VOUS VOULEZ SUPPRIMER"
+
+#: .\caisse\templates\caisse\transaction_delete.html:21
+msgid "Cancel"
+msgstr "Annuler"
+
+#: .\caisse\templates\caisse\transaction_list.html:14
+#: .\caisse\templates\category\details.html:15
+msgid "Cash Register"
+msgstr "Caisse"
+
+#: .\caisse\templates\caisse\transaction_list.html:40
+#: .\payments\templates\payments\payments.html:33
+msgid "Students Payment"
+msgstr "Paiement des étudiants"
+
+#: .\caisse\templates\caisse\transaction_list.html:54
+#: .\payments\templates\payments\payments.html:49
+msgid "Parent Payment"
+msgstr "Paiement des parents"
+
+#: .\caisse\templates\caisse\transaction_list.html:68
+msgid "Cash Transactions"
+msgstr "Transactions en espèces"
+
+#: .\caisse\templates\category\details.html:20
+#: .\caisse\templates\transaction\list.html:17
+msgid "Transactions"
+msgstr "Transactions"
+
+#: .\caisse\templates\category\details.html:22
+msgid "Income"
+msgstr "Revenu"
+
+#: .\caisse\templates\category\details.html:22
+#: .\caisse\templates\category\details.html:24
+#: .\caisse\templates\category\details.html:26
+msgid "DA"
+msgstr "DA"
+
+#: .\caisse\templates\category\details.html:24
+msgid "Expense"
+msgstr "Frais"
+
+#: .\caisse\templates\category\details.html:26
+#: .\caisse\templates\transaction\list.html:33
+msgid "TOTAL"
+msgstr "TOTAL"
+
+#: .\caisse\templates\category\details.html:37
+#: .\caisse\templates\transaction\details.html:24
+#: .\caisse\templates\transaction\list.html:60
+msgid "Transaction"
+msgstr "Transaction"
+
+#: .\caisse\templates\category\details.html:45
+#: .\caisse\templates\category\list.html:47
+#: .\caisse\templates\transaction\list.html:61
+msgid "Category"
+msgstr "Catégorie"
+
+#: .\caisse\templates\category\details.html:46
+msgid "Date Created"
+msgstr "date créée"
+
+#: .\caisse\templates\category\details.html:63
+msgid "Delete"
+msgstr "Effacer"
+
+#: .\caisse\templates\category\details.html:67
+msgid "Update"
+msgstr "Mettre à jour"
+
+#: .\caisse\templates\category\details.html:72
+msgid "No Elements"
+msgstr "Aucun élément"
+
+#: .\caisse\templates\category\list.html:18
+msgid "Categories"
+msgstr "Catégories"
+
+#: .\caisse\templates\category\list.html:23
+msgid "Add New Category"
+msgstr "Ajouter une nouvelle catégorie"
+
+#: .\caisse\templates\category\list.html:159
+msgid "Add First Category"
+msgstr "Ajouter la première catégorie"
+
+#: .\caisse\templates\category\list.html:181
+#: .\caisse\templates\transaction\list.html:213
+msgid "Add new Category"
+msgstr "Ajouter une nouvelle catégorie"
+
+#: .\caisse\templates\transaction\details.html:10
+msgid "Transaction Details"
+msgstr "détails de la transaction"
+
+#: .\caisse\templates\transaction\details.html:41
+#: .\payments\templates\parents_payments\details.html:39
+#: .\payments\templates\payrolls\details.html:41
+#: .\payments\templates\students_payments\details.html:39
+msgid "Created By"
+msgstr "Créé par"
+
+#: .\caisse\templates\transaction\list.html:22
+msgid "Add New Transaction"
+msgstr "Ajouter une nouvelle opération"
+
+#: .\caisse\templates\transaction\list.html:31
+msgid "INCOME"
+msgstr "LE REVENU"
+
+#: .\caisse\templates\transaction\list.html:32
+msgid "EXPENSE"
+msgstr "FRAIS"
+
+#: .\caisse\templates\transaction\list.html:191
+msgid "Add First Transaction"
+msgstr "Ajouter la première transaction"
+
+#: .\employee\templates\employees\details.html:12
+msgid "Employee Details"
+msgstr "Détails de l'employé"
+
+#: .\employee\templates\employees\details.html:17
+msgid "Update Employee"
+msgstr "Mettre à jour l'employé"
+
+#: .\employee\templates\employees\details.html:28
+#: .\student\templates\parent\details.html:27
+#: .\student\templates\students\details.html:25
+msgid "PayDebt"
+msgstr "Payer la dette"
+
+#: .\employee\templates\employees\details.html:35
+#: .\employee\templates\roles\details.html:25
+#: .\student\templates\kids\details.html:22
+#: .\student\templates\parent\details.html:34
+#: .\student\templates\students\details.html:31
+#: .\teacher\templates\subjects\details.html:23
+#: .\teacher\templates\teachers\details.html:24
+msgid "Print"
+msgstr "Imprimer"
+
+#: .\employee\templates\employees\details.html:49
+#: .\employee\templates\roles\details.html:47
+#: .\group\templates\groups\details.html:121
+#: .\group\templates\groups\select-students.html:85
+#: .\student\templates\parent\details.html:48
+#: .\student\templates\students\details.html:45
+#: .\teacher\templates\subjects\details.html:116
+#: .\teacher\templates\teachers\details.html:37
+msgid "Phone"
+msgstr "Téléphoner"
+
+#: .\employee\templates\employees\details.html:53
+#: .\employee\templates\employees\employees.html:49
+#: .\group\templates\groups\details.html:120
+#: .\student\templates\parent\parents.html:49
+#: .\student\templates\students\students.html:49
+#: .\teacher\templates\subjects\details.html:115
+#: .\teacher\templates\teachers\teachers.html:49
+msgid "Address"
+msgstr "Adresse"
+
+#: .\employee\templates\employees\details.html:57
+#: .\employee\templates\employees\employees.html:51
+msgid "Gender"
+msgstr "Le genre"
+
+#: .\employee\templates\employees\details.html:61
+msgid "Martial Status"
+msgstr "État civil"
+
+#: .\employee\templates\employees\details.html:65
+msgid "Date of Birth"
+msgstr "Date de naissance"
+
+#: .\employee\templates\employees\details.html:69
+#: .\employee\templates\roles\details.html:49
+msgid "Is Active"
+msgstr "C'est actif"
+
+#: .\employee\templates\employees\details.html:73
+#: .\student\templates\parent\details.html:64
+#: .\student\templates\students\details.html:61
+#: .\teacher\templates\teachers\details.html:57
+msgid "Join Date"
+msgstr "Date d'inscription"
+
+#: .\employee\templates\employees\details.html:238
+msgid "Update employee"
+msgstr "Mettre à jour l'employé"
+
+#: .\employee\templates\employees\employees.html:22
+msgid "Add New Employee"
+msgstr "Ajouter un nouvel employé"
+
+#: .\employee\templates\employees\employees.html:47
+#: .\student\templates\parent\parents.html:47
+#: .\student\templates\students\students.html:47
+#: .\teacher\templates\teachers\teachers.html:47
+msgid "Email Address"
+msgstr "Adresse e-mail"
+
+#: .\employee\templates\employees\employees.html:48
+#: .\student\templates\parent\parents.html:48
+#: .\student\templates\students\students.html:48
+#: .\teacher\templates\teachers\teachers.html:48
+msgid "Phone Number"
+msgstr "Numéro de téléphone"
+
+#: .\employee\templates\employees\employees.html:50
+#: .\student\templates\parent\details.html:56
+#: .\student\templates\parent\parents.html:50
+#: .\student\templates\students\details.html:53
+#: .\student\templates\students\students.html:50
+msgid "Province"
+msgstr "Wilaya"
+
+#: .\employee\templates\employees\employees.html:52
+#: .\student\templates\kids\kids.html:47
+#: .\student\templates\students\students.html:52
+#: .\teacher\templates\teachers\teachers.html:50
+msgid "Birth Date"
+msgstr "Date de naissance"
+
+#: .\employee\templates\employees\employees.html:53
+#: .\student\templates\parent\parents.html:52
+#: .\student\templates\students\students.html:53
+#: .\teacher\templates\subjects\details.html:117
+#: .\teacher\templates\teachers\teachers.html:51
+msgid "Date joined"
+msgstr "Date d'inscription"
+
+#: .\employee\templates\employees\employees.html:187
+msgid "Add new employee"
+msgstr "Ajouter un nouvel employé"
+
+#: .\employee\templates\roles\details.html:11
+msgid "Role Details"
+msgstr "Détails du rôle"
+
+#: .\employee\templates\roles\details.html:16
+msgid "Update Role"
+msgstr "Mettre à jour le rôle"
+
+#: .\employee\templates\roles\details.html:35
+#: .\employee\templates\roles\roles.html:47
+#: .\payments\templates\payrolls\details.html:24
+msgid "Salary"
+msgstr "Un salaire"
+
+#: .\employee\templates\roles\details.html:48
+#: .\group\templates\groups\details.html:123
+msgid "Date Joined"
+msgstr "Date d'inscription"
+
+#: .\employee\templates\roles\details.html:99
+msgid "Update role"
+msgstr "Mettre à jour le rôle"
+
+#: .\employee\templates\roles\roles.html:22
+msgid "Add New Role"
+msgstr "Ajouter un nouveau rôle"
+
+#: .\employee\templates\roles\roles.html:46
+msgid "Role Name"
+msgstr "Nom de rôle"
+
+#: .\employee\templates\roles\roles.html:153
+msgid "Add First Role"
+msgstr "Ajouter le premier rôle"
+
+#: .\employee\templates\roles\roles.html:175
+msgid "Add new role"
+msgstr "Ajouter un nouveau rôle"
+
+#: .\events\templates\events\details.html:7
+msgid "Event Details"
+msgstr "Détails de l'évènement"
+
+#: .\events\templates\events\details.html:12
+msgid "Update Event"
+msgstr "Mettre à jour l'événement"
+
+#: .\events\templates\events\details.html:23
+#: .\group\templates\groups\details.html:23
+msgid "Registered by"
+msgstr "Enregistré par"
+
+#: .\events\templates\events\details.html:26
+#: .\group\templates\times\update.html:26
+#: .\teacher\templates\subjects\details.html:81
+msgid "Day"
+msgstr "Jour"
+
+#: .\events\templates\events\details.html:30
+msgid "Start Time"
+msgstr "Heure de début"
+
+#: .\events\templates\events\details.html:36
+msgid "End Time"
+msgstr "Heure de fin"
+
+#: .\events\templates\events\details.html:67
+msgid "Add new event"
+msgstr "Ajouter un nouvel événement"
+
+#: .\events\templates\events\events.html:76
+msgid "Previous month"
+msgstr "Le mois précédent"
+
+#: .\events\templates\events\events.html:80
+msgid "Next month"
+msgstr "Le mois prochain"
+
+#: .\events\templates\events\events.html:84
+msgid "New Event"
+msgstr "Nouvel évènement"
+
+#: .\events\templates\events\events.html:104
+msgid "Add new Event"
+msgstr "Ajouter un nouvel événement"
+
+#: .\group\templates\groups\details.html:7
+msgid "Group Details"
+msgstr "Détails du groupe"
+
+#: .\group\templates\groups\details.html:12
+msgid "Update Group"
+msgstr "Mettre à jour le groupe"
+
+#: .\group\templates\groups\details.html:51
+#: .\student\templates\parent\details.html:71
+msgid "KIDS"
+msgstr "ENFANTS"
+
+#: .\group\templates\groups\details.html:58
+msgid "Add Kids"
+msgstr "Ajouter des enfants"
+
+#: .\group\templates\groups\details.html:64
+#: .\group\templates\groups\select-kids.html:84
+#: .\payments\templates\parents_payments\payments.html:48
+#: .\student\templates\kids\kids.html:43
+msgid "Parent"
+msgstr "Parent"
+
+#: .\group\templates\groups\details.html:66
+#: .\group\templates\groups\select-kids.html:86
+#: .\student\templates\kids\details.html:35
+#: .\student\templates\kids\kids.html:45
+msgid "Grade"
+msgstr "niveau"
+
+#: .\group\templates\groups\details.html:67
+#: .\group\templates\groups\select-kids.html:87
+#: .\student\templates\kids\kids.html:46
+msgid "Sick"
+msgstr "Malade"
+
+#: .\group\templates\groups\details.html:113
+msgid "Add Students"
+msgstr "Ajouter des étudiants"
+
+#: .\group\templates\groups\details.html:176
+#: .\group\templates\groups\groups.html:181
+msgid "Add new group"
+msgstr "Ajouter un nouveau groupe"
+
+#: .\group\templates\groups\groups.html:22
+msgid "Add New Group"
+msgstr "Ajouter un nouveau groupe"
+
+#: .\group\templates\groups\select-kids.html:20
+#: .\group\templates\groups\select-students.html:20
+#: .\student\templates\parent\details.html:77
+msgid "name"
+msgstr "Nom"
+
+#: .\group\templates\groups\select-kids.html:21
+#: .\group\templates\groups\select-students.html:21
+#: .\student\templates\parent\details.html:78
+msgid "grade"
+msgstr "niveau"
+
+#: .\group\templates\groups\select-kids.html:22
+#: .\group\templates\groups\select-students.html:22
+#: .\student\templates\parent\details.html:79
+msgid "sick"
+msgstr "Malade"
+
+#: .\group\templates\groups\select-kids.html:56
+msgid "No previous Kids"
+msgstr "Aucun enfant précédent"
+
+#: .\group\templates\groups\select-kids.html:197
+#: .\group\templates\groups\select-students.html:190
+msgid "Submit"
+msgstr "Envoyer"
+
+#: .\group\templates\groups\select-kids.html:209
+#: .\student\templates\kids\kids.html:165
+msgid "Add First Kid"
+msgstr "Ajouter le premier enfant"
+
+#: .\group\templates\groups\select-students.html:56
+msgid "No previous Students"
+msgstr "Aucun étudiant précédent"
+
+#: .\group\templates\rooms\rooms.html:22
+msgid "Add New Room"
+msgstr "Ajouter une nouvelle salle"
+
+#: .\group\templates\rooms\rooms.html:35
+msgid "Room Name"
+msgstr "nom de la salle"
+
+#: .\group\templates\rooms\rooms.html:133
+msgid "Add First Room"
+msgstr "Ajouter Première salle"
+
+#: .\group\templates\rooms\rooms.html:154
+msgid "Add new room"
+msgstr "Ajouter une nouvelle salle"
+
+#: .\group\templates\times\times.html:7
+msgid "Groups Times"
+msgstr "Horaires des groupes"
+
+#: .\group\templates\times\times.html:12
+msgid "Add Group Time"
+msgstr "Ajouter du temps de groupe"
+
+#: .\group\templates\times\times.html:28
+#: .\student\templates\transportation\times.html:24
+msgid "Times/Days"
+msgstr "Heures/jours"
+
+#: .\group\templates\times\times.html:29
+#: .\student\templates\transportation\times.html:25
+msgid "Saturday"
+msgstr "Samedi"
+
+#: .\group\templates\times\times.html:30
+#: .\student\templates\transportation\times.html:26
+msgid "Sunday"
+msgstr "Dimanche"
+
+#: .\group\templates\times\times.html:31
+#: .\student\templates\transportation\times.html:27
+msgid "Monday"
+msgstr "Lundi"
+
+#: .\group\templates\times\times.html:32
+#: .\student\templates\transportation\times.html:28
+msgid "Tuesday"
+msgstr "Mardi"
+
+#: .\group\templates\times\times.html:33
+#: .\student\templates\transportation\times.html:29
+msgid "Wednesday"
+msgstr "Mercredi"
+
+#: .\group\templates\times\times.html:34
+#: .\student\templates\transportation\times.html:30
+msgid "Thursday"
+msgstr "Jeudi"
+
+#: .\group\templates\times\times.html:35
+#: .\student\templates\transportation\times.html:31
+msgid "Friday"
+msgstr "Vendredi"
+
+#: .\group\templates\times\times.html:1443
+#: .\student\templates\transportation\times.html:1489
+msgid "Add new group time"
+msgstr "Ajouter une nouvelle heure de groupe"
+
+#: .\group\templates\times\update.html:17
+msgid "Update Time"
+msgstr "Mettre à jour l'heure"
+
+#: .\group\templates\times\update.html:20
+msgid "Old Data"
+msgstr "Anciennes données"
+
+#: .\group\templates\times\update.html:23
+msgid "Group"
+msgstr "Groupe"
+
+#: .\group\templates\times\update.html:29
+msgid "Start time"
+msgstr "Heure de début"
+
+#: .\group\templates\times\update.html:32
+msgid "End time"
+msgstr "Heure de fin"
+
+#: .\payments\templates\parents_payments\details.html:7
+#: .\payments\templates\students_payments\details.html:7
+msgid "Payment Details"
+msgstr "Détails de paiement"
+
+#: .\payments\templates\parents_payments\details.html:12
+#: .\payments\templates\students_payments\details.html:12
+msgid "Update Payment"
+msgstr "Mettre à jour le paiement"
+
+#: .\payments\templates\parents_payments\details.html:22
+#: .\payments\templates\students_payments\details.html:22
+msgid "Payment"
+msgstr "Paiement"
+
+#: .\payments\templates\parents_payments\details.html:76
+msgid "Update parent"
+msgstr "Mettre à jour le parent"
+
+#: .\payments\templates\parents_payments\payments.html:23
+#: .\payments\templates\students_payments\payments.html:23
+msgid "Add New Payment"
+msgstr "Ajouter un nouveau paiement"
+
+#: .\payments\templates\parents_payments\payments.html:50
+#: .\payments\templates\payrolls\payrolls.html:41
+#: .\payments\templates\students_payments\payments.html:50
+msgid "Pay Date"
+msgstr "Date de paiement"
+
+#: .\payments\templates\parents_payments\payments.html:158
+#: .\payments\templates\students_payments\payments.html:158
+msgid "Add First Payment"
+msgstr "Ajouter le premier paiement"
+
+#: .\payments\templates\parents_payments\payments.html:179
+#: .\payments\templates\students_payments\payments.html:179
+msgid "Add new payment"
+msgstr "Ajouter un nouveau paiement"
+
+#: .\payments\templates\payrolls\details.html:7
+msgid "Payroll Details"
+msgstr "Détails de la paie"
+
+#: .\payments\templates\payrolls\details.html:31
+msgid "Daily Salary"
+msgstr "Salaire quotidien"
+
+#: .\payments\templates\payrolls\details.html:61
+#: .\teacher\templates\teachers\details.html:69
+msgid "All sessions"
+msgstr "Toutes les séances"
+
+#: .\payments\templates\payrolls\details.html:94
+#: .\teacher\templates\teachers\details.html:102
+msgid "Unapproved Absent"
+msgstr "Absence non autorisée"
+
+#: .\payments\templates\payrolls\details.html:105
+msgid "Mission"
+msgstr "Mission"
+
+#: .\payments\templates\payrolls\payrolls.html:38
+msgid "Employee"
+msgstr "Employé"
+
+#: .\payments\templates\payrolls\payrolls.html:163
+msgid "No Payroll Calculated return on 26th"
+msgstr "Aucune paie calculée. reviens le 26"
+
+#: .\payments\templates\students_payments\details.html:76
+msgid "Update student payment"
+msgstr "Mettre à jour le paiement étudiant"
+
+#: .\payments\templates\students_payments\payments.html:48
+msgid "Student"
+msgstr "Étudiant"
+
+#: .\student\templates\kids\details.html:11
+msgid "Kid Details"
+msgstr "Détails de l'enfant"
+
+#: .\student\templates\kids\details.html:16
+msgid "Update Kid"
+msgstr "Mettre à jour l'enfant"
+
+#: .\student\templates\kids\details.html:40
+#: .\student\templates\parent\details.html:61
+#: .\student\templates\parent\details.html:65
+#: .\student\templates\students\details.html:58
+#: .\student\templates\students\details.html:62
+msgid "DZD"
+msgstr "DZD"
+
+#: .\student\templates\kids\details.html:183
+#: .\student\templates\students\details.html:206
+msgid "Sessions"
+msgstr "Séances"
+
+#: .\student\templates\kids\details.html:189
+#: .\student\templates\students\details.html:212
+msgid "Start Date"
+msgstr "Date de début"
+
+#: .\student\templates\kids\details.html:190
+#: .\student\templates\students\details.html:213
+msgid "Last Date"
+msgstr "Dernière date"
+
+#: .\student\templates\kids\details.html:191
+#: .\student\templates\students\details.html:214
+msgid "N° sessions"
+msgstr "Nb de séances"
+
+#: .\student\templates\kids\details.html:260
+msgid "Update kid"
+msgstr "Mettre à jour l'enfant"
+
+#: .\student\templates\kids\kids.html:48
+#: .\student\templates\parent\details.html:80
+msgid "Created"
+msgstr "Établi"
+
+#: .\student\templates\parent\details.html:11
+msgid "Parent Details"
+msgstr "Détails des parents"
+
+#: .\student\templates\parent\details.html:16
+msgid "Add New Kid"
+msgstr "Ajouter un nouvel enfant"
+
+#: .\student\templates\parent\details.html:52
+#: .\student\templates\students\details.html:49
+#: .\teacher\templates\teachers\details.html:41
+msgid "Adress"
+msgstr "Adresse"
+
+#: .\student\templates\parent\details.html:153
+#: .\student\templates\students\details.html:283
+msgid "Add new kid"
+msgstr "Ajouter un nouvel enfant"
+
+#: .\student\templates\parent\parents.html:22
+msgid "Add New Parent"
+msgstr "Ajouter un nouveau parent"
+
+#: .\student\templates\parent\parents.html:46
+msgid "Parent Name"
+msgstr "Nom du parent"
+
+#: .\student\templates\parent\parents.html:196
+msgid "Add new parent"
+msgstr "Ajouter un nouveau parent"
+
+#: .\student\templates\parent\update.html:17
+msgid "Update Parent"
+msgstr "Mettre à jour le parent"
+
+#: .\student\templates\students\details.html:11
+msgid "Student Details"
+msgstr "Détails de l'étudiant"
+
+#: .\student\templates\students\details.html:16
+msgid "Update Student"
+msgstr "Mettre à jour l'élève"
+
+#: .\student\templates\students\students.html:22
+msgid "Add New Student"
+msgstr "Ajouter un nouvel étudiant"
+
+#: .\student\templates\students\students.html:190
+msgid "Add new student"
+msgstr "Ajouter un nouvel étudiant"
+
+#: .\student\templates\transportation\times.html:7
+msgid "Transportation Times"
+msgstr "Temps de transport"
+
+#: .\teacher\templates\subjects\details.html:11
+msgid "Subject Details"
+msgstr "Détails des cours"
+
+#: .\teacher\templates\subjects\details.html:16
+msgid "Update Subject"
+msgstr "Mettre à jour le cours"
+
+#: .\teacher\templates\subjects\details.html:35
+msgid "Price"
+msgstr "Prix"
+
+#: .\teacher\templates\subjects\details.html:42
+msgid "N° Sessions"
+msgstr "N° Séances"
+
+#: .\teacher\templates\subjects\details.html:82
+msgid "Starts"
+msgstr "Commence"
+
+#: .\teacher\templates\subjects\details.html:83
+msgid "Ends"
+msgstr "Se termine"
+
+#: .\teacher\templates\subjects\details.html:156
+msgid "Update subject"
+msgstr "Mettre à jour le cours"
+
+#: .\teacher\templates\subjects\subjects.html:22
+msgid "Add New Subject"
+msgstr "Ajouter un nouveau cours"
+
+#: .\teacher\templates\subjects\subjects.html:45
+msgid "Subject Name"
+msgstr "Nom du cours"
+
+#: .\teacher\templates\subjects\subjects.html:46
+msgid "Subject Price"
+msgstr "Prix du cours"
+
+#: .\teacher\templates\subjects\subjects.html:47
+msgid "Subject N° sessions"
+msgstr "N° sessions"
+
+#: .\teacher\templates\subjects\subjects.html:153
+msgid "Add First Subject"
+msgstr "Ajouter Premier cours"
+
+#: .\teacher\templates\subjects\subjects.html:175
+msgid "Add new subject"
+msgstr "Ajouter un nouveau cours"
+
+#: .\teacher\templates\teachers\details.html:12
+msgid "Teacher Details"
+msgstr "Détails de l'enseignant"
+
+#: .\teacher\templates\teachers\details.html:17
+msgid "Update Teacher"
+msgstr "Mettre à jour l'enseignant"
+
+#: .\teacher\templates\teachers\details.html:45
+msgid "Certificate"
+msgstr "Certificat"
+
+#: .\teacher\templates\teachers\details.html:282
+msgid "Update teacher"
+msgstr "Mettre à jour l'enseignant"
+
+#: .\teacher\templates\teachers\teachers.html:22
+msgid "Add New Teacher"
+msgstr "Ajouter un nouvel enseignant"
+
+#: .\teacher\templates\teachers\teachers.html:161
+msgid "Add First Teacher"
+msgstr "Ajouter le premier enseignant"
+
+#: .\teacher\templates\teachers\teachers.html:183
+msgid "Add new teacher"
+msgstr "Ajouter un nouveau enseignant"
+
+#~ msgid "Email address"
+#~ msgstr "Adresse e-mail"

@@ -1,0 +1,107 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load erpextra %}
+
+<!-- how the translation is done
+1- django-admin makemessages -l fr
+2- django-admin compilemessages
+-->
+{% block main %}
+<br>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{% trans "Cash Register" %}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+          <h1 class="h2">
+              <a href="{% url 'caisse:transaction_list' %}" class="btn btn-lg btn-warning">
+                  <i class="fa-solid fa-money-bill-transfer"></i>
+              </a>
+              <a href="{% url 'caisse:transaction_category_list' %}" class="btn btn-lg btn-primary">
+                  <i class="fa-solid fa-file-invoice"></i>
+              </a>
+
+          </h1>
+      </div>
+    </div>
+  </div>
+{% if request.user|has_group:'admin, general_manager, accountant' %}
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal">
+        {{total_value}} DA
+    </h1>
+</div>
+<div class="row row-cols-1 row-cols-md-4 mb-3 text-center">
+    <!-- Student Payment -->
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-success">
+            <div class="card-header py-3 bg-success border-success text-white">
+                <h4 class="my-0 fw-normal"> {% trans "Students Payment" %}</h4>
+            </div>
+            <div class="card card-body">
+                <h1 class="card-title pricing-card-title">{{students_payments}} DA</h1>
+                    <a class="w-100 btn btn-lg btn-outline-success" href="{% url 'payments:students_payments' %}">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+            </div>
+        </div>
+    </div>
+    <!-- Parent Payment -->
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-info">
+            <div class="card-header py-3 bg-info border-info text-white">
+                <h4 class="my-0 fw-normal"> {% trans "Parent Payment" %}</h4>
+            </div>
+            <div class="card card-body">
+                <h1 class="card-title pricing-card-title">{{parent_payments}} DA</h1>
+                    <a class="w-100 btn btn-lg btn-outline-info" href="{% url 'payments:parents_payments' %}">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+            </div>
+        </div>
+    </div>
+    <!-- Transaction Payment -->
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+            <div class="card-header py-3 bg-primary border-primary text-white">
+                <h4 class="my-0 fw-normal">{% trans "Cash Transactions" %}</h4>
+            </div>
+            <div class="card card-body">
+                <h1 class="card-title pricing-card-title">{{total_transaction}} DA</h1>
+                    <a class="w-100 btn btn-lg btn-outline-primary" href="{% url 'caisse:transaction_list' %}">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+            </div>
+        </div>
+    </div>
+    <!-- Payroll Payment -->
+    <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm border-danger">
+            <div class="card-header py-3 bg-danger border-danger text-white">
+                <h4 class="my-0 fw-normal">{% trans "Payrolls" %}</h4>
+            </div>
+            <div class="card card-body">
+                <h1 class="card-title pricing-card-title">{{payrolls_sum}} DA</h1>
+                    <a class="w-100 btn btn-lg btn-outline-danger" href="{% url 'payments:payrolls' %}">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+{% block jsscript %}
+<!-- Date Picker-->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+<script type='text/javascript'>
+// Date Picker
+$('input[name="date"]').daterangepicker();
+
+</script>
+{% endblock %}

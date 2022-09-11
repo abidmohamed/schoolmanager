@@ -1,0 +1,1508 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block main %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{% trans "Transportation Times" %}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+      </div>
+      <div class="btn-group me-2">
+        <a class="ml-2 btn btn-danger" href="{% url 'students:transportation_pdf' %}">
+          <i class="fa-solid fa-file-pdf"></i>
+        </a>
+      </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-md">
+    <table class="table table-bordered text-center">
+      <thead>
+        <tr>
+          <td>{% trans "Times/Days" %}</td>
+          <td><span class="fw-bolder fs-4">{% trans "Saturday" %}</span></td>
+          <td><span class="fw-bolder fs-4">{% trans "Sunday" %}</span></td>
+          <td><span class="fw-bolder fs-4">{% trans "Monday" %}</span></td>
+          <td><span class="fw-bolder fs-4">{% trans "Tuesday" %}</span></td>
+          <td><span class="fw-bolder fs-4">{% trans "Wednesday" %}</span></td>
+          <td><span class="fw-bolder fs-4">{% trans "Thursday" %}</span></td>
+          <td><span class="fw-bolder fs-4">{% trans "Friday" %}</span></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="fw-bolder fs-4">8-10</span></td>
+          <!-- Saturday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "SATURDAY" %}
+                {% if time.start_time.hour >= 8 and time.start_time.hour < 10 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Sunday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "SUNDAY" %}
+                {% if time.start_time.hour >= 8 and time.start_time.hour < 10 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Monday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "MONDAY" %}
+                {% if time.start_time.hour >= 8 and time.start_time.hour < 10 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Tuesday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "TUESDAY" %}
+                {% if time.start_time.hour >= 8 and time.start_time.hour < 10 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Wednesday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "WEDNESDAY" %}
+                {% if time.start_time.hour >= 8 and time.start_time.hour < 10 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Thursday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "THURSDAY" %}
+                {% if time.start_time.hour >= 8 and time.start_time.hour < 10 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Friday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "FRIDAY" %}
+                {% if time.start_time.hour >= 8 and time.start_time.hour < 10 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+        </tr>
+        <tr>
+          <td><span class="fw-bolder fs-4">10-12</span></td>
+          <!-- Saturday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "SATURDAY" %}
+                {% if time.start_time.hour >= 10 and  time.start_time.hour < 12 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Sunday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "SUNDAY" %}
+                {% if time.start_time.hour >= 10 and  time.start_time.hour < 12 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Monday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "MONDAY" %}
+                {% if time.start_time.hour >= 10 and  time.start_time.hour < 12 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Tuesday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "TUESDAY" %}
+                {% if time.start_time.hour >= 10 and  time.start_time.hour < 12 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Wednesday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "WEDNESDAY" %}
+                {% if time.start_time.hour >= 10 and  time.start_time.hour < 12 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Thursday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "THURSDAY" %}
+                {% if time.start_time.hour >= 10 and  time.start_time.hour < 12 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Friday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "FRIDAY" %}
+                {% if time.start_time.hour >= 10 and  time.start_time.hour < 12 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="fw-bolder fs-4">12-14</span></td>
+          <!-- Saturday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "SATURDAY" %}
+                {% if time.start_time.hour >= 12 and  time.start_time.hour < 14 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Sunday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "SUNDAY" %}
+                {% if time.start_time.hour >= 12 and  time.start_time.hour < 14 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Monday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "MONDAY" %}
+                {% if time.start_time.hour >= 12 and  time.start_time.hour < 14 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Tuesday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "TUESDAY" %}
+                {% if time.start_time.hour >= 12 and  time.start_time.hour < 14 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Wednesday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "WEDNESDAY" %}
+                {% if time.start_time.hour >= 12 and  time.start_time.hour < 14 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Thursday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "THURSDAY" %}
+                {% if time.start_time.hour >= 12 and  time.start_time.hour < 14 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Friday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "FRIDAY" %}
+                {% if time.start_time.hour >= 12 and  time.start_time.hour < 14 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="fw-bolder fs-4">14-16</span></td>
+          <!-- Saturday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "SATURDAY" %}
+                {% if time.start_time.hour >= 14 and  time.start_time.hour < 16 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Sunday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "SUNDAY" %}
+                {% if time.start_time.hour >= 14 and  time.start_time.hour < 16 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Monday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "MONDAY" %}
+                {% if time.start_time.hour >= 14 and  time.start_time.hour < 16 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Tuesday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "TUESDAY" %}
+                {% if time.start_time.hour >= 14 and  time.start_time.hour < 16 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Wednesday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "WEDNESDAY" %}
+                {% if time.start_time.hour >= 14 and  time.start_time.hour < 16 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Thursday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "THURSDAY" %}
+                {% if time.start_time.hour >= 14 and  time.start_time.hour < 16 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Friday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "FRIDAY" %}
+                {% if time.start_time.hour >= 14 and  time.start_time.hour < 16 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+        </tr>
+        <tr>
+          <td><span class="fw-bolder fs-4">16-18</span></td>
+          <!-- Saturday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "SATURDAY" %}
+                {% if time.start_time.hour >= 16 and  time.start_time.hour < 18 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Sunday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "SUNDAY" %}
+                {% if time.start_time.hour >= 16 and  time.start_time.hour < 18 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Monday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "MONDAY" %}
+                {% if time.start_time.hour >= 16 and  time.start_time.hour < 18 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Tuesday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "TUESDAY" %}
+                {% if time.start_time.hour >= 16 and  time.start_time.hour < 18 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Wednesday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "WEDNESDAY" %}
+                {% if time.start_time.hour >= 16 and  time.start_time.hour < 18 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Thursday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "THURSDAY" %}
+                {% if time.start_time.hour >= 16 and  time.start_time.hour < 18 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Friday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "FRIDAY" %}
+                {% if time.start_time.hour >= 16 and  time.start_time.hour < 18 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="fw-bolder fs-4">18-20</span></td>
+          <!-- Saturday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "SATURDAY" %}
+                {% if time.start_time.hour >= 18 and  time.start_time.hour < 20 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Sunday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "SUNDAY" %}
+                {% if time.start_time.hour >= 18 and  time.start_time.hour < 20 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Monday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "MONDAY" %}
+                {% if time.start_time.hour >= 18 and  time.start_time.hour < 20 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Tuesday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "TUESDAY" %}
+                {% if time.start_time.hour >= 18 and  time.start_time.hour < 20 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Wednesday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "WEDNESDAY" %}
+                {% if time.start_time.hour >= 18 and  time.start_time.hour < 20 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Thursday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "THURSDAY" %}
+                {% if time.start_time.hour >= 18 and  time.start_time.hour < 20 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Friday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "FRIDAY" %}
+                {% if time.start_time.hour >= 18 and  time.start_time.hour < 20 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td><span class="fw-bolder fs-4">20-22</span></td>
+          <!-- Saturday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "SATURDAY" %}
+                {% if time.start_time.hour >= 20 and  time.start_time.hour < 22 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Sunday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "SUNDAY" %}
+                {% if time.start_time.hour >= 20 and  time.start_time.hour < 22 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Monday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "MONDAY" %}
+                {% if time.start_time.hour >= 20 and  time.start_time.hour < 22 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Tuesday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "TUESDAY" %}
+                {% if time.start_time.hour >= 20 and  time.start_time.hour < 22 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Wednesday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "WEDNESDAY" %}
+                {% if time.start_time.hour >= 20 and  time.start_time.hour < 22 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Thursday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "THURSDAY" %}
+                {% if time.start_time.hour >= 20 and  time.start_time.hour < 22 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+
+          <!-- Friday-->
+          <td>
+            <ul class="list-group">
+              {% for time in times %}
+              {% if time.weekday == "FRIDAY" %}
+                {% if time.start_time.hour >= 20 and  time.start_time.hour < 22 %}
+                  <li class="list-group-item list-group-item-info m-1">
+                    <span class="fw-bolder fs-6 text-dark" >
+                      {% for item in time.group.items.all %}
+                        {% if time.group.group_type == "KIDS" %}
+                          {% if item.kid.transportation %}
+                            {{item.kid.name}}/
+                          {% endif %}
+                        {% else %}
+                          {% if item.kid.transportation %}
+                            {{item.student.name}}/
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                    <br>
+                  </li>
+
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- MODALS MODALS -->
+  <!-- Modals Start Here -->
+  <div class="modal modal-sheet py-5" tabindex="-1" id="addGroupModal">
+  <div class="modal-dialog">
+    <div class="modal-content rounded-6 shadow">
+
+      <form class="" action="#" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title">{% trans "Add new group time" %}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body py-0">
+
+
+        {{form|crispy}}
+
+
+      </div>
+      <div class="modal-footer flex-column border-top-0">
+        <button type="submit" class="btn btn-lg btn-primary w-100 mx-0 mb-2">{% trans "Save changes" %}</button>
+      </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

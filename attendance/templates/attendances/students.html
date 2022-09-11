@@ -1,0 +1,130 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load search_pagination_url %}
+{% load i18n %}
+
+
+{% block css %}
+<link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block main %}
+
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{% trans 'Group Attendance' %}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+      </div>
+    </div>
+  </div>
+
+  <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
+
+  {% if students|length > 0 %}
+<form action="{% url 'attendances:students_confirm_attendance' attendance.slug %}" method="post">
+    {% csrf_token %}
+    <div class="card">
+        <div class="card-header">
+            {% trans 'Teacher' %}
+        </div>
+        <div class="card">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>
+                        {% trans 'Name' %}
+                    </th>
+                    <th>{% trans 'Entering time' %}</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        {{teacher.name}}
+                    </td>
+                    <td>
+                        <input class="form-control" type="time" id="{{teacher.id}}" name="{{teacher.id}}" min="07:00" max="22:00">
+                        <small>{% trans 'Office hours are 7am to 10pm' %}</small>
+                    </td>
+                    <td>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <input type="radio" class="btn-check" name="{{teacher.name}}" id="success-outlined{{teacher.id}}" autocomplete="off" value="PRESENT" checked>
+                        <label class="btn btn-outline-success" for="success-outlined{{teacher.id}}">{% trans 'PRESENT' %}</label>
+
+                        <input type="radio" class="btn-check" name="{{teacher.name}}" id="warning-outlined{{teacher.id}}" autocomplete="off" value="ABSENT">
+                        <label class="btn btn-outline-warning" for="warning-outlined{{teacher.id}}">{% trans 'ABSENT' %}</label>
+
+                        <input type="radio" class="btn-check" name="{{teacher.name}}" id="danger-outlined{{teacher.id}}" autocomplete="off" value="UNAPPROVED ABSENT">
+                        <label class="btn btn-outline-danger" for="danger-outlined{{teacher.id}}">{% trans 'UNAPPROVED ABSENT' %}</label>
+
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col">{% trans 'Student Name' %}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for student in students %}
+      <tr>
+          {% if group.group_type == "ADULTS" %}
+            <td>{{student.student.name}}</td>
+            <td>
+                <input type="radio" class="btn-check" name="{{student.student.name}}" id="success-outlined{{student.student.id}}" autocomplete="off" value="present" checked>
+                <label class="btn btn-outline-success" for="success-outlined{{student.student.id}}">{% trans 'Present' %}</label>
+
+                <input type="radio" class="btn-check" name="{{student.student.name}}" id="danger-outlined{{student.student.id}}" autocomplete="off" value="absent">
+                <label class="btn btn-outline-danger" for="danger-outlined{{student.student.id}}">{% trans 'Absent' %}</label>
+            </td>
+          {% else %}
+            <td>{{student.kid.name}}</td>
+            <td>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+                    <input type="radio" class="btn-check" name="{{ student.kid.name }}" id="option1{{student.kid.id}}" autocomplete="off" value="present" checked>
+                    <label class="btn btn-outline-success" for="option1{{student.kid.id}}">{% trans 'Present' %}</label>
+
+
+                    <input type="radio" class="btn-check" name="{{student.kid.name}}" id="option2{{student.kid.id}}" autocomplete="off" value="absent">
+                    <label class="btn btn-outline-danger" for="option2{{student.kid.id}}">{% trans 'Absent' %}</label>
+                </div>
+            </td>
+          {% endif %}
+      </tr>
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+    <br>
+        <input class="btn btn-primary form-control" type="submit" value="Submit">
+
+    </form>
+  {% else %}
+  <div class="row">
+    <div class="col-lg-2">
+
+    </div>
+    <div class="col-lg-8">
+      <h3>{% trans 'Add First Student' %}</h3>
+      <img class=img-fluid  src="{% static 'assets/img/empty.svg' %}" alt="School Manager">
+    </div>
+    <div class="col-lg-3">
+
+    </div>
+  </div>
+  {% endif %}
+{% endblock %}
+

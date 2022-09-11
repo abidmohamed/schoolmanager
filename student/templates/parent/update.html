@@ -1,0 +1,41 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block css %}
+<link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+
+<div class="container mt-5 mb-3">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+            <div class="card-header border-bottom-0">
+                <h2 class="card-title text-primary"><i class="fa-solid fa-user-pen"></i>{% trans "Update Parent" %}</h2>
+            </div>
+            <div class="card-body">
+                <form class="" action="#" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+      <div class="modal-body py-0">
+
+
+        {{form|crispy}}
+
+
+      </div>
+      <div class="modal-footer flex-column border-top-0">
+        <button type="submit" class="btn btn-lg btn-primary w-100 mx-0 mb-2">{% trans "Save changes" %}</button>
+      </div>
+
+      </form>
+            </div>
+        </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

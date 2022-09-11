@@ -1,0 +1,118 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block main %}
+<br>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">{% trans "Role Details" %}</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group me-2">
+                    <button href="#addRoleModal" type="button" class="btn btn-warning" data-bs-toggle="modal">
+                        <i class="fa-solid fa-pen"></i>
+                            {% trans "Update Role" %}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <hr>
+        <br>
+        <a class="btn btn-danger text-white" href=""><i class="fa-solid fa-file-pdf"></i> {% trans "Print" %} </a>
+
+        </div>
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <h2>{% trans "Name" %}: </h2>
+                    <td><p class="fs-3">{{role.name}}</p></td>
+                </div>
+                <div class="col-md-2">
+                    <h2>{% trans "Salary" %}: </h2>
+                    <td><p class="fs-3">{{role.salary}}</p></td>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <h2> {% trans "Employees" %} </h2>
+            <table class="table display table-secondary text-center">
+                <thead>
+                    <tr>
+                        <th>{% trans "Registered By" %}</th>
+                        <th>{% trans "Name" %}</th>
+                        <th>{% trans "Phone" %}</th>
+                        <th>{% trans "Date Joined" %}</th>
+                        <th>{% trans "Is Active" %}</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in role.role_employees.all %}
+                <tr>
+                    <td>
+                        {{item.user}}
+                    </td>
+                    <td>
+                        {{item.name}}
+                    </td>
+                    <td>
+                        {{item.phone}}
+                    </td>
+                    <td>
+                        {{item.date_joined}}
+                    </td>
+                    <td>
+                        {% if item.is_active %}
+                            <i class="fa-solid fa-check text-success fs-4"></i>
+                        {% else %}
+                            <i class="fa-solid fa-x text-danger fs-4"></i>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'employees:employee_details' item.slug %}" class="btn btn-primary">
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <br>
+        </div>
+    </div>
+</div>
+
+<!-- MODALS MODALS -->
+  <!-- Modals Start Here -->
+  <div class="modal modal-sheet py-5" tabindex="-1" id="addRoleModal">
+  <div class="modal-dialog">
+    <div class="modal-content rounded-6 shadow">
+
+      <form class="" action="#" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title">{% trans "Update role" %}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body py-0">
+
+        {{form|crispy}}
+
+      </div>
+      <div class="modal-footer flex-column border-top-0">
+        <button type="submit" class="btn btn-lg btn-primary w-100 mx-0 mb-2">{% trans "Save changes" %}</button>
+      </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

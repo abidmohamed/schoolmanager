@@ -1,0 +1,117 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block main %}
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1>{% trans "Payroll Details" %} </h1>
+  </div>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-md">
+                    <h4>{% trans "Payroll" %}: </h4>
+                    <td>
+                        {% if payroll.pay_type == "EMPLOYEE" %}
+                        <p class="fs-3">{{payroll.employee}}</p>
+                        {% else %}
+                        <p class="fs-3">{{payroll.teacher}}</p>
+                        {% endif %}
+                    </td>
+                </div>
+                <div class="col-md">
+                    <h4>{% trans "Salary" %}: </h4>
+                    <td>
+                        <p class="fs-3">{{payroll.amount}} DA</p>
+
+                    </td>
+                </div>
+                <div class="col-md">
+                    <h4>{% trans "Daily Salary" %}: </h4>
+                    <td>
+                        <p class="fs-3">{{daily_salary}} DA</p>
+
+                    </td>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md">
+                    <h4>{% trans "Created By" %}: </h4>
+                    <td>
+                        <p class="fs-3">{{payroll.user}}</p>
+
+                    </td>
+                </div>
+                <div class="col-md">
+                    <h4>{% trans "Date" %}: </h4>
+                    <td>
+                        <p class="fs-3">{{payroll.pay_date}}</p>
+
+                    </td>
+                </div>
+            </div>
+            <hr>
+            <div class="row row-cols-1 row-cols-md-4 mb-3 text-center">
+                <!-- All Attendance -->
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                        <div class="card-header py-3 bg-primary border-primary text-white">
+                            <h4 class="my-0 fw-normal">{% trans "All sessions" %}</h4>
+                        </div>
+                        <div class="card card-body">
+                            <h1 class="card-title pricing-card-title text-primary">{{all_attendance}}</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- Present -->
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-success">
+                        <div class="card-header py-3 bg-success border-success text-white">
+                            <h4 class="my-0 fw-normal">{% trans "Present" %}</h4>
+                        </div>
+                        <div class="card card-body">
+                            <h1 class="card-title pricing-card-title text-success">{{attendance_present}}</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- Absent -->
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-warning">
+                        <div class="card-header py-3 bg-warning border-warning text-white">
+                            <h4 class="my-0 fw-normal">{% trans "Absent" %}</h4>
+                        </div>
+                        <div class="card card-body">
+                            <h1 class="card-title pricing-card-title text-warning">{{attendance_absent}}</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- Unapproved Absent -->
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-danger">
+                        <div class="card-header py-3 bg-danger border-danger text-white">
+                            <h4 class="my-0 fw-normal">{% trans "Unapproved Absent" %}</h4>
+                        </div>
+                        <div class="card card-body">
+                            <h1 class="card-title pricing-card-title text-danger">{{attendance_unapproved}}</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mission -->
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-secondary">
+                        <div class="card-header py-3 bg-secondary border-secondary">
+                            <h4 class="my-0 fw-normal">{% trans "Mission" %}</h4>
+                        </div>
+                        <div class="card card-body">
+                            <h1 class="card-title pricing-card-title text-secondary">{{attendance_mission}}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

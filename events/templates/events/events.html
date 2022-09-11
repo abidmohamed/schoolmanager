@@ -1,0 +1,124 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load search_pagination_url %}
+{% load i18n %}
+
+{% block css %}
+<link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+<style>
+     /*Calendar CSS*/
+.calendar {
+  width: 98%;
+  margin: auto;
+  font-size: 13px;
+}
+
+.calendar tr, .calendar td {
+  border: 1px solid black;
+}
+
+.calendar th {
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.calendar td {
+  width: 200px;
+  height: 150px;
+  padding: 20px 0px 0px 5px;
+}
+
+.month {
+  font-size: 25px;
+}
+
+.date {
+  font-size: 16px;
+}
+
+ul {
+  height: 100%;
+  padding: 0px 5px 0px 20px;
+}
+
+a {
+  color: #17a2b8;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.btn {
+  outline: none;
+  color: black;
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+}
+
+.clearfix {
+  margin: 15px;
+}
+</style>
+{% endblock %}
+
+
+{% block main %}
+
+  <div class="clearfix">
+                <a class="btn btn-info left" href="{% url 'events:events' %}?{{previous_month}}">
+                    {% trans "Previous month" %}
+                </a>
+
+                <a class="btn btn-info right" href="{% url 'events:events' %}?{{next_month}}">
+                    {% trans "Next month" %}
+                </a>
+                <button href="#addGroupModal" type="button" class="ml-2 btn btn-info right" style="margin-right: 5px;" data-bs-toggle="modal">
+                    <i class="fa-solid fa-plus"></i>
+                    {% trans "New Event" %}
+                </button>
+
+  </div>
+        {{ calendar }}
+
+
+<br>
+<br>
+<!-- MODALS MODALS -->
+  <!-- Modals Start Here -->
+  <div class="modal modal-sheet py-5" tabindex="-1" id="addGroupModal">
+  <div class="modal-dialog">
+    <div class="modal-content rounded-6 shadow">
+
+      <form class="" action="#" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title">{% trans "Add new Event" %}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body py-0">
+
+
+        {{form|crispy}}
+
+
+      </div>
+      <div class="modal-footer flex-column border-top-0">
+        <button type="submit" class="btn btn-lg btn-primary w-100 mx-0 mb-2">{% trans "Save changes" %}</button>
+      </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,174 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block main %}
+<br>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">{% trans "Parent Details" %}</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group me-2">
+                    <button href="#addKidModal" type="button" class="btn btn-primary" data-bs-toggle="modal">
+                        <i class="fa-solid fa-user-plus"></i>
+                            {% trans "Add New Kid" %}
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+            {% if parent.debt > 0 %}
+                    <a class="btn btn-primary "
+                       href="">
+                        <i class="fa-solid fa-comment-dollar"></i>
+                        {% trans "PayDebt" %}
+                    </a>
+
+            {% endif %}
+            <br>
+            <hr>
+            <br>
+            <a class="btn btn-danger text-white" href=""><i class="fa-solid fa-file-pdf"></i> {% trans "Print" %} </a>
+
+        </div>
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <h6>{% trans "Name" %}: </h6>
+                    <td>{{parent.name}}</td>
+                </div>
+                <div class="col-md-2">
+                    <h6>{% trans "Email" %}: </h6>
+                    <td>{{parent.email}}</td>
+                </div>
+                <div class="col-md-2">
+                    <h6>{% trans "Phone" %}: </h6>
+                    <td>{{parent.phone}}</td>
+                </div>
+                <div class="col-md-2">
+                    <h6>{% trans "Adress" %}: </h6>
+                    <td>{{parent.address}}</td>
+                </div>
+                <div class="col-md-2">
+                    <h6>{% trans "Province" %}: </h6>
+                    <td>{{parent.province}}</td>
+                </div>
+                <div class="col-md-2">
+                    <h6>Debt: </h6>
+                    <td>{{parent.debt}} {% trans "DZD" %}</td>
+                </div>
+                <div class="col-md-2">
+                    <h6>{% trans "Join Date" %} </h6>
+                    <td>{{parent.date_joined}} {% trans "DZD" %}</td>
+                </div>
+
+            </div>
+            <br>
+            <hr>
+            <h2> {% trans "KIDS" %} </h2>
+            <hr>
+            <table id="table_payments" class="table display text-center">
+                <thead class="thead-light">
+                <tr>
+                    <th>{% trans "Registered By" %}</th>
+                    <th>{% trans "name" %}</th>
+                    <th>{% trans "grade" %}</th>
+                    <th>{% trans "sick" %}</th>
+                    <th>{% trans "Created" %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for kid in kids %}
+                <tr>
+                    <td class="table-light">
+                        {{kid.user}}
+                    </td>
+                    <td class="table-light">
+                        {{kid.name}}
+                    </td>
+                    <td class="table-light">
+                        {{kid.grade}}
+                    </td>
+                    <td class="table-light">
+                         {% if kid.sick %}
+                            <i class="fa-solid fa-check text-danger fs-4"></i>
+                        {% else %}
+                            <i class="fa-solid fa-x text-success fs-4"></i>
+                        {% endif %}
+                    </td>
+                    <td class="table-light">
+                        {{kid.date_created}}
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <br>
+            <hr>
+            <h2> {% trans "Payments" %} </h2>
+            <table class="table display table-secondary text-center">
+                <thead>
+                    <tr>
+                        <th>{% trans "Registered By" %}</th>
+                        <th>{% trans "Date" %}</th>
+                        <th>{% trans "Amount" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in payments %}
+                <tr>
+                    <td>
+                        {{item.user}}
+                    </td>
+                    <td>
+                        {{item.pay_date}}
+                    </td>
+                    <td>
+                        {{item.amount}}
+                    </td>
+
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <br>
+        </div>
+    </div>
+</div>
+
+<!-- MODALS MODALS -->
+  <!-- Modals Start Here -->
+  <div class="modal modal-sheet py-5" tabindex="-1" id="addKidModal">
+  <div class="modal-dialog">
+    <div class="modal-content rounded-6 shadow">
+
+      <form class="" action="#" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title">{% trans "Add new kid" %}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body py-0">
+
+
+        {{form|crispy}}
+
+
+      </div>
+      <div class="modal-footer flex-column border-top-0">
+        <button type="submit" class="btn btn-lg btn-primary w-100 mx-0 mb-2">{% trans "Save changes" %}</button>
+      </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,153 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load search_pagination_url %}
+{% load i18n %}
+
+
+{% block css %}
+<link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block main %}
+
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{% trans 'Group Attendance' %}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+      </div>
+    </div>
+  </div>
+
+  <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
+    <div class="card">
+      <div class="card-header">
+        {% trans 'Teacher' %}
+      </div>
+      <div class="card-body">
+        <table class="table table-striped table-sm">
+          <thead>
+          <tr>
+            <th>{% trans 'Name' %}</th>
+            <th>{% trans 'Entering Time' %}</th>
+            <th>{% trans 'Leaving Time' %}</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          {% if teacher_attendance.status == "PRESENT" %}
+          <tr class="bg-success text-white">
+            <td>{{teacher.name}}</td>
+            <td>{{teacher_attendance.attendance_time}}</td>
+
+            {% if teacher_leaving.status == "APPROVED" %}
+              <td class="bg-success">{{teacher_leaving.leave_time}}</td>
+            {% elif teacher_leaving.status == "UNAPPROVED" %}
+              <td class="bg-warning">{{teacher_leaving.leave_time}}</td>
+            {% else %}
+              <td class="bg-danger">{{teacher_leaving.leave_time}}</td>
+            {% endif %}
+
+            <td>
+              <a href="{% url 'teachers:teacher_details' teacher.slug %}" class="btn btn-primary">
+                <i class="fa-solid fa-eye"></i>
+              </a>
+            </td>
+          </tr>
+          {% elif teacher_attendance.status == "ABSENT" %}
+          <tr class="bg-warning text-white">
+            <td>{{teacher.name}}</td>
+            <td></td>
+            <td>
+              <a href="{% url 'teachers:teacher_details' teacher.slug %}" class="btn btn-primary">
+                <i class="fa-solid fa-eye"></i>
+              </a>
+            </td>
+          </tr>
+          {% else %}
+          <tr class="bg-danger text-white">
+            <td>{{teacher.name}}</td>
+            <td></td>
+            <td>
+              <a href="{% url 'teachers:teacher_details' teacher.slug %}" class="btn btn-primary">
+                <i class="fa-solid fa-eye"></i>
+              </a>
+            </td>
+          </tr>
+          {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+<br>
+  {% if students|length > 0 %}
+    <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col">{% trans 'Student Name' %}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for student in students %}
+        {% if student.status %}
+      <tr class="bg-success text-white">
+          {% if group.group_type == "ADULTS" %}
+            <td>{{student.student.name}}</td>
+            <td>
+              <a href="{% url 'students:student_details' student.student.slug %}" class="btn btn-primary">
+                <i class="fa-solid fa-eye"></i>
+            </a>
+            </td>
+          {% else %}
+            <td>{{student.kid.name}}</td>
+        <td>
+          <a href="{% url 'students:kid_details' student.kid.slug %}" class="btn btn-primary">
+                <i class="fa-solid fa-eye"></i>
+            </a>
+        </td>
+          {% endif %}
+      </tr>
+        {% else %}
+        <tr class="bg-danger text-white">
+          {% if group.group_type == "ADULTS" %}
+            <td>{{student.student.name}}</td>
+            <td>
+              <a href="{% url 'students:student_details' student.student.slug %}" class="btn btn-primary">
+                <i class="fa-solid fa-eye"></i>
+              </a>
+            </td>
+          {% else %}
+            <td>{{student.kid.name}}</td>
+          <td>
+            <a href="{% url 'students:kid_details' student.kid.slug %}" class="btn btn-primary">
+                <i class="fa-solid fa-eye"></i>
+            </a>
+          </td>
+          {% endif %}
+      </tr>
+        {% endif %}
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="row">
+    <div class="col-lg-2">
+
+    </div>
+    <div class="col-lg-8">
+      <h3>{% trans 'Add First Student' %}</h3>
+      <img class=img-fluid  src="{% static 'assets/img/empty.svg' %}" alt="School Manager">
+    </div>
+    <div class="col-lg-3">
+
+    </div>
+  </div>
+  {% endif %}
+{% endblock %}
+

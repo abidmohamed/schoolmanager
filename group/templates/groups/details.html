@@ -1,0 +1,195 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block main %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{% trans "Group Details" %}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+        <button href="#addGroupModal" type="button" class="btn btn-warning" data-bs-toggle="modal">
+            <i class="fa-solid fa-pen"></i>
+            {% trans "Update Group" %}
+        </button>
+      </div>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-4">
+                    <p class="fs-3">{% trans "Registered by" %}: {{group.user}}</p>
+                </div>
+                <div class="col-4">
+                    <p class="fs-3">{% trans "Teacher" %}: {{group.teacher}}</p>
+
+                </div>
+                <div class="col-4">
+                    <p class="fs-3">{% trans "Room" %}: {{group.room}}</p>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <p class="fs-3">{% trans "Subject" %}: {{group.subject}}</p>
+
+                </div>
+                <div class="col-4">
+                    <p class="fs-3">{% trans "Name" %}: {{group.name}}</p>
+
+                </div>
+                <div class="col-4">
+                    <p class="fs-3">{% trans "Type" %}: {{group.group_type}}</p>
+
+                </div>
+                <hr>
+            </div>
+            <br>
+            {% if group.group_type == "KIDS" %}
+            <h2> {% trans "KIDS" %} </h2>
+            <hr>
+            <!-- Button Add New Product -->
+            <br>
+            <br>
+            <a class="btn btn-primary form-control" href="{% url 'groups:select_kids' group.slug %}">
+                <i class="fa-solid fa-plus"></i>
+                {% trans "Add Kids" %}
+            </a>
+            <table class="table display text-center">
+                <thead class="thead-light">
+                <tr>
+                    <th>{% trans "Registered By" %}</th>
+                    <th>{% trans "Parent" %}</th>
+                    <th>{% trans "Name" %}</th>
+                    <th>{% trans "Grade" %}</th>
+                    <th>{% trans "Sick" %}</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in group.items.all %}
+                <tr>
+                    <td class="table-light">
+                        {{item.user}}
+                    </td>
+                    <td class="table-light">
+                        {{item.kid.parent}}
+                    </td>
+                    <td class="table-light">
+                        {{item.kid.name}}
+                    </td>
+                    <td class="table-light">
+                        {{item.kid.grade}}
+                    </td>
+                    <td class="table-light">
+                         {% if item.kid.sick %}
+                            <i class="fa-solid fa-check text-danger fs-4"></i>
+                        {% else %}
+                            <i class="fa-solid fa-x text-success fs-4"></i>
+                        {% endif %}
+                    </td>
+                    <td class="table-light">
+                        <a class="btn btn-danger" href="{% url 'groups:delete_group_item' item.id %}" onclick="return confirm('Are you sure?')">
+                                <i class="fa-solid fa-trash-can"></i>
+                        </a>
+                        <a class="btn btn-primary" href="{% url 'students:kid_details' item.kid.slug %}" >
+                                <i class="fa-solid fa-eye"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+                <h2> {% trans "Students" %} </h2>
+            <hr>
+            <!-- Button Add New Product -->
+            <br>
+            <br>
+            <a class="btn btn-primary form-control" href="{% url 'groups:select_students' group.slug %}">
+                <i class="fa-solid fa-plus"></i>
+                {% trans "Add Students" %}
+            </a>
+            <table class="table display text-center">
+                <thead class="thead-light">
+                <tr>
+                    <th>{% trans "Registered By" %}</th>
+                    <th>{% trans "Name" %}</th>
+                    <th>{% trans "Address" %}</th>
+                    <th>{% trans "Phone" %}</th>
+                    <th>{% trans "Debt" %}</th>
+                    <th>{% trans "Date Joined" %}</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in group.items.all %}
+                <tr>
+                    <td class="table-light">
+                        {{item.user}}
+                    </td>
+                    <td class="table-light">
+                        {{item.student.name}}
+                    </td>
+                    <td class="table-light">
+                        {{item.student.address}}
+                    </td>
+                    <td class="table-light">
+                        {{item.student.phone}}
+                    </td>
+                    <td class="table-light">
+                        {{item.student.debt}}
+                    </td>
+                    <td class="table-light">
+                        {{item.student.date_joined}}
+                    </td>
+                    <td class="table-light">
+                        <a class="btn btn-danger" href="{% url 'groups:delete_group_item' item.id %}" onclick="return confirm('Are you sure?')">
+                                <i class="fa-solid fa-trash-can"></i>
+                        </a>
+                        <a class="btn btn-primary" href="{% url 'students:student_details' item.student.slug %}" >
+                                <i class="fa-solid fa-eye"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- MODALS MODALS -->
+  <!-- Modals Start Here -->
+  <div class="modal modal-sheet py-5" tabindex="-1" id="addGroupModal">
+  <div class="modal-dialog">
+    <div class="modal-content rounded-6 shadow">
+
+      <form class="" action="#" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title">{% trans "Add new group" %}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body py-0">
+
+
+        {{form|crispy}}
+
+
+      </div>
+      <div class="modal-footer flex-column border-top-0">
+        <button type="submit" class="btn btn-lg btn-primary w-100 mx-0 mb-2">{% trans "Save changes" %}</button>
+      </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

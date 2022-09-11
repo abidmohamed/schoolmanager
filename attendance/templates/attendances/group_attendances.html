@@ -1,0 +1,85 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load search_pagination_url %}
+{% load i18n %}
+
+{% block css %}
+<link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{% trans 'Group Attendance' %} {{group}}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+
+      </div>
+    </div>
+</div>
+
+{% if attendances|length > 0 %}
+<div class="table-responsive">
+    <table class="table table-hover table-sm">
+      <thead class="table-dark ">
+        <tr>
+          <th scope="col">{% trans 'Group Name' %}</th>
+          <th scope="col">{% trans 'Date' %}</th>
+          <th scope="col">{% trans 'Time' %}</th>
+            <th></th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for attendance in attendances %}
+        {% if attendance.status %}
+        <tr class="bg-success text-white">
+            <td>{{attendance.group}}</td>
+            <td>{{attendance.attendance_date}}</td>
+            <td>{{attendance.attendance_time}}</td>
+              <td>
+                  <a href="{% url 'attendances:students_attendances' attendance.slug %}" class="btn btn-warning">
+                      <i class="fa-solid fa-pen"></i>
+                  </a>
+                  <a href="{% url 'attendances:students_attendances_details' attendance.slug %}" class="btn btn-primary">
+                      <i class="fa-solid fa-eye"></i>
+                  </a>
+                  <a href="{% url 'attendances:teacher_leave' attendance.slug %}" class="btn btn-danger">
+                      <i class="fa-solid fa-person-walking-arrow-right"></i>
+                  </a>
+              </td>
+        </tr>
+        {% else %}
+        <tr class="bg-danger text-white">
+            <td>{{attendance.group}}</td>
+            <td>{{attendance.attendance_date}}</td>
+            <td>{{attendance.attendance_time}}</td>
+              <td>
+                  <a href="{% url 'attendances:students_attendances' attendance.slug %}" class="btn btn-warning">
+                      <i class="fa-solid fa-clipboard-user"></i>
+                  </a>
+              </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+
+      </tbody>
+    </table>
+  </div>
+{% else %}
+<div class="row">
+    <div class="col-lg-2">
+
+    </div>
+    <div class="col-lg-8">
+      <h3>{% trans 'No Attendance to show' %}</h3>
+      <img class=img-fluid  src="{% static 'assets/img/empty.svg' %}" alt="School Manager">
+    </div>
+    <div class="col-lg-3">
+
+    </div>
+  </div>
+{% endif %}
+
+{% endblock %}
