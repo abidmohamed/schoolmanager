@@ -37,7 +37,7 @@
         user-select: none;
       }
 
-      .sidebarMenu:hover{
+      .sidebar:hover{
         overflow-y: scroll;
       }
 
@@ -75,7 +75,7 @@
 <div class="container-fluid">
   <div class="row">
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-      <div class="position-sticky pt-3">
+      <div id="sidebar" class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link" href="{% url 'accounts:dashboard' %}">
@@ -264,6 +264,10 @@
       {% endfor %}
 
       {% block main %}
+
+
+
+
       {% endblock %}
 
     </main>
