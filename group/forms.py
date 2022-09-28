@@ -15,7 +15,7 @@ class GroupForm(ModelForm):
     class Meta:
         model = Group
 
-        fields = ['room', 'subject', 'teacher', 'name', 'group_type']
+        fields = ['subject', 'teacher', 'name', 'group_type']
 
 
 class GroupTimeForm(ModelForm):
@@ -25,4 +25,4 @@ class GroupTimeForm(ModelForm):
             'start_time': forms.TimeInput(attrs={'class': 'timepicker', 'type': 'time'}),
             'end_time': forms.TimeInput(attrs={'class': 'timepicker', 'type': 'time'}),
         }
-        fields = ['group', 'weekday', 'start_time', 'end_time']
+        fields = ['group', 'weekday', 'start_time', 'end_time', 'room', 'hallway']

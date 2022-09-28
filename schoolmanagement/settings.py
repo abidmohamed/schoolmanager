@@ -43,10 +43,10 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = os.environ.get("DEBUG", "False") == "True"
-
+print(DEBUG)
 # ALLOWED_HOSTS = []
-ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
-
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1:8000").split(",")
+# print("#####################> ", ALLOWED_HOSTS)
 # Application definition
 
 INSTALLED_APPS = [
@@ -191,14 +191,14 @@ LANGUAGES = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = 'staticfiles/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Uncomment if you have extra static files and a directory in your GitHub repo.
 # If you don't have this directory and have this uncommented your build will fail
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]
 
 # CSS LOCATION
-CSS_LOCATION = os.path.join(BASE_DIR,'staticfiles')
+CSS_LOCATION = os.path.join(BASE_DIR, 'staticfiles')
 
 # dynamic files and images
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')

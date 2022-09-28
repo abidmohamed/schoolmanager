@@ -80,7 +80,9 @@ class GroupTime(models.Model):
     # related fields
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="group_times", null=True)
     group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name="times", null=True)
+    room = models.ForeignKey(Room, on_delete=models.DO_NOTHING, related_name="times_rooms", null=True)
     # basic
+    hallway = models.CharField(null=True, blank=True, max_length=200)
     weekday = models.CharField(choices=WEEKDAYS, blank=True, max_length=100)
     start_time = models.TimeField(null=True, blank=True)
     end_time = models.TimeField(null=True, blank=True)

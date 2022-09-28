@@ -19,4 +19,4 @@ class GroupTimeFilter(django_filters.FilterSet):
         end_time = DateFilter(field_name='end_time', lookup_expr="lte",
                               widget=forms.DateInput(attrs={'type': 'time'}))
 
-        fields = ['group', 'start_time', 'end_time', 'weekday']
+        fields = ['group', 'start_time', 'end_time', 'weekday', 'room']
