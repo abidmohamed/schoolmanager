@@ -2,12 +2,15 @@ from attendance.models import StudentAttendance, EmployeeAttendance
 from group.models import Group
 from datetime import datetime
 
+# now time
+now = datetime.today()
+
 
 def update_attendance():
+    # 👇️ mark global
+    global now
     # students attendance
     groups = Group.objects.all()
-    # now time
-    now = datetime.today()
 
     for group in groups:
         attendances = group.attendance.all()
@@ -32,8 +35,7 @@ def update_attendance():
                         )
 
     # employees attendance
-    if not EmployeeAttendance.objects.filter(attendance_date=datetime.today().date()):
+    if not EmployeeAttendance.objects.filter(attendance_date=now.date()):
         EmployeeAttendance.objects.create(
-            attendance_date=datetime.today().date()
+            attendance_date=now.date()
         )
-
