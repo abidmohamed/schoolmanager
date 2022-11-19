@@ -8,6 +8,7 @@ def update_attendance():
     groups = Group.objects.all()
     # now time
     now = datetime.today()
+
     for group in groups:
         attendances = group.attendance.all()
         if group.times.all():
@@ -31,8 +32,8 @@ def update_attendance():
                         )
 
     # employees attendance
-    if not EmployeeAttendance.objects.filter(attendance_date=now.date()):
+    if not EmployeeAttendance.objects.filter(attendance_date=datetime.today().date()):
         EmployeeAttendance.objects.create(
-            attendance_date=now.date()
+            attendance_date=datetime.today().date()
         )
 
