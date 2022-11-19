@@ -6,13 +6,14 @@ from datetime import datetime
 def update_attendance():
     # students attendance
     groups = Group.objects.all()
+    # now time
+    now = datetime.today()
     for group in groups:
         attendances = group.attendance.all()
         if group.times.all():
             times = group.times.all()
             for time in times:
                 # print(time)
-                now = datetime.today()
                 # print(now.date())
                 # print(now.strftime("%A"))
                 if time.weekday == now.strftime("%A").upper():
