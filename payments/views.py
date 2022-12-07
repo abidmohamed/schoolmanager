@@ -348,3 +348,4 @@ def payroll_paid(request, slug):
         return redirect(request.META.get('HTTP_REFERER', 'payments:payrolls'))
 
     return redirect(request.META.get('HTTP_REFERER', 'payments:payrolls'))
+
