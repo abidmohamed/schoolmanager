@@ -16,6 +16,7 @@ from django.core.management.utils import get_random_secret_key
 import dj_database_url
 import environ
 
+
 env = environ.Env()
 # reading .env file
 environ.Env.read_env()
@@ -43,7 +44,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = os.environ.get("DEBUG", "False") == "True"
-print(DEBUG)
+# print(DEBUG)
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1:8000").split(",")
 # print("#####################> ", ALLOWED_HOSTS)
@@ -191,17 +192,26 @@ LANGUAGES = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+if DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_URL = '/static/'
+
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static')
+    ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+    STATIC_URL = '/static/'
+
 # Uncomment if you have extra static files and a directory in your GitHub repo.
 # If you don't have this directory and have this uncommented your build will fail
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]
 
 # CSS LOCATION
-CSS_LOCATION = os.path.join(BASE_DIR, 'staticfiles')
+CSS_LOCATION = os.path.join(BASE_DIR, 'static/')
 
 # dynamic files and images
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads/')
 MEDIA_URL = '/uploads/'
 
 # URLS
