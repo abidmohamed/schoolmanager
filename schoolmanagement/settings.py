@@ -218,4 +218,3 @@ MEDIA_URL = '/uploads/'
 # URLS
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'accounts:login'
-
