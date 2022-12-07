@@ -18,4 +18,3 @@ class GroupStudentAdmin(admin.ModelAdmin):
 @admin.register(GroupTime)
 class GroupTime(admin.ModelAdmin):
     list_display = ('id', 'user', 'group', 'room', 'hallway', 'weekday', 'start_time', 'end_time')
-
