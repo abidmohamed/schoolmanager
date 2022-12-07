@@ -123,22 +123,19 @@
               {% trans "Teachers" %}
             </a>
           </li>
-
           <li class="nav-item">
             <a class="nav-link" href="{% url 'groups:rooms' %}">
               <span><i class="fa-solid fa-building-columns fa-lg"></i></span>
               {% trans "Rooms" %}
             </a>
           </li>
-          {% if request.user|has_group:'admin, general_manager, management, accountant, hr_manager, reception' %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'groups:groups' %}">
               <span><i class="fa-solid fa-users-between-lines fa-lg"></i></span>
               {% trans "Groups" %}
             </a>
           </li>
-          {% endif %}
-          <!-- all -->
+
           <li class="nav-item">
             <a class="nav-link" href="{% url 'groups:groups_times' %}">
               <span><i class="fa-solid fa-clock fa-lg"></i></span>
