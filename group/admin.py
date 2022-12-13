@@ -7,7 +7,7 @@ from group.models import Group, GroupStudent, GroupTime
 @admin.register(Group)
 class GroupAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'teacher', 'room', 'subject', 'name', 'group_type', 'date_created')
-    search_fields = ['id', 'teacher', 'name', 'group_type']
+    search_fields = ['id', 'name']
 
 
 @admin.register(GroupStudent)
