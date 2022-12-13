@@ -195,6 +195,7 @@ def parent_payment_details(request, slug):
     context['payment'] = payment
     previous_amount = payment.amount
     previous_parent = payment.parent
+    print("Previous Payment", previous_amount)
 
     if request.method == 'GET':
         form = ParentPaymentForm(instance=payment)
@@ -210,11 +211,24 @@ def parent_payment_details(request, slug):
             payment.user = request.user
             payment.save()
             # handling debt
-            payment.parent.debt -= payment.amount
-            previous_parent.debt += previous_amount
+            # # Calculate difference in payments old & new
+            payment_diff = payment.amount - previous_amount
+            # apply the difference
+            if payment.parent.debt < 0:
+                payment.parent.debt -= payment_diff
+            else:
+                payment.parent.debt += payment_diff
+
+            if previous_parent.debt < 0:
+                previous_parent.debt += payment_diff
+            else:
+                previous_parent.debt -= payment_diff
+
+            # print("Parent Debt after operation", payment.parent.debt)
             previous_parent.save()
             payment.parent.save()
-            print("Success")
+
+            # print("Success")
             messages.success(request, 'Payment Updated')
             return redirect('payments:parent_payment_details', payment.slug)
 

@@ -538,6 +538,7 @@ def employees_confirm_attendance(request, slug):
             time = datetime.strptime(time, '%H:%M').time()
         else:
             time = None
+
         if status == 'PRESENT':
             status = 'PRESENT'
         elif status == 'ABSENT':

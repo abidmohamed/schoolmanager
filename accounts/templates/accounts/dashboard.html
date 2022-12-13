@@ -181,12 +181,14 @@
           <table class="table table-striped table-danger">
                 <thead>
                 <tr>
+                    <td>{% trans "Group" %}</td>
                     <td>{% trans "Date" %}</td>
                 </tr>
                 </thead>
                 <tbody>
                 {% for attendance in student_attendance %}
                 <tr>
+                    <td>{{attendance.group}}</td>
                     <td>{{attendance.attendance_date}}</td>
                 </tr>
                 {% endfor %}
