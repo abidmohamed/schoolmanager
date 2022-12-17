@@ -166,12 +166,18 @@
                 <thead>
                 <tr>
                     <td>{% trans "Date" %}</td>
+                    <td></td>
                 </tr>
                 </thead>
                 <tbody>
                 {% for attendance in employee_attendance %}
                 <tr>
                     <td>{{attendance.attendance_date}}</td>
+                    <td>
+                        <a href="{% url 'attendances:employee_list_attendance' attendance.slug %}" class="btn btn-warning">
+                            <i class="fa-solid fa-clipboard-user"></i>
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
                 </tbody>
@@ -184,6 +190,7 @@
                 <tr>
                     <td>{% trans "Group" %}</td>
                     <td>{% trans "Date" %}</td>
+                    <td></td>
                 </tr>
                 </thead>
                 <tbody>
@@ -191,6 +198,12 @@
                 <tr>
                     <td>{{attendance.group}}</td>
                     <td>{{attendance.attendance_date}}</td>
+                    <td>
+                        <a href="{% url 'attendances:group_attendances' attendance.group.slug %}" class="btn btn-warning">
+                            <i class="fa-solid fa-clipboard-user"></i>
+                        </a>
+                    </td>
+
                 </tr>
                 {% endfor %}
                 </tbody>
@@ -239,7 +252,7 @@
                 <tbody>
                 {% for payroll in teachers_payroll %}
                 <tr>
-                    <td>{{payroll.employee.name}}</td>
+                    <td>{{payroll.teacher.name}}</td>
                     <td>{{payroll.amount}}</td>
                     <td>{{payroll.pay_date}}</td>
                 </tr>

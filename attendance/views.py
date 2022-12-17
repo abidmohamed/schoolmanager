@@ -12,6 +12,7 @@ from django.urls import reverse
 
 from attendance.filters import EmployeeAttendanceFilter, TeacherAttendanceFilter, StudentAttendanceFilter, \
     EmployeeAttendanceItemFilter
+from attendance.forms import StudentAttendanceForm
 from attendance.models import StudentAttendance, StudentAttendanceItem, EmployeeAttendance, EmployeeAttendanceItem, \
     EmployeeLeaveItem, TeacherAttendanceItem, TeacherLeaveItem, SessionCounter, TeacherSessionCounter
 from employee.models import Employee
@@ -85,6 +86,32 @@ def group_attendances(request, slug):
                         attendance_time=time.start_time,
                         status=False,
                     )
+
+    if request.method == 'GET':
+        form = StudentAttendanceForm()
+        context['form'] = form
+        return render(request, 'attendances/group_attendances.html', context)
+
+    if request.method == 'POST':
+        form = StudentAttendanceForm(request.POST)
+        if form.is_valid():
+            attendance = form.save(commit=False)
+            # check if attendance exists
+            # print(attendance.attendance_date)
+            if attendances.filter(attendance_date=attendance.attendance_date):
+                messages.error(request, "Attendance already exists in the same date")
+                return redirect("attendances:group_attendances", group.slug)
+            else:
+                StudentAttendance.objects.create(
+                    user=request.user,
+                    group=group,
+                    attendance_date=attendance.attendance_date,
+                    attendance_time=attendance.attendance_time,
+                    status=False,
+                )
+                messages.success(request, "Attendance created")
+
+                return redirect("attendances:group_attendances", group.slug)
 
     return render(request, 'attendances/group_attendances.html', context)
 
