@@ -23,3 +23,4 @@ class EmployeeAttendanceForm(ModelForm):
             'attendance_date': forms.DateInput(attrs={'class': 'datepicker', 'type': 'date'}),
         }
         fields = ['attendance_date', ]
+
