@@ -1,10 +1,137 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'partials/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load search_pagination_url %}
+{% load i18n %}
 
-</body>
-</html>
+
+{% block css %}
+<link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{% trans 'Attendance Stats' %}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+
+      </div>
+    </div>
+  </div>
+<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    <div class="col">
+         <div class="card-header py-3 bg-primary border-primary text-white">
+             <h4 class="my-0 fw-normal">{% trans "All Students" %}</h4>
+         </div>
+        <table class="table table-primary">
+            <thead>
+                <tr>
+                    <th>{% trans "Students" %}</th>
+                    <th>{% trans "Group" %}</th>
+                    <th>{% trans "Teacher" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+
+               {% if students|length > 0%}
+               <h2>{% trans "Students" %}</h2>
+                {% for student in students %}
+                <tr>
+                    <td>{{student}}</td>
+                </tr>
+                {% endfor %}
+
+                <hr>
+               {% endif %}
+              {% if kids|length > 0%}
+                <h2>{% trans "Kids" %}</h2>
+                {% for kid in kids %}
+                <tr>
+                    <td>{{kid.kid.name}}</td>
+                    <td>{{kid.group}}</td>
+                    <td>{{kid.group.teacher}}</td>
+                </tr>
+                {% endfor %}
+                <hr>
+              {% endif %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col">
+        <div class="card-header py-3 bg-success border-success text-white">
+            <h4 class="my-0 fw-normal">{% trans "Present Students" %}</h4>
+        </div>
+        <table class="table table-success">
+            <thead>
+                 <tr>
+                    <th>{% trans "Students" %}</th>
+                    <th>{% trans "Group" %}</th>
+                    <th>{% trans "Teacher" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if current_attendances|length > 0 %}
+                    {% for attendance in current_attendances %}
+                        <tr>
+                        {% for student_attendance in attendance.attendance_students.all %}
+                            {% if student_attendance.status %}
+                                {% if student_attendance.attendance.group.group_type == "KIDS" %}
+                                    <td>{{student_attendance.kid}}</td>
+                                {% else %}
+                                    <td>{{student_attendance.student}}</td>
+                                {% endif %}
+                                <td>{{student_attendance.attendance.group}}</td>
+                                <td>{{student_attendance.attendance.group.teacher}}</td>
+                            {% endif %}
+                        {% endfor %}
+                        </tr>
+                    {% endfor %}
+
+                {% else %}
+                <h3>{% trans "No Presence" %}</h3>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col">
+        <div class="card-header py-3 bg-danger border-danger text-white">
+            <h4 class="my-0 fw-normal">{% trans "Absent Students" %}</h4>
+        </div>
+        <table class="table table-danger">
+            <thead>
+                 <tr>
+                    <th>{% trans "Students" %}</th>
+                    <th>{% trans "Group" %}</th>
+                    <th>{% trans "Teacher" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if current_attendances|length > 0 %}
+                    {% for attendance in current_attendances %}
+                        <tr>
+                        {% for student_attendance in attendance.attendance_students.all %}
+                            {% if student_attendance.status == False %}
+                                {% if student_attendance.attendance.group.group_type == "KIDS" %}
+                                    <td>{{student_attendance.kid}}</td>
+                                {% else %}
+                                    <td>{{student_attendance.student}}</td>
+                                {% endif %}
+                                <td>{{student_attendance.attendance.group}}</td>
+                                <td>{{student_attendance.attendance.group.teacher}}</td>
+                            {% endif %}
+                        {% endfor %}
+                        </tr>
+                    {% endfor %}
+
+                {% else %}
+                <h3>{% trans "No Presence" %}</h3>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

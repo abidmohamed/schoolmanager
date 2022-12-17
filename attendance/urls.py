@@ -7,6 +7,7 @@ urlpatterns = [
     path('attendances/attendances-details/<slug:slug>/<str:item>', views.attendances_details, name='attendances_details'),
     # attendances students & teachers
     path('attendances', views.attendances, name='attendances'),
+    path('stats', views.attendance_stats, name='attendance_stats'),
     path('attendances/group-attendances/<slug:slug>', views.group_attendances, name='group_attendances'),
     path('attendances/group-attendances/students-attendances/<slug:slug>', views.students_attendances, name='students_attendances'),
     path('attendances/group-attendances/students-confirm-attendance/<slug:slug>', views.students_confirm_attendance, name='students_confirm_attendance'),

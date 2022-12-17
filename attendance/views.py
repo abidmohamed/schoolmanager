@@ -23,6 +23,7 @@ from datetime import datetime
 from student.models import Student, Kids
 from teacher.models import Teacher
 
+
 @login_required
 def attendance_stats(request):
     context = {}
@@ -31,13 +32,30 @@ def attendance_stats(request):
     times = GroupTime.objects.filter(weekday=now.strftime("%A").upper())
     # print(times)
     groups_list = Group.objects.none()
+    students = Student.objects.none()
+    kids = Kids.objects.none()
     for time in times:
         if Group.objects.filter(slug=time.group.slug):
             # print(Group.objects.filter(slug=time.group.slug))
+            # getting all students list
             groups_list |= Group.objects.filter(slug=time.group.slug)
+            for group in groups_list:
+                if group.group_type == "ADULTS":
+                    students = group.items.all().filter(student__is_active=True)
+                else:
+                    kids = group.items.all().filter(kid__is_active=True)
+
+        # present & absent students list
+        current_attendances = time.group.attendance.filter(attendance_date=now.date())
+
 
     context['groups'] = groups_list
+    context['students'] = students
+    context['kids'] = kids
+    context['current_attendances'] = current_attendances
+
     return render(request, 'attendances/stats.html', context)
+
 
 @login_required
 def attendances(request):
