@@ -72,9 +72,10 @@
             <tbody>
                 {% if current_attendances|length > 0 %}
                     {% for attendance in current_attendances %}
-                        <tr>
+
                         {% for student_attendance in attendance.attendance_students.all %}
-                            {% if student_attendance.status %}
+                            <tr>
+                             {% if student_attendance.status %}
                                 {% if student_attendance.attendance.group.group_type == "KIDS" %}
                                     <td>{{student_attendance.kid}}</td>
                                 {% else %}
@@ -82,9 +83,10 @@
                                 {% endif %}
                                 <td>{{student_attendance.attendance.group}}</td>
                                 <td>{{student_attendance.attendance.group.teacher}}</td>
-                            {% endif %}
+                             {% endif %}
+                             </tr>
                         {% endfor %}
-                        </tr>
+
                     {% endfor %}
 
                 {% else %}
@@ -108,8 +110,9 @@
             <tbody>
                 {% if current_attendances|length > 0 %}
                     {% for attendance in current_attendances %}
-                        <tr>
+
                         {% for student_attendance in attendance.attendance_students.all %}
+                            <tr>
                             {% if student_attendance.status == False %}
                                 {% if student_attendance.attendance.group.group_type == "KIDS" %}
                                     <td>{{student_attendance.kid}}</td>
@@ -119,12 +122,13 @@
                                 <td>{{student_attendance.attendance.group}}</td>
                                 <td>{{student_attendance.attendance.group.teacher}}</td>
                             {% endif %}
+                            </tr>
                         {% endfor %}
-                        </tr>
+
                     {% endfor %}
 
                 {% else %}
-                <h3>{% trans "No Presence" %}</h3>
+                <h3>{% trans "No Absence" %}</h3>
                 {% endif %}
             </tbody>
         </table>
