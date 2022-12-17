@@ -17,17 +17,52 @@ from attendance.models import StudentAttendance, StudentAttendanceItem, Employee
     EmployeeLeaveItem, TeacherAttendanceItem, TeacherLeaveItem, SessionCounter, TeacherSessionCounter
 from employee.models import Employee
 from group.filters import GroupFilter
-from group.models import Group
+from group.models import Group, GroupTime
 from datetime import datetime
 
 from student.models import Student, Kids
 from teacher.models import Teacher
 
+@login_required
+def attendance_stats(request):
+    context = {}
+    # # show only specific groups of today
+    now = datetime.today()
+    times = GroupTime.objects.filter(weekday=now.strftime("%A").upper())
+    # print(times)
+    groups_list = Group.objects.none()
+    for time in times:
+        if Group.objects.filter(slug=time.group.slug):
+            # print(Group.objects.filter(slug=time.group.slug))
+            groups_list |= Group.objects.filter(slug=time.group.slug)
+
+    context['groups'] = groups_list
+    return render(request, 'attendances/stats.html', context)
 
 @login_required
 def attendances(request):
     context = {}
     # fetch data
+    now = datetime.today()
+
+    # # calculate All today students
+    times = GroupTime.objects.filter(weekday=now.strftime("%A").upper())
+    current_groups = Group.objects.none()
+    total_students = 0
+    present_students = 0
+    absent_students = 0
+    for time in times:
+        # all students
+        total_students += time.group.items.all().count()
+        # present & absent students
+        current_attendances = time.group.attendance.filter(attendance_date=now.date())
+        for attendance in current_attendances:
+            for student_attendance in attendance.attendance_students.all():
+                if student_attendance.status:
+                    present_students += 1
+                else:
+                    absent_students += 1
+
     groups_list = Group.objects.all().order_by('-name')
 
     myFilter = GroupFilter(request.GET, queryset=groups_list)
@@ -48,6 +83,9 @@ def attendances(request):
 
     context['myFilter'] = myFilter
     context['groups'] = groups
+    context['total_students'] = total_students
+    context['present_students'] = present_students
+    context['absent_students'] = absent_students
 
     return render(request, 'attendances/groups.html', context)
 

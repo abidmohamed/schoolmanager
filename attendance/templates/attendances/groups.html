@@ -25,6 +25,38 @@
   <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
 
   {% if groups|length > 0 %}
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                <div class="card-header py-3 bg-primary border-primary text-white">
+                    <h4 class="my-0 fw-normal">{% trans "All Students" %}</h4>
+                </div>
+                <div class="card card-body">
+                    <h1 class="card-title pricing-card-title text-primary">{{total_students}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm border-success">
+                <div class="card-header py-3 bg-success border-success text-white">
+                    <h4 class="my-0 fw-normal">{% trans "Present Students" %}</h4>
+                </div>
+                <div class="card card-body">
+                    <h1 class="card-title pricing-card-title text-success">{{present_students}}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm border-danger">
+                <div class="card-header py-3 bg-danger border-danger text-white">
+                    <h4 class="my-0 fw-normal">{% trans "Absent Students" %}</h4>
+                </div>
+                <div class="card card-body">
+                    <h1 class="card-title pricing-card-title text-danger">{{absent_students}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col">
         <div class="card card-body">
