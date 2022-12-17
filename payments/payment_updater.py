@@ -16,7 +16,9 @@ def update_payment():
         # 1 get attendance
         attendance_present = EmployeeAttendanceItem.objects.filter(Q(status='PRESENT') | Q(status='MISSION'),
                                                                    employee=employee,
-                                                                   attendance__attendance_date__month=datetime.now().month).count()
+                                                                   attendance__attendance_date__month=datetime.now().month,
+                                                                   attendance__attendance_date__year=datetime.now().year
+                                                                   ).count()
         # 2 get salary by day and calculate
         day_salary = employee.role.salary / 26
         salary = attendance_present * day_salary
