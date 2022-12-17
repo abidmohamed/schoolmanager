@@ -34,6 +34,7 @@ def attendance_stats(request):
     groups_list = Group.objects.none()
     students = Student.objects.none()
     kids = Kids.objects.none()
+    current_attendances = StudentAttendance.objects.none()
     for time in times:
         if Group.objects.filter(slug=time.group.slug):
             # print(Group.objects.filter(slug=time.group.slug))
@@ -41,13 +42,12 @@ def attendance_stats(request):
             groups_list |= Group.objects.filter(slug=time.group.slug)
             for group in groups_list:
                 if group.group_type == "ADULTS":
-                    students = group.items.all().filter(student__is_active=True)
+                    students |= group.items.all().filter(student__is_active=True)
                 else:
-                    kids = group.items.all().filter(kid__is_active=True)
+                    kids |= group.items.all().filter(kid__is_active=True)
 
         # present & absent students list
-        current_attendances = time.group.attendance.filter(attendance_date=now.date())
-
+        current_attendances |= time.group.attendance.filter(attendance_date=now.date())
 
     context['groups'] = groups_list
     context['students'] = students
