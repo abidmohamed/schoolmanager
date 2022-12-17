@@ -37,7 +37,9 @@
                <h2>{% trans "Students" %}</h2>
                 {% for student in students %}
                 <tr>
-                    <td>{{student}}</td>
+                    <td>{{student.student.name}}</td>
+                    <td>{{student.group}}</td>
+                    <td>{{student.group.teacher}}</td>
                 </tr>
                 {% endfor %}
 
