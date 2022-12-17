@@ -17,7 +17,9 @@
     <h1 class="h2">{% trans 'Attendances' %}</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group me-2">
-
+        <button href="#addAttendanceModal" type="button" class="btn btn-warning" data-bs-toggle="modal">
+           {% trans 'New Attendance' %} <i class="fa-solid fa-clipboard-user fa-xl "></i>
+        </button>
       </div>
     </div>
   </div>
@@ -173,6 +175,38 @@
     </div>
   </div>
   {% endif %}
+
+<!-- MODALS MODALS -->
+  <!-- Modals Start Here -->
+  <div class="modal modal-sheet py-5" tabindex="-1" id="addAttendanceModal">
+  <div class="modal-dialog">
+    <div class="modal-content rounded-6 shadow">
+
+      <form class="" action="#" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title">{% trans "Add new attendance" %}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body py-0">
+
+
+        {{form|crispy}}
+
+
+      </div>
+      <div class="modal-footer flex-column border-top-0">
+        <button type="submit" class="btn btn-lg btn-primary w-100 mx-0 mb-2">{% trans "Save changes" %}</button>
+      </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
 
 {% endblock %}
 

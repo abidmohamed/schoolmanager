@@ -12,7 +12,7 @@ from django.urls import reverse
 
 from attendance.filters import EmployeeAttendanceFilter, TeacherAttendanceFilter, StudentAttendanceFilter, \
     EmployeeAttendanceItemFilter
-from attendance.forms import StudentAttendanceForm
+from attendance.forms import StudentAttendanceForm, EmployeeAttendanceForm
 from attendance.models import StudentAttendance, StudentAttendanceItem, EmployeeAttendance, EmployeeAttendanceItem, \
     EmployeeLeaveItem, TeacherAttendanceItem, TeacherLeaveItem, SessionCounter, TeacherSessionCounter
 from employee.models import Employee
@@ -37,7 +37,7 @@ def attendances(request):
     # Page
     page = request.GET.get('page', 1)
     # Number of customers in the page
-    paginator = Paginator(groups_list, 5)
+    paginator = Paginator(groups_list, 25)
 
     try:
         groups = paginator.page(page)
@@ -98,7 +98,7 @@ def group_attendances(request, slug):
             attendance = form.save(commit=False)
             # check if attendance exists
             # print(attendance.attendance_date)
-            if attendances.filter(attendance_date=attendance.attendance_date):
+            if StudentAttendance.objects.filter(attendance_date=attendance.attendance_date):
                 messages.error(request, "Attendance already exists in the same date")
                 return redirect("attendances:group_attendances", group.slug)
             else:
@@ -511,7 +511,7 @@ def employee_attendances(request):
     # Page
     page = request.GET.get('page', 1)
     # Number of customers in the page
-    paginator = Paginator(attendances_list, 5)
+    paginator = Paginator(attendances_list, 25)
 
     try:
         attendances = paginator.page(page)
@@ -522,6 +522,28 @@ def employee_attendances(request):
 
     context['myFilter'] = myFilter
     context['attendances'] = attendances
+
+    if request.method == 'GET':
+        form = EmployeeAttendanceForm()
+        context['form'] = form
+        return render(request, 'attendance_employees/attendances.html', context)
+
+    if request.method == 'POST':
+        form = EmployeeAttendanceForm(request.POST)
+        if form.is_valid():
+            attendance = form.save(commit=False)
+            # check if attendance exists
+            if EmployeeAttendance.objects.filter(attendance_date=attendance.attendance_date):
+                messages.error(request, "Attendance already exists in the same date")
+                return redirect("attendances:employee_attendances")
+            else:
+                EmployeeAttendance.objects.create(
+                    user=request.user,
+                    attendance_date=attendance.attendance_date
+                )
+                messages.success(request, "Attendance created")
+
+                return redirect("attendances:employee_attendances")
 
     return render(request, 'attendance_employees/attendances.html', context)
 
@@ -796,7 +818,7 @@ def attendances_details(request, slug, item):
     # Page
     page = request.GET.get('page', 1)
     # Number of customers in the page
-    paginator = Paginator(attendances_list, 5)
+    paginator = Paginator(attendances_list, 25)
 
     try:
         attendances = paginator.page(page)
