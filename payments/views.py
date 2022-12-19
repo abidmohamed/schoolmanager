@@ -19,6 +19,7 @@ from payments.models import StudentPayment, ParentPayment, Payroll
 from student.models import Parent
 from teacher.models import Teacher
 
+
 @login_required
 def payments(request):
     context = {}
@@ -29,7 +30,24 @@ def payments(request):
     # get all parent payments (cash)
     parent_payments = ParentPayment.objects.all().aggregate(Sum('amount'))
     parent_payments = parent_payments['amount__sum']
-    print(Group.objects.get(user=request.user))
+    # print(Group.objects.get(user=request.user))
+    if Group.objects.filter(user=request.user, name='reception'):
+        # get CREATED TODAY student payments (cash)
+        students_payments = StudentPayment.objects.filter(
+            date_created__day=datetime.now().date().day,
+            date_created__month=datetime.now().date().month,
+            date_created__year=datetime.now().date().year,
+        ).aggregate(Sum('amount'))
+
+        students_payments = students_payments['amount__sum']
+        # get CREATED TODAY parent payments (cash)
+        parent_payments = ParentPayment.objects.filter(
+            date_created__day=datetime.now().date().day,
+            date_created__month=datetime.now().date().month,
+            date_created__year=datetime.now().date().year,
+        ).aggregate(Sum('amount'))
+        parent_payments = parent_payments['amount__sum']
+
     if students_payments is None:
         students_payments = 0
     if parent_payments is None:
@@ -47,6 +65,15 @@ def payments(request):
 def student_payments(request):
     context = {}
     payments_list = StudentPayment.objects.all().order_by('-pay_date')
+
+    if Group.objects.filter(user=request.user, name='reception'):
+        # get CREATED TODAY student payments (cash)
+        payments_list = StudentPayment.objects.filter(
+            date_created__day=datetime.now().date().day,
+            date_created__month=datetime.now().date().month,
+            date_created__year=datetime.now().date().year,
+        ).order_by('-pay_date')
+        # students_payments = students_payments['amount__sum']
 
     myFilter = StudentPaymentFilter(request.GET, queryset=payments_list)
 
@@ -140,6 +167,14 @@ def student_payment_details(request, slug):
 def parent_payments(request):
     context = {}
     payments_list = ParentPayment.objects.all().order_by('-pay_date')
+
+    if Group.objects.filter(user=request.user, name='reception'):
+        # get CREATED TODAY student payments (cash)
+        payments_list = ParentPayment.objects.filter(
+            date_created__day=datetime.now().date().day,
+            date_created__month=datetime.now().date().month,
+            date_created__year=datetime.now().date().year,
+        ).order_by('-pay_date')
 
     myFilter = ParentPaymentFilter(request.GET, queryset=payments_list)
 
@@ -364,4 +399,3 @@ def payroll_paid(request, slug):
         return redirect(request.META.get('HTTP_REFERER', 'payments:payrolls'))
 
     return redirect(request.META.get('HTTP_REFERER', 'payments:payrolls'))
-
