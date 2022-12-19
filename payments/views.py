@@ -1,4 +1,6 @@
 from datetime import datetime
+
+from django.contrib.auth.models import Group
 from django.db.models import Sum
 
 from django.contrib import messages
@@ -27,7 +29,7 @@ def payments(request):
     # get all parent payments (cash)
     parent_payments = ParentPayment.objects.all().aggregate(Sum('amount'))
     parent_payments = parent_payments['amount__sum']
-
+    print(Group.objects.get(user=request.user))
     if students_payments is None:
         students_payments = 0
     if parent_payments is None:

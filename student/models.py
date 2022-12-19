@@ -107,7 +107,7 @@ class Parent(models.Model):
 class Kids(models.Model):
     # Related Fields
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="kids", null=True)
-    parent = models.ForeignKey(Parent, on_delete=models.DO_NOTHING, related_name="my_kids", null=True)
+    parent = models.ForeignKey(Parent, on_delete=models.CASCADE, related_name="my_kids", null=True)
     # basic Fields
     name = models.CharField(null=True, blank=True, max_length=200)
     grade = models.CharField(null=True, blank=True, max_length=200)
