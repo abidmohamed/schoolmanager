@@ -154,7 +154,7 @@ def group_attendances(request, slug):
             attendance = form.save(commit=False)
             # check if attendance exists
             # print(attendance.attendance_date)
-            if StudentAttendance.objects.filter(attendance_date=attendance.attendance_date):
+            if StudentAttendance.objects.filter(group=group, attendance_date=attendance.attendance_date):
                 messages.error(request, "Attendance already exists in the same date")
                 return redirect("attendances:group_attendances", group.slug)
             else:

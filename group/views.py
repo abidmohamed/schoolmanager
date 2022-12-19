@@ -27,7 +27,7 @@ def rooms(request):
     # Page
     page = request.GET.get('page', 1)
     # Number of customers in the page
-    paginator = Paginator(rooms, 5)
+    paginator = Paginator(rooms, 25)
 
     try:
         rooms = paginator.page(page)
@@ -70,7 +70,7 @@ def groups(request):
     # Page
     page = request.GET.get('page', 1)
     # Number of customers in the page
-    paginator = Paginator(groups_list, 5)
+    paginator = Paginator(groups_list, 25)
 
     try:
         groups = paginator.page(page)
@@ -126,7 +126,7 @@ def select_kids(request, slug):
     # Page
     page = request.GET.get('page', 1)
     # Number of clients in the page
-    paginator = Paginator(kids_list, 5)
+    paginator = Paginator(kids_list, 25)
 
     try:
         kids = paginator.page(page)
@@ -187,7 +187,7 @@ def select_students(request, slug):
     # Page
     page = request.GET.get('page', 1)
     # Number of clients in the page
-    paginator = Paginator(students_list, 5)
+    paginator = Paginator(students_list, 25)
 
     try:
         students = paginator.page(page)

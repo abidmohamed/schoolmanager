@@ -82,7 +82,7 @@ def student_payments(request):
     # Page
     page = request.GET.get('page', 1)
     # Number of customers in the page
-    paginator = Paginator(payments_list, 5)
+    paginator = Paginator(payments_list, 25)
 
     try:
         payments = paginator.page(page)
