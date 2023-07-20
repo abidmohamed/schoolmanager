@@ -15,8 +15,9 @@ class TransactionFilter(django_filters.FilterSet):
 
 
 class TransactionCategoryFilter(django_filters.FilterSet):
+    name = CharFilter(field_name='name', lookup_expr='icontains')
 
     class Meta:
         model = TransactionCategory
 
-        fields = ['name']
+        fields = ['name', ]

@@ -252,7 +252,7 @@ def students_confirm_attendance(request, slug):
                 n_sessions=1
             )
         else:
-            sessions = TeacherSessionCounter.filter(teacher=teacher, group=group, subject=group.subject)
+            sessions = TeacherSessionCounter.objects.filter(teacher=teacher, group=group, subject=group.subject)
             new_counter = 0
             for session in sessions:
                 if session.n_sessions < group.subject.n_sessions:
@@ -886,5 +886,6 @@ def attendances_details(request, slug, item):
     context['attendance_item'] = attendance_item
     context['attendances'] = attendances
     context['myFilter'] = myFilter
+    context['item_type'] = item
 
     return render(request, 'attendances/attendances.html', context)

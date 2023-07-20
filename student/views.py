@@ -103,7 +103,7 @@ def parent_details(request, slug):
         parent = Parent.objects.get(slug=slug)
         kids = parent.my_kids.all()
         # Payments
-        payments = ParentPayment.objects.filter(parent=parent).order_by('pay_date')[:5]
+        payments = ParentPayment.objects.filter(parent=parent).order_by('-pay_date')[:5]
     except:
         messages.error(request, 'Something went wrong Fetching Data')
         return redirect('students:parents')
@@ -177,7 +177,7 @@ def kid_details(request, slug):
         attendances = kid.kid_attendance.all().order_by('-attendance__attendance_date')[:5]
         sessions = kid.kid_sessions.all()[:5]
         # Payments
-        payments = ParentPayment.objects.filter(parent=kid.parent).order_by('pay_date')[:5]
+        payments = ParentPayment.objects.filter(parent=kid.parent).order_by('-pay_date')[:5]
     except:
         messages.error(request, 'Something went wrong Fetching Data In Details')
         return redirect('students:kids')

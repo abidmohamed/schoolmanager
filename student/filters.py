@@ -5,6 +5,8 @@ from .models import *
 
 
 class ParentFilter(django_filters.FilterSet):
+    name = CharFilter(field_name='name', lookup_expr='icontains')
+
     start_date = DateFilter(field_name='date_joined', lookup_expr="gte", widget=forms.DateInput(attrs={'type': 'date'}))
     end_date = DateFilter(field_name='date_joined', lookup_expr="lte", widget=forms.DateInput(attrs={'type': 'date'}))
 
@@ -24,6 +26,7 @@ class KidsFilter(django_filters.FilterSet):
 
 
 class StudentFilter(django_filters.FilterSet):
+    name = CharFilter(field_name='name', lookup_expr='icontains')
     date_range = DateRangeFilter(field_name='date_joined')
 
     class Meta:

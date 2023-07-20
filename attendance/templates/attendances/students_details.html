@@ -91,10 +91,9 @@
         </tr>
       </thead>
       <tbody>
-
         {% for student in students %}
         {% if student.status %}
-      <tr class="bg-success text-white">
+        <tr class="bg-success text-white">
           {% if group.group_type == "ADULTS" %}
             <td>{{student.student.name}}</td>
             <td>

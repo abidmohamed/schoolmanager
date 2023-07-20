@@ -34,6 +34,7 @@
                     <tr>
                         <th>{% trans "Name" %}</th>
                         <th>{% trans "Date" %}</th>
+                        <th>{% trans "Time" %}</th>
                         <th>{% trans "Status" %}</th>
                     </tr>
                 </thead>
@@ -52,12 +53,24 @@
                         {{item.attendance.attendance_date}}
                     </td>
                     <td>
-                        {% if item.status == "PRESENT" %}
-                            <i class="fa-solid fa-check text-success fs-4"></i>
-                        {% elif item.status == "ABSENT" %}
-                            <i class="fa-solid fa-x text-warning fs-4"></i>
+                        {{item.attendance.attendance_time}}
+                    </td>
+                    <td>
+                        {% if item_type == "2" or item_type == "3" %}
+                            {% if item.status %}
+                                <i class="fa-solid fa-check text-success fs-4"></i>
+                            {% else %}
+                                <i class="fa-solid fa-x text-danger fs-4"></i>
+                            {% endif %}
+                            <a href="{% url 'attendances:students_attendances_details' item.attendance.slug  %}"> <i class="fa-solid fa-eye text-primary fs-4"></i></a>
                         {% else %}
-                            <i class="fa-solid fa-x text-danger fs-4"></i>
+                            {% if item.status == "PRESENT" %}
+                                <i class="fa-solid fa-check text-success fs-4"></i>
+                            {% elif item.status == "ABSENT" %}
+                                <i class="fa-solid fa-x text-warning fs-4"></i>
+                            {% else %}
+                                <i class="fa-solid fa-x text-danger fs-4"></i>
+                            {% endif %}
                         {% endif %}
                     </td>
                 </tr>

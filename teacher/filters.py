@@ -5,6 +5,7 @@ from .models import *
 
 
 class SubjectFilter(django_filters.FilterSet):
+    name = CharFilter(field_name='name', lookup_expr='icontains')
 
     class Meta:
         model = Subject
@@ -13,6 +14,8 @@ class SubjectFilter(django_filters.FilterSet):
 
 
 class TeacherFilter(django_filters.FilterSet):
+    name = CharFilter(field_name='name', lookup_expr='icontains')
+
     start_date = DateFilter(field_name='date_joined', lookup_expr="gte", widget=forms.DateInput(attrs={'type': 'date'}))
     end_date = DateFilter(field_name='date_joined', lookup_expr="lte", widget=forms.DateInput(attrs={'type': 'date'}))
 
