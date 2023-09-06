@@ -70,6 +70,7 @@ class Parent(models.Model):
     ]
     # Related Fields
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name="parents", null=True)
+    profile = models.OneToOneField(User, on_delete=models.CASCADE, related_name="parent_profile", null=True)
     # basic
     name = models.CharField(null=True, blank=True, max_length=200)
     address = models.CharField(null=True, blank=True, max_length=200)

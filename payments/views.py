@@ -166,7 +166,13 @@ def student_payment_details(request, slug):
 @login_required
 def parent_payments(request):
     context = {}
-    payments_list = ParentPayment.objects.all().order_by('-pay_date')
+    user_groups = request.user.groups.filter(name='parent')
+
+    if user_groups.exists():
+        parent = Parent.objects.get(profile=request.user)
+        payments_list = ParentPayment.objects.filter(parent=parent).order_by('-pay_date')
+    else:
+        payments_list = ParentPayment.objects.all().order_by('-pay_date')
 
     if Group.objects.filter(user=request.user, name='reception'):
         # get CREATED TODAY student payments (cash)
@@ -183,7 +189,7 @@ def parent_payments(request):
     # Page
     page = request.GET.get('page', 1)
     # Number of customers in the page
-    paginator = Paginator(payments_list, 5)
+    paginator = Paginator(payments_list, 25)
 
     try:
         payments = paginator.page(page)
@@ -198,6 +204,12 @@ def parent_payments(request):
     if request.method == 'GET':
         form = ParentPaymentForm()
         context['form'] = form
+
+        user_groups = request.user.groups.filter(name='parent')
+
+        if user_groups.exists():
+            return render(request, 'parents_payments/my_payments.html', context)
+
         return render(request, 'parents_payments/payments.html', context)
 
     if request.method == 'POST':
@@ -215,6 +227,11 @@ def parent_payments(request):
         else:
             messages.error(request, 'Problem processing your request')
             return redirect('payments:parent_payments')
+
+    user_groups = request.user.groups.filter(name='parent')
+
+    if user_groups.exists():
+        return render(request, 'parents_payments/my_payments.html', context)
 
     return render(request, 'parents_payments/payments.html', context)
 

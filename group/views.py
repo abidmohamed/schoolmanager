@@ -16,7 +16,8 @@ from group.filters import GroupFilter
 from group.forms import RoomForm, GroupForm, GroupTimeForm
 from group.models import Room, Group, GroupStudent, GroupTime
 from student.filters import KidsFilter, StudentFilter
-from student.models import Kids, Student
+from student.models import Kids, Student, Parent
+from teacher.models import Teacher
 
 
 @login_required
@@ -57,7 +58,7 @@ def rooms(request):
     return render(request, 'rooms/rooms.html', context)
 
 
-####################### groups
+# ###################### groups
 @login_required
 def groups(request):
     context = {}
@@ -277,6 +278,25 @@ def delete_group_item(request, id):
 
 
 # ######## Times
+def schedule_view():
+    # List of days of the week
+    days_of_week = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY']
+
+    # Generate time slots separated by 2 hours
+    start_time = 8  # 8:00 AM
+    end_time = 20   # 8:00 PM
+    step = 2
+
+    # time_slots = [f"{str(hour).zfill(2)}:00 - {str(hour+step).zfill(2)}:00" for hour in range(start_time, end_time, step)]
+    # time_slots = [(hour, hour + step) for hour in range(start_time, end_time, step)]
+    time_slots = [f"{hour} - {hour + step}" for hour in range(start_time, end_time, step)]
+    # context = {
+    #     'days_of_week': days_of_week,
+    #     'time_slots': time_slots,
+    # }
+
+    return days_of_week, time_slots
+
 @login_required
 def groups_times(request):
     context = {}
@@ -372,3 +392,83 @@ def times_pdf(request):
     if pisa_status.err:
         return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
+
+
+@login_required
+def teacher_groups(request):
+    context = {}
+
+    try:
+        teacher = Teacher.objects.get(profile=request.user)
+    except:
+        messages.error(request, 'Problem processing your request')
+
+    groups = Group.objects.filter(teacher=teacher).order_by('-name')
+
+    context['groups'] = groups
+
+    return render(request, 'groups/teacher_groups.html', context)
+
+
+@login_required
+def teacher_groups_times(request):
+    context = {}
+    try:
+        teacher = Teacher.objects.get(profile=request.user)
+    except:
+        messages.error(request, 'Problem processing your request')
+
+    # Retrieve all GroupTime objects for the teacher's groups
+    days_of_week, time_slots = schedule_view()
+
+    times = GroupTime.objects.filter(group__teacher=teacher)
+
+    context['times'] = times
+
+    context['days_of_week'] = days_of_week
+    context['time_slots'] = time_slots
+
+    return render(request, "times/teacher_times.html", context)
+
+
+@login_required
+def parent_kids_times(request):
+    context = {}
+
+    try:
+        parent = Parent.objects.get(profile=request.user)
+    except:
+        messages.error(request, 'Problem processing your request')
+
+    days_of_week, time_slots = schedule_view()
+    # Retrieve the parent's kids
+    parent_kids = parent.my_kids.all()
+
+    # Retrieve group times associated with the parent's kids
+    # times = GroupTime.objects.filter(group__items__kid__in=parent_kids)
+
+    # Create a list to store kid names along with their times
+    kid_times = []
+
+    # Iterate through the group times and collect kid names and times
+    # for time in times:
+    #     kid_name = time.group.items.kid.name  # Access the kid's name through related fields
+    #     kid_time_info = f"{kid_name}: {time.weekday} from {time.start_time} to {time.end_time}"
+    #     kid_times.append(kid_time_info)
+    # Create a list to store kid and their associated group times
+    kid_group_times = []
+
+    # Iterate through each kid and retrieve their group times
+    for kid in parent_kids:
+        print(kid)
+        times = GroupTime.objects.filter(group__items__kid=kid)
+        kid_group_times.append({'kid': kid, 'times': times})
+
+    print(kid_group_times)
+
+    context['times'] = times
+    context['kid_group_times'] = kid_group_times
+    context['days_of_week'] = days_of_week
+    context['time_slots'] = time_slots
+
+    return render(request, "times/parent_times.html", context)

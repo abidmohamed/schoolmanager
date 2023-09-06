@@ -17,5 +17,10 @@ urlpatterns = [
     path('groups-times/update/<str:pk>', views.update_groups_times, name='update_groups_times'),
     path('groups-times/delete/<str:pk>', views.delete_groups_times, name='delete_groups_times'),
     path('groups-times/pdf', views.times_pdf, name='times_pdf'),
+    # Teacher
+    path('my-groups', views.teacher_groups, name='teacher_groups'),
+    path('my-timetable', views.teacher_groups_times, name='teacher_groups_times'),
+    # Parent
+    path('my-kids-timetable', views.parent_kids_times, name='parent_kids_times'),
 
 ]

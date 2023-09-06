@@ -1,0 +1,53 @@
+{% extends 'partials/teachers_base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load start_end_time %}
+{% load str2int %}
+
+{% block main %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{% trans "Groups Times" %}</h1>
+</div>
+
+<div class="row">
+  <div class="col-md">
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th></th>  <!-- Empty cell in the top-left corner -->
+                {% for day in days_of_week %}
+                <th class="fw-bolder fs-4">{{ day }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for time_slot in time_slots %}
+            <tr>
+                <td><span class="fw-bolder fs-4">{{ time_slot }}</span></td>
+                {% for day in days_of_week %}
+                <td>
+                  {% for time in times %}
+                    {% if time.weekday == day %}
+                      {% if time.start_time.hour >= time_slot|get_start_time|remove_leading_zeros and time.start_time.hour < time_slot|get_end_time|remove_leading_zeros %}
+                        <li class="list-group-item list-group-item-primary m-1">
+                    <span class="fw-bolder fs-6 text-dark" >Group : {{time.group.name}} - {{time.group.group_type}}</span>
+                    <br>
+                    <span class="fw-bolder fs-6 text-dark">Teacher : {{time.group.teacher.name}} - {{time.group.subject}}</span>
+                    <br>
+                    <span class="fw-bolder fs-6 text-dark">{{time.room}}- {{time.hallway}}</span>
+                    <br>
+                  </li>
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

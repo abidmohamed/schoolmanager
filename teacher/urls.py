@@ -12,4 +12,7 @@ urlpatterns = [
     path('teachers/update/<slug:slug>', views.update_teacher, name='update_teacher'),
     path('teachers/details/<slug:slug>', views.teacher_details, name='teacher_details'),
     path('teachers/details/group-pdf/<slug:slug>', views.teacher_groups_pdf, name='teacher_groups_pdf'),
+    # Teacher account
+    path('attendances/', views.teacher_attendances, name='teacher_attendances'),
+
 ]

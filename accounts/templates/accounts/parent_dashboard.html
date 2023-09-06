@@ -1,0 +1,21 @@
+{% extends 'partials/parents_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load erpextra %}
+
+{% block main %}
+<br>
+    <div class="p-4 p-md-5 mb-4 text-white rounded bg-success bg-gradient">
+        <div class="col-md-6 px-0">
+          <h1 class="display-4 fst-italic">Sahel Learning Customer Space</h1>
+          <p class="lead my-3">{% trans "Welcome" %} - {{ request.user.username}}</p>
+          <p class="lead mb-0 text-white fw-bold">
+              "To this end, the greatest asset of a school is the personality of the teacher." –John Strachan
+          </p>
+        </div>
+    </div>
+<hr>
+<br>
+
+{% endblock %}

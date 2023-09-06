@@ -1,0 +1,79 @@
+{% extends 'partials/parents_base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load search_pagination_url %}
+{% load i18n %}
+
+{% block css %}
+<link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+
+
+{% block main %}
+
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{% trans "Kids" %}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+
+      </div>
+    </div>
+  </div>
+
+  <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
+
+  {% if kids|length > 0 %}
+    <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col">{% trans "Name" %}</th>
+          <th scope="col">{% trans "Grade" %}</th>
+          <th scope="col">{% trans "Sick" %}</th>
+          <th scope="col">{% trans "Birth Date" %}</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for kid in kids %}
+      <tr>
+        <td>{{kid.name}}</td>
+        <td>{{kid.grade}}</td>
+        <td>
+             {% if kid.sick %}
+                <i class="fa-solid fa-check text-danger fs-4"></i>
+            {% else %}
+                <i class="fa-solid fa-x text-success fs-4"></i>
+            {% endif %}
+        </td>
+        <td>{{kid.birthday}}</td>
+        <td>
+            <a href="{% url 'students:parent_kid_details' kid.slug %}" class="btn btn-primary">
+                <i class="fa-solid fa-eye"></i>
+            </a>
+        </td>
+      </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+    <br>
+  {% else %}
+  <div class="row">
+    <div class="col-lg-2">
+
+    </div>
+    <div class="col-lg-8">
+      <h3>{% trans "Add First Kid" %}</h3>
+      <img class=img-fluid  src="{% static 'assets/img/empty.svg' %}" alt="School Manager Sahel Learning">
+    </div>
+    <div class="col-lg-3">
+
+    </div>
+  </div>
+  {% endif %}
+{% endblock %}
+

@@ -1,0 +1,207 @@
+{% extends 'partials/parents_base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% block main %}
+<br>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">{% trans "Kid Details" %}</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group me-2">
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <h6>{% trans "Name" %}: </h6>
+                    <td>{{kid.name}}</td>
+                </div>
+                <div class="col-md-2">
+                    <h6>{% trans "Grade" %}: </h6>
+                    <td>{{kid.grade}}</td>
+                </div>
+                <div class="col-md-2">
+                    <h6>Parent Debt: </h6>
+                    <td>{{kid.parent.debt}} {% trans "DZD" %}</td>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <hr>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                <!-- All Attendance -->
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                        <div class="card-header py-3 bg-primary border-primary text-white">
+                            <h4 class="my-0 fw-normal">All sessions</h4>
+                        </div>
+                        <div class="card card-body">
+                            <h1 class="card-title pricing-card-title text-primary">{{all_sessions}}</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- Present -->
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-success">
+                        <div class="card-header py-3 bg-success border-success text-white">
+                            <h4 class="my-0 fw-normal">Present</h4>
+                        </div>
+                        <div class="card card-body">
+                            <h1 class="card-title pricing-card-title text-success">{{present}}</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- Absent -->
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-danger">
+                        <div class="card-header py-3 bg-danger border-danger text-white">
+                            <h4 class="my-0 fw-normal">Absent</h4>
+                        </div>
+                        <div class="card card-body">
+                            <h1 class="card-title pricing-card-title text-danger">{{absent}}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h2> {% trans "Groups" %}</h2>
+            <table class="table display table-dark text-center">
+                <thead class="thead-light">
+                    <tr>
+                        <th>{% trans "Name" %}</th>
+                        <th>{% trans "Teacher" %}</th>
+                        <th>{% trans "Room" %}</th>
+                        <th>{% trans "Subject" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in groups %}
+                <tr>
+                    <td class="">
+                        {{item.group.name}}
+                    </td>
+                    <td class="">
+                        {{item.group.teacher}}
+                    </td>
+                    <td class="">
+                        {{item.group.room}}
+                    </td>
+                    <td class="">
+                        {{item.group.subject}}
+                    </td>
+                    <tr>
+                    <td colspan="4">
+                        <table class="table table-light mb-0">
+                            <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Starts</th>
+                                <th>Ends</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for time in item.group.times.all %}
+                                <tr>
+                                    <td>
+                                        {{time.weekday}}
+                                    </td>
+                                    <td>
+                                        {{time.start_time}}
+                                    </td>
+                                    <td>
+                                        {{time.end_time}}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </td>
+                    </tr>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <br>
+            <hr>
+            <h2> {% trans "Attendance" %} <a href="{% url 'attendances:attendances_details' kid.slug 3 %}" class="text-primary"><i class="fa-solid fa-eye"></i></a></h2>
+            <table class="table display table-secondary text-center">
+                <thead>
+                    <tr>
+                        <th>{% trans "Name" %}</th>
+                        <th>{% trans "Date" %}</th>
+                        <th>{% trans "Time" %}</th>
+                        <th>{% trans "Status" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in attendances %}
+                <tr>
+                    <td>
+                        {{item.attendance.group}}
+                    </td>
+                    <td>
+                        {{item.attendance.attendance_date}}
+                    </td>
+                    <td>
+                        {{item.attendance.attendance_time}}
+                    </td>
+                    <td>
+                        {% if item.status %}
+                            <i class="fa-solid fa-check text-success fs-4"></i>
+                        {% else %}
+                            <i class="fa-solid fa-x text-danger fs-4"></i>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <br>
+            <hr>
+            <h2> {% trans "Sessions" %} </h2>
+            <table class="table display table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>{% trans "Name" %}</th>
+                        <th>{% trans "Subject" %}</th>
+                        <th>{% trans "Start Date" %}</th>
+                        <th>{% trans "Last Date" %}</th>
+                        <th>{% trans "N° sessions" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in sessions %}
+                <tr>
+                    <td>
+                        {{item.group}}
+                    </td>
+                    <td>
+                        {{item.subject}}
+                    </td>
+                    <td>
+                        {{item.start_date}}
+                    </td>
+                    <td>
+                     {{item.end_date}}
+                    </td>
+                    <td>
+                     {{item.n_sessions}}
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <br>
+            <hr>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

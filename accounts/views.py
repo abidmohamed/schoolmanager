@@ -9,9 +9,10 @@ from django.contrib import messages
 from django.conf import settings
 from xhtml2pdf import pisa
 
-from attendance.models import StudentAttendance, EmployeeAttendance
+from attendance.models import StudentAttendance, EmployeeAttendance, TeacherAttendanceItem
 from payments.models import Payroll
 from student.models import Student, Kids, Parent
+from teacher.models import Teacher
 from .filters import UserFilter
 from .forms import UserLoginForm, UserForm
 from .models import *
@@ -56,13 +57,29 @@ def login(request):
         if user is not None:
             auth.login(request, user)
 
-            return redirect('accounts:dashboard')
+            return redirect('accounts:group_check')
         else:
             context['form'] = form
             messages.error(request, 'Invalid Credentials')
             return redirect('accounts:login')
 
     return render(request, 'accounts/login.html', context)
+
+
+@login_required
+def group_check(request):
+    group_name = Group.objects.all().filter(user=request.user)  # get logget user grouped name
+    group_name = str(group_name[0])  # convert to string
+
+    if "teacher" == group_name:
+        # print("Hello Teacher")
+        return redirect('accounts:teacher_dashboard')
+    elif "student" == group_name:
+        return redirect('accounts:student_dashboard')
+    elif "parent" == group_name:
+        return redirect('accounts:parent_dashboard')
+    else:
+        return redirect('accounts:dashboard')
 
 
 @login_required
@@ -157,6 +174,18 @@ def dashboard(request):
         Group.objects.create(name='reception')
         messages.success(request, "You can create users of type Reception")
 
+    if not Group.objects.all().filter(name='teacher'):
+        Group.objects.create(name='teacher')
+        messages.success(request, "You can create users of type Teacher")
+
+    if not Group.objects.all().filter(name='parent'):
+        Group.objects.create(name='parent')
+        messages.success(request, "You can create users of type Parent")
+
+    if not Group.objects.all().filter(name='student'):
+        Group.objects.create(name='student')
+        messages.success(request, "You can create users of type Student")
+
     # students activity stats
     active_students = Student.objects.filter(is_active=True).count()
     inactive_students = Student.objects.filter(is_active=False).count()
@@ -188,4 +217,53 @@ def dashboard(request):
     context['employees_payroll'] = employees_payroll
     context['teachers_payroll'] = teachers_payroll
 
+    return render(request, 'accounts/dashboard.html', context)
+
+
+@login_required
+def teacher_dashboard(request):
+    context = {}
+    # fetch data
+    try:
+        teacher = Teacher.objects.get(profile=request.user)
+        attendances = TeacherAttendanceItem.objects.filter(teacher=teacher).order_by("-attendance__attendance_date")[:25]
+    except:
+        messages.error(request, 'Something went wrong Fetching Data')
+        return redirect('/')
+
+    context['teacher'] = teacher
+    context['attendances'] = attendances
+
+    # calculate Presence
+    all_sessions = 0
+    present = 0
+    absent = 0
+    unapproved_absent = 0
+
+    for attendance in attendances:
+        all_sessions += 1
+        if attendance.status == "PRESENT":
+            present += 1
+        elif attendance.status == "ABSENT":
+            absent += 1
+        else:
+            unapproved_absent += 1
+
+    context['all_sessions'] = all_sessions
+    context['present'] = present
+    context['absent'] = absent
+    context['unapproved_absent'] = unapproved_absent
+
+    return render(request, 'accounts/teacher_dashboard.html', context)
+
+
+@login_required
+def parent_dashboard(request):
+    context = {}
+    return render(request, 'accounts/parent_dashboard.html', context)
+
+
+@login_required
+def student_dashboard(request):
+    context = {}
     return render(request, 'accounts/dashboard.html', context)

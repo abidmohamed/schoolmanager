@@ -1,0 +1,162 @@
+{% extends 'partials/parents_base.html' %}
+{% load static %}
+{% load i18n %}
+{% load erpextra %}
+{% load crispy_forms_tags %}
+{% load search_pagination_url %}
+{% block main %}
+<br>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">{% trans 'Attendances Details' %} - {{attendance_item}}</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+
+      </div>
+    </div>
+  </div>
+    {% if attendances|length > 0 %}
+        <div class="row">
+    <div class="col-md">
+        <div class="row">
+            <div class="col">
+                <div class="card card-body">
+                    <form method="get">
+                        {{myFilter.form}}
+                        <button class="btn btn-primary" type="submit">{% trans 'Search' %}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <h2> {% trans "Attendance" %} </h2>
+        <div class="table-responsive">
+            <table class="table display table-secondary text-center">
+                <thead>
+                    <tr>
+                        <th>{% trans "Name" %}</th>
+                        <th>{% trans "Date" %}</th>
+                        <th>{% trans "Time" %}</th>
+                        <th>{% trans "Status" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in attendances %}
+                <tr>
+                    <td>
+                        {% if item.attendance.group %}
+                            {{item.attendance.group}}
+                        {% else %}
+                            {{item.attendance.user}}
+                        {% endif %}
+
+                    </td>
+                    <td>
+                        {{item.attendance.attendance_date}}
+                    </td>
+                    <td>
+                        {{item.attendance.attendance_time}}
+                    </td>
+                    <td>
+                        {% if item_type == "2" or item_type == "3" %}
+                            {% if item.status %}
+                                <i class="fa-solid fa-check text-success fs-4"></i>
+                            {% else %}
+                                <i class="fa-solid fa-x text-danger fs-4"></i>
+                            {% endif %}
+                            <a href="{% url 'attendances:students_attendances_details' item.attendance.slug  %}"> <i class="fa-solid fa-eye text-primary fs-4"></i></a>
+                        {% else %}
+                            {% if item.status == "PRESENT" %}
+                                <i class="fa-solid fa-check text-success fs-4"></i>
+                            {% elif item.status == "ABSENT" %}
+                                <i class="fa-solid fa-x text-warning fs-4"></i>
+                            {% else %}
+                                <i class="fa-solid fa-x text-danger fs-4"></i>
+                            {% endif %}
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <!--  Pagination -->
+        {% if attendances.has_other_pages %}
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    {% if attendances.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link"
+                            href="?{% param_replace page=attendances.previous_page_number %}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="disabled page-item">
+                    <a class="page-link"
+                       href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                    {% endif %}
+            {% for i in attendances.paginator.page_range %}
+                {% if attendances.number > 3 and forloop.first %}
+                    <li class="page-item">
+                        <a class="page-link" href="?{% param_replace page=1 %}">
+                        1
+                            </a>
+                    </li>
+                    <li class="disabled">⋯</li>
+                {% endif %}
+                {% if attendances.number == i %}
+                    <li class="page-item active">
+                        <span>
+                            <a class="page-link" href="#">
+                            {{ i }}
+                                <span class="sr-only">(current)
+                                </span>
+                            </a>
+                        </span>
+                    </li>
+                {% elif i > attendances.number|add:'-3' and i < attendances.number|add:'3' %}
+                    <li class="page-item">
+                        <a class="page-link" href="?{% param_replace page=i %}">
+                            {{ i }}
+                        </a>
+                    </li>
+                {% endif %}
+                {% if attendances.paginator.num_pages > attendances.number|add:'3' and forloop.last %}
+                    <li>...</li>
+                    <li class="page-item">
+                        <a class="page-link" href="?{% param_replace page=attendances.paginator.num_pages %}">
+                        {{ attendances.paginator.num_pages }}
+                            </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            {% if attendances.has_next %}
+                <li class="page-item">
+                    <a class="page-link"
+                       href="?{% param_replace page=attendances.next_page_number %}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            {% else %}
+                <li class="disabled page-item">
+                    <a class="page-link disabled"
+                       href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+            </nav>
+        {% endif %}
+    <!--  Pagination -->
+    </div>
+</div>
+    {% endif %}
+{% endblock %}

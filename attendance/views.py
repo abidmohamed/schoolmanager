@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from django.urls import reverse
-
 from attendance.filters import EmployeeAttendanceFilter, TeacherAttendanceFilter, StudentAttendanceFilter, \
     EmployeeAttendanceItemFilter
 from attendance.forms import StudentAttendanceForm, EmployeeAttendanceForm
@@ -888,4 +887,8 @@ def attendances_details(request, slug, item):
     context['myFilter'] = myFilter
     context['item_type'] = item
 
+    user_groups = request.user.groups.filter(name='parent')
+
+    if user_groups.exists():
+        return render(request, 'attendances/parent_attendances.html', context)
     return render(request, 'attendances/attendances.html', context)

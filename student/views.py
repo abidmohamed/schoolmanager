@@ -6,11 +6,12 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.models import Group
 # Create your views here.
 from django.template.loader import render_to_string
 from xhtml2pdf import pisa
 
+from accounts.forms import CreateUserForm
 from attendance.models import SessionCounter
 from group.models import GroupTime
 from payments.models import StudentPayment, ParentPayment
@@ -45,20 +46,36 @@ def parents(request):
 
     if request.method == 'GET':
         form = ParentForm()
+        user_form = CreateUserForm()
+
         context['form'] = form
+        context['user_form'] = user_form
         return render(request, 'parent/parents.html', context)
 
     if request.method == 'POST':
         form = ParentForm(request.POST)
+        user_form = CreateUserForm(request.POST)
 
-        if form.is_valid():
+        if form.is_valid() and user_form.is_valid():
             parent = form.save(commit=False)
             parent.user = request.user
+            profile = user_form.save()
+
+            # Filter groups by name
+            parent_group = Group.objects.get(name='parent')
+            profile.groups.add(parent_group)
+
+            profile.save()
+            parent.profile = profile
             parent.save()
+
             messages.success(request, 'New Parent Added')
             return redirect('students:parent_details', parent.slug)
         else:
-            messages.error(request, 'Problem processing your request')
+            messages.error(request, 'Problem processing your request -> '
+                           + str(form.errors.as_data())
+                           + ' '
+                           + str(user_form.errors.as_data()))
             return redirect('students:parents')
 
     return render(request, 'parent/parents.html', context)
@@ -66,30 +83,49 @@ def parents(request):
 
 @login_required
 def update_parent(request, slug):
+    context = {}
     # fetch data
     try:
         parent = Parent.objects.get(slug=slug)
         form = ParentForm(instance=parent)
+        user_form = CreateUserForm(instance=parent.profile)
     except:
         messages.error(request, 'Something went wrong When Fetching Data')
         return redirect('students:parents')
 
-    context = {}
     # company = Settings.objects.all().filter()[:1].get()
     # context['company'] = company
     context['parent'] = parent
     context['form'] = form
+    context['user_form'] = user_form
 
     # handling request
     if request.method == 'POST':
         form = ParentForm(request.POST, instance=parent)
+        user_form = CreateUserForm(request.POST, instance=parent.profile)
 
-        if form.is_valid():
-            parent = form.save()
+        if form.is_valid() and user_form.is_valid():
+            parent = form.save(commit=False)
+            parent.user = request.user
+
+            profile = user_form.save()
+
+            # Filter groups by name
+            parent_group = Group.objects.get(name='parent')
+            profile.groups.add(parent_group)
+
+            profile.save()
+            parent.profile = profile
+            parent.save()
+
             messages.success(request, 'Parent Updated')
             return redirect('students:parent_details', parent.slug)
         else:
-            messages.error(request, 'Problem processing your request')
+            messages.error(request, 'Problem processing your request -> '
+                           + str(form.errors.as_data())
+                           + ' '
+                           + str(user_form.errors.as_data())
+                           )
             return redirect('students:parents')
 
     return render(request, 'parent/update.html', context)
@@ -163,6 +199,67 @@ def kids(request):
         return render(request, 'kids/kids.html', context)
 
     return render(request, 'kids/kids.html', context)
+
+
+@login_required
+def parent_kids(request):
+    context = {}
+    # fetch data
+    try:
+        parent = Parent.objects.get(profile=request.user)
+    except:
+        messages.error(request, 'Problem processing your request')
+
+    # Retrieve the parent's kids
+    kids = parent.my_kids.all()
+
+    context['kids'] = kids
+
+    return render(request, 'kids/parent_kids.html', context)
+
+
+@login_required
+def parent_kid_details(request, slug):
+    context = {}
+    # fetch data
+    try:
+        kid = Kids.objects.get(slug=slug)
+        # groups
+        groups = kid.kid_group.all()
+        # attendances
+        attendances = kid.kid_attendance.all().order_by('-attendance__attendance_date')[:5]
+        sessions = kid.kid_sessions.all()[:5]
+        # Payments
+        payments = ParentPayment.objects.filter(parent=kid.parent).order_by('-pay_date')[:5]
+    except:
+        messages.error(request, 'Something went wrong Fetching Data In Details')
+
+    context['kid'] = kid
+    context['groups'] = groups
+    context['attendances'] = attendances
+    context['sessions'] = sessions
+    context['payments'] = payments
+
+    # calculate Presence
+    all_sessions = 0
+    present = 0
+    absent = 0
+    for attendance in attendances:
+        all_sessions += 1
+        if attendance.status:
+            present += 1
+        else:
+            absent += 1
+
+    context['all_sessions'] = all_sessions
+    context['present'] = present
+    context['absent'] = absent
+
+    # context['payments'] = payments
+    #    print(order)
+    # Handling request
+
+    return render(request, 'kids/parent_kid_details.html', context)
 
 
 @login_required

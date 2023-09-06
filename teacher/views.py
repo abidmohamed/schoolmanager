@@ -6,11 +6,13 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User, auth, Group
 
 # Create your views here.
 from django.template.loader import render_to_string
 from xhtml2pdf import pisa
 
+from accounts.forms import CreateUserForm
 from attendance.models import TeacherLeaveItem, TeacherAttendanceItem
 from payments.models import Payroll
 from teacher.filters import TeacherFilter, SubjectFilter
@@ -63,6 +65,7 @@ def subjects(request):
 
     return render(request, 'subjects/subjects.html', context)
 
+
 @login_required
 def subject_details(request, pk):
     context = {}
@@ -95,6 +98,7 @@ def subject_details(request, pk):
 
     return render(request, 'subjects/details.html', context)
 
+
 # Teachers
 @login_required
 def teachers(request):
@@ -122,20 +126,40 @@ def teachers(request):
 
     if request.method == 'GET':
         form = TeacherForm()
+        user_form = CreateUserForm()
         context['form'] = form
+        context['user_form'] = user_form
         return render(request, 'teachers/teachers.html', context)
 
     if request.method == 'POST':
         form = TeacherForm(request.POST)
+        user_form = CreateUserForm(request.POST)
 
-        if form.is_valid():
+        if form.is_valid() and user_form.is_valid():
             teacher = form.save(commit=False)
             teacher.user = request.user
+            profile = user_form.save()
+
+            # Filter groups by name
+            teacher_group = Group.objects.get(name='teacher')
+            profile.groups.add(teacher_group)
+
+            profile.save()
+            teacher.profile = profile
             teacher.save()
             messages.success(request, 'New Teacher Added')
             return redirect('teachers:teacher_details', teacher.slug)
         else:
-            messages.error(request, 'Problem processing your request')
+            # Construct form errors message
+            print(form.errors.as_data())
+            print(user_form.errors.as_data())
+            messages.error(
+                request,
+                'Problem processing your request '
+                + str(form.errors.as_data())
+                + ' '
+                + str(user_form.errors.as_data())
+            )
             return redirect('teachers:teachers')
 
     return render(request, 'teachers/teachers.html', context)
@@ -204,6 +228,46 @@ def teacher_details(request, slug):
             return redirect('teachers:teacher_details', teacher.slug)
 
     return render(request, 'teachers/details.html', context)
+
+
+@login_required
+def teacher_attendances(request):
+    context = {}
+    # fetch data
+    try:
+        teacher = Teacher.objects.get(profile=request.user)
+        groups = teacher.teacher_groups.all()
+        attendances = TeacherAttendanceItem.objects.filter(teacher=teacher).order_by("-attendance__attendance_date")[:25]
+        payrolls = Payroll.objects.filter(teacher=teacher).order_by("-pay_date")[:5]
+
+    except:
+        messages.error(request, 'Something went wrong Fetching Data')
+        return redirect('/')
+
+    context['teacher'] = teacher
+    context['attendances'] = attendances
+
+    # calculate Presence
+    all_sessions = 0
+    present = 0
+    absent = 0
+    unapproved_absent = 0
+
+    for attendance in attendances:
+        all_sessions += 1
+        if attendance.status == "PRESENT":
+            present += 1
+        elif attendance.status == "ABSENT":
+            absent += 1
+        else:
+            unapproved_absent += 1
+
+    context['all_sessions'] = all_sessions
+    context['present'] = present
+    context['absent'] = absent
+    context['unapproved_absent'] = unapproved_absent
+
+    return render(request, 'teachers/attendances.html', context)
 
 
 @login_required

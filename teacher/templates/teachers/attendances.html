@@ -1,0 +1,164 @@
+{% extends 'partials/teachers_base.html' %}
+{% load static %}
+{% load i18n %}
+{% load erpextra %}
+{% load crispy_forms_tags %}
+{% block main %}
+<br>
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">{% trans "Attendances" %}</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group me-2">
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="card card-body">
+            <div class="row">
+                <div class="col-md-2">
+                    <h6>{% trans "Name" %}: </h6>
+                    <td>{{teacher.name}}</td>
+                </div>
+                <div class="col-md-2">
+                    <h6>{% trans "Email" %}: </h6>
+                    <td>{{teacher.email}}</td>
+                </div>
+                <div class="col-md-2">
+                    <h6>{% trans "Phone" %}: </h6>
+                    <td>{{teacher.phone}}</td>
+                </div>
+                <div class="col-md-2">
+                    <h6>{% trans "Adress" %}: </h6>
+                    <td>{{teacher.address}}</td>
+                </div>
+                <div class="col-md-2">
+                    <h6>{% trans "Certificate" %}: </h6>
+                    <td>{{teacher.certificate}}</td>
+                </div>
+                <div class="col-md-2">
+                    <h6>Major: </h6>
+                    <td>{{teacher.major}}</td>
+                </div>
+                <div class="col-md-2">
+                    <h6>{% trans "Subject" %} </h6>
+                    <td>{{teacher.subject}}</td>
+                </div>
+                <div class="col-md-2">
+                    <h6>{% trans "Join Date" %} </h6>
+                    <td>{{teacher.date_joined}}</td>
+                </div>
+
+            </div>
+            <hr>
+            {% if request.user|has_group:'teacher' %}
+            <div class="row row-cols-1 row-cols-md-4 mb-3 text-center">
+                <!-- All Attendance -->
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                        <div class="card-header py-3 bg-primary border-primary text-white">
+                            <h4 class="my-0 fw-normal">{% trans "All sessions" %}</h4>
+                        </div>
+                        <div class="card card-body">
+                            <h1 class="card-title pricing-card-title text-primary">{{all_sessions}}</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- Present -->
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-success">
+                        <div class="card-header py-3 bg-success border-success text-white">
+                            <h4 class="my-0 fw-normal">{% trans "Present" %}</h4>
+                        </div>
+                        <div class="card card-body">
+                            <h1 class="card-title pricing-card-title text-success">{{present}}</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- Absent -->
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-warning">
+                        <div class="card-header py-3 bg-warning border-warning text-white">
+                            <h4 class="my-0 fw-normal">{% trans "Absent" %}</h4>
+                        </div>
+                        <div class="card card-body">
+                            <h1 class="card-title pricing-card-title text-warning">{{absent}}</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- Unapproved Absent -->
+                <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm border-danger">
+                        <div class="card-header py-3 bg-danger border-danger text-white">
+                            <h4 class="my-0 fw-normal">{% trans "Unapproved Absent" %}</h4>
+                        </div>
+                        <div class="card card-body">
+                            <h1 class="card-title pricing-card-title text-danger">{{unapproved_absent}}</h1>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <hr>
+            {% endif %}
+            <h2> {% trans "Attendance" %}
+            </h2>
+            <table class="table display table-secondary text-center">
+                <thead>
+                    <tr>
+                        <th>{% trans "Name" %}</th>
+                        <th>{% trans "Date" %}</th>
+                        <th>{% trans "Entering Time" %}</th>
+                        <th>{% trans "Leaving Time" %}</th>
+                        <th>{% trans "Status" %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for item in attendances %}
+                <tr>
+                    <td>
+                        {{item.attendance.group}}
+                    </td>
+                    <td>
+                        {{item.attendance.attendance_date}}
+                    </td>
+                    <td>
+                        {% if item.status == "PRESENT" %}
+                            {{item.attendance.attendance_time}}
+                        {% endif %}
+                    </td>
+                        {% if item.attendance.leave_teachers.first.status == "APPROVED" %}
+                        <td class="bg-success">
+                            {{item.attendance.leave_teachers.first.leave_time}}
+                        </td>
+                        {% elif item.attendance.leave_teachers.first.status == "UNAPPROVED" %}
+                        <td class="bg-warning">
+                            {{item.attendance.leave_teachers.first.leave_time}}
+                        </td>
+                        {% else %}
+                        <td class="bg-danger">
+
+                        </td>
+                        {% endif %}
+                    <td>
+                        {% if item.status == "PRESENT" %}
+                            <i class="fa-solid fa-check text-success fs-4"></i>
+                        {% elif item.status == "ABSENT" %}
+                            <i class="fa-solid fa-x text-warning fs-4"></i>
+                        {% else %}
+                            <i class="fa-solid fa-x text-danger fs-4"></i>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <br>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

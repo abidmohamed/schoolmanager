@@ -8,6 +8,9 @@ urlpatterns = [
     path('parents', views.parents, name='parents'),
     path('parents/update/<slug:slug>', views.update_parent, name='update_parent'),
     path('parents/details/<slug:slug>', views.parent_details, name='parent_details'),
+    path('My-kids', views.parent_kids, name='parent_kids'),
+    path('My-kids/details/<slug:slug>', views.parent_kid_details, name='parent_kid_details'),
+
     # Kids
     path('kids', views.kids, name='kids'),
     path('kids/details/<slug:slug>', views.kid_details, name='kid_details'),
