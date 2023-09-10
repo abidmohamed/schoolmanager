@@ -25,4 +25,8 @@ urlpatterns = [
     path('transportation', views.transportation_list, name='transportation'),
     path('transportation/print', views.transportation_pdf, name='transportation_pdf'),
 
+    # API URLS
+    path('api/My-kids/', views.ParentKidsAPIView.as_view(), name='api_parent_kids'),
+    path('api/My-kids/details/<slug:slug>', views.ParentKidDetailsView.as_view(), name='api_parent_kid_details'),
+
 ]

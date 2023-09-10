@@ -23,4 +23,7 @@ urlpatterns = [
     # Parent
     path('my-kids-timetable', views.parent_kids_times, name='parent_kids_times'),
 
+    # API URLS
+    path('api/my-kids-timetable/', views.ParentKidsTimesView.as_view(), name='api_parent_kids_times'),
+
 ]

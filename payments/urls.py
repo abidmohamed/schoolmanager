@@ -19,4 +19,7 @@ urlpatterns = [
     path('payrolls/details/<slug:slug>', views.payroll_details, name="payroll_details"),
     path('payrolls/pay/<slug:slug>', views.payroll_paid, name="payroll_paid"),
 
+    # API urls
+    path('api/parents-payments', views.ParentPaymentView.as_view(), name="api_parents_payments"),
+
 ]

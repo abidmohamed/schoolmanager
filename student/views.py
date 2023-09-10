@@ -10,6 +10,22 @@ from django.contrib.auth.models import Group
 # Create your views here.
 from django.template.loader import render_to_string
 from xhtml2pdf import pisa
+from django.shortcuts import get_object_or_404
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.permissions import (
+    IsAuthenticated,
+)
+
+from attendance.serializers import StudentAttendanceSerializer, SessionCounterSerializer
+from group.serializers import GroupSerializer
+from payments.serializers import ParentPaymentSerializer
+from .models import Parent  # Import your Parent model here
+from .serializers import KidsSerializer  # Import your Kid serializer here
 
 from accounts.forms import CreateUserForm
 from attendance.models import SessionCounter
@@ -552,3 +568,82 @@ def transportation_pdf(request):
     if pisa_status.err:
         return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
+
+
+"""
+    API endpoint for retrieving a parent's kids.
+    """
+
+
+class ParentKidsAPIView(APIView):
+    """
+    API endpoint for retrieving a parent's kids.
+    """
+    authentication_classes = [SessionAuthentication]  # Use appropriate authentication
+    permission_classes = [IsAuthenticated]  # Use appropriate permissions
+
+    def get(self, request):
+        try:
+            parent = Parent.objects.get(profile=request.user)
+        except Parent.DoesNotExist:
+            return Response({'detail': 'Parent not found.'}, status=status.HTTP_404_NOT_FOUND)
+
+        kids = parent.my_kids.all()
+        serializer = KidsSerializer(kids, many=True)  # Use your Kid serializer here
+
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class ParentKidDetailsView(APIView):
+    authentication_classes = [SessionAuthentication]  # Use appropriate authentication
+    permission_classes = [IsAuthenticated]  # Use appropriate permissions
+
+    def get(self, request, slug):
+        context = {}
+
+        # Fetch data
+        try:
+            kid = get_object_or_404(Kids, slug=slug)
+            # Groups
+            groups = kid.kid_group.all()
+            # Attendances
+            attendances = kid.kid_attendance.all().order_by('-attendance__attendance_date')[:5]
+            sessions = kid.kid_sessions.all()[:5]
+            # Payments
+            payments = ParentPayment.objects.filter(parent=kid.parent).order_by('-pay_date')[:5]
+        except:
+            return Response({'detail': 'Something went wrong Fetching Data In Details'},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+        kid_serializer = KidsSerializer(kid)
+        groups_serializer = GroupSerializer(groups,
+                                            many=True)  # Replace YourGroupSerializer with your actual serializer
+        attendances_serializer = StudentAttendanceSerializer(attendances,
+                                                             many=True)  # Replace YourAttendanceSerializer with your
+        # actual serializer
+        sessions_serializer = SessionCounterSerializer(sessions,
+                                                       many=True)  # Replace YourSessionSerializer with your actual serializer
+        payments_serializer = ParentPaymentSerializer(payments, many=True)  # Use your ParentPaymentSerializer
+
+        context['kid'] = kid_serializer.data
+        context['groups'] = groups_serializer.data
+        context['attendances'] = attendances_serializer.data
+        context['sessions'] = sessions_serializer.data
+        context['payments'] = payments_serializer.data
+
+        # Calculate Presence
+        all_sessions = 0
+        present = 0
+        absent = 0
+        for attendance in attendances:
+            all_sessions += 1
+            if attendance.status:
+                present += 1
+            else:
+                absent += 1
+
+        context['all_sessions'] = all_sessions
+        context['present'] = present
+        context['absent'] = absent
+
+        return Response(context)

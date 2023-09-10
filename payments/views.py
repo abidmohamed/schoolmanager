@@ -9,6 +9,18 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from rest_framework.views import APIView
+from django.shortcuts import get_object_or_404
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.permissions import (
+    IsAuthenticated,
+)
+
 from attendance.models import TeacherAttendanceItem, EmployeeAttendanceItem
 from employee.models import Employee
 from payments.filters import StudentPaymentFilter, ParentPaymentFilter, PayrollFilter
@@ -16,6 +28,7 @@ from payments.forms import StudentPaymentFrom, ParentPaymentForm
 from payments.models import StudentPayment, ParentPayment, Payroll
 
 # Students
+from payments.serializers import ParentPaymentSerializer
 from student.models import Parent
 from teacher.models import Teacher
 
@@ -416,3 +429,20 @@ def payroll_paid(request, slug):
         return redirect(request.META.get('HTTP_REFERER', 'payments:payrolls'))
 
     return redirect(request.META.get('HTTP_REFERER', 'payments:payrolls'))
+
+
+class ParentPaymentView(APIView):
+
+    authentication_classes = [SessionAuthentication]  # Use appropriate authentication
+    permission_classes = [IsAuthenticated]  # Use appropriate permissions
+
+    def get(self, request):
+        try:
+            parent = Parent.objects.get(profile=request.user)
+            payments_list = ParentPayment.objects.filter(parent=parent).order_by('-pay_date')
+        except Parent.DoesNotExist:
+            return Response({'detail': 'Parent not found.'}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = ParentPaymentSerializer(payments_list, many=True)
+
+        return Response(serializer.data, status=status.HTTP_200_OK)

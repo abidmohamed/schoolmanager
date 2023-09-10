@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
+from datetime import timedelta
 from pathlib import Path
 import os, sys
 from django.contrib.messages import constants as messages
@@ -58,18 +59,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Add-ons
-    'crispy_forms',
+    'crispy_forms', 'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
     # apps
     'accounts', 'student', 'teacher',
     'group', 'events', 'attendance',
     'employee', 'payments', 'caisse',
-
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -218,3 +221,25 @@ MEDIA_URL = '/uploads/'
 # URLS
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'accounts:login'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES':
+        (
+            'rest_framework.permissions.IsAuthenticated',
+        ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=600),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKEN': False,
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+}
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = ['http://127.0.0.1:8080', 'http://localhost:3000',]
+

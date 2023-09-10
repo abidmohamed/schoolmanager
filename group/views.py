@@ -8,6 +8,16 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+from django.shortcuts import get_object_or_404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.authentication import SessionAuthentication
+from rest_framework.permissions import (
+    IsAuthenticated,
+)
+
 # Create your views here.
 from django.template.loader import render_to_string
 from xhtml2pdf import pisa
@@ -15,8 +25,10 @@ from xhtml2pdf import pisa
 from group.filters import GroupFilter
 from group.forms import RoomForm, GroupForm, GroupTimeForm
 from group.models import Room, Group, GroupStudent, GroupTime
+from group.serializers import GroupTimeSerializer
 from student.filters import KidsFilter, StudentFilter
 from student.models import Kids, Student, Parent
+from student.serializers import KidsSerializer
 from teacher.models import Teacher
 
 
@@ -284,7 +296,7 @@ def schedule_view():
 
     # Generate time slots separated by 2 hours
     start_time = 8  # 8:00 AM
-    end_time = 20   # 8:00 PM
+    end_time = 20  # 8:00 PM
     step = 2
 
     # time_slots = [f"{str(hour).zfill(2)}:00 - {str(hour+step).zfill(2)}:00" for hour in range(start_time, end_time, step)]
@@ -296,6 +308,7 @@ def schedule_view():
     # }
 
     return days_of_week, time_slots
+
 
 @login_required
 def groups_times(request):
@@ -472,3 +485,44 @@ def parent_kids_times(request):
     context['time_slots'] = time_slots
 
     return render(request, "times/parent_times.html", context)
+
+
+"""
+    API endpoints
+    """
+
+
+class ParentKidsTimesView(APIView):
+
+    authentication_classes = [SessionAuthentication]  # Use appropriate authentication
+    permission_classes = [IsAuthenticated]  # Use appropriate permissions
+
+    def get(self, request):
+        context = {}
+
+        try:
+            parent = get_object_or_404(Parent, profile=request.user)
+        except Parent.DoesNotExist:
+            return Response({'detail': 'Problem processing your request'}, status=status.HTTP_400_BAD_REQUEST)
+
+        days_of_week, time_slots = schedule_view()
+
+        # Retrieve the parent's kids
+        parent_kids = parent.my_kids.all()
+
+        # Create a list to store kid names along with their times
+        kid_times = []
+
+        # Create a list to store kid and their associated group times
+        kid_group_times = []
+
+        # Iterate through each kid and retrieve their group times
+        for kid in parent_kids:
+            times = GroupTime.objects.filter(group__items__kid=kid)
+            kid_group_times.append({'kid': KidsSerializer(kid).data, 'times': GroupTimeSerializer(times, many=True).data})
+
+        context['kid_group_times'] = kid_group_times
+        context['days_of_week'] = days_of_week
+        context['time_slots'] = time_slots
+
+        return Response(context)
