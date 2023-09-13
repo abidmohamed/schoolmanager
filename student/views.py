@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group
 # Create your views here.
 from django.template.loader import render_to_string
+from rest_framework.decorators import api_view, permission_classes
 from xhtml2pdf import pisa
 from django.shortcuts import get_object_or_404
 
@@ -25,7 +26,7 @@ from attendance.serializers import StudentAttendanceSerializer, SessionCounterSe
 from group.serializers import GroupSerializer
 from payments.serializers import ParentPaymentSerializer
 from .models import Parent  # Import your Parent model here
-from .serializers import KidsSerializer  # Import your Kid serializer here
+from .serializers import KidsSerializer, ParentProfileSerializer  # Import your Kid serializer here
 
 from accounts.forms import CreateUserForm
 from attendance.models import SessionCounter
@@ -647,3 +648,22 @@ class ParentKidDetailsView(APIView):
         context['absent'] = absent
 
         return Response(context)
+
+
+# api/profile  and api/profile/update
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def getProfile(request):
+    user = request.user
+    serializer = ParentProfileSerializer(user, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def updateProfile(request):
+    user = request.user
+    serializer = ParentProfileSerializer(user, data=request.data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+    return Response(serializer.data)

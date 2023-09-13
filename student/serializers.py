@@ -2,6 +2,12 @@ from rest_framework import serializers
 from .models import Parent, Kids, Student
 
 
+class ParentProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Parent
+        fields = '__all__'
+
+
 class ParentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Parent

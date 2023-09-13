@@ -30,7 +30,7 @@ class StudentAttendance(models.Model):
     last_updated = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return '{} {} {}'.format(self.group, self.attendance_date, self.uniqueId)
+        return '{} {}'.format(self.group, self.attendance_date)
 
     def get_absolute_url(self):
         return reverse('parent-detail', kwargs={'slug': self.slug})
@@ -74,7 +74,7 @@ class EmployeeAttendance(models.Model):
     last_updated = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return '{} {}'.format(self.attendance_date, self.uniqueId)
+        return '{}'.format(self.attendance_date)
 
     def get_absolute_url(self):
         return reverse('attendance-detail', kwargs={'slug': self.slug})

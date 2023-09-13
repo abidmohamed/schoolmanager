@@ -31,7 +31,7 @@ class Event(models.Model):
     last_updated = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return '{} {} {}'.format(self.day, self.event_type, self.uniqueId)
+        return '{} {}'.format(self.day, self.event_type)
 
     def get_absolute_url(self):
         return reverse('events:events_details', kwargs={'slug': self.slug})

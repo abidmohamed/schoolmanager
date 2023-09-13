@@ -28,5 +28,7 @@ urlpatterns = [
     # API URLS
     path('api/My-kids/', views.ParentKidsAPIView.as_view(), name='api_parent_kids'),
     path('api/My-kids/details/<slug:slug>', views.ParentKidDetailsView.as_view(), name='api_parent_kid_details'),
-
+    # Profile
+    path('api/profile/', views.getProfile, name='profile'),
+    path('api/profile/update/', views.updateProfile, name='update-profile'),
 ]

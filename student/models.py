@@ -87,7 +87,7 @@ class Parent(models.Model):
     last_updated = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return '{} {} {}'.format(self.name, self.province, self.uniqueId)
+        return '{} {}'.format(self.name, self.province)
 
     def get_absolute_url(self):
         return reverse('parent-detail', kwargs={'slug': self.slug})
@@ -125,7 +125,7 @@ class Kids(models.Model):
     last_updated = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return '{} {} {}'.format(self.name, self.grade, self.uniqueId)
+        return '{} {}'.format(self.name, self.grade)
 
     def get_absolute_url(self):
         return reverse('kids-detail', kwargs={'slug': self.slug})
@@ -226,7 +226,7 @@ class Student(models.Model):
     last_updated = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return '{} {} {}'.format(self.name, self.province, self.uniqueId)
+        return '{} {}'.format(self.name, self.province)
 
     def get_absolute_url(self):
         return reverse('parent-detail', kwargs={'slug': self.slug})

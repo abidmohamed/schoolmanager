@@ -110,7 +110,7 @@ class Employee(models.Model):
     last_updated = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return '{} {} {}'.format(self.name, self.province, self.uniqueId)
+        return '{} {}'.format(self.name, self.province)
 
     def get_absolute_url(self):
         return reverse('employee-detail', kwargs={'slug': self.slug})

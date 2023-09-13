@@ -27,7 +27,7 @@ class StudentPayment(models.Model):
     last_updated = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return '{} {}'.format(self.student, self.uniqueId)
+        return '{}'.format(self.student)
 
     def get_absolute_url(self):
         return reverse('pay-detail', kwargs={'slug': self.slug})
@@ -61,7 +61,7 @@ class ParentPayment(models.Model):
     last_updated = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return '{} {}'.format(self.parent, self.uniqueId)
+        return '{}'.format(self.parent)
 
     def get_absolute_url(self):
         return reverse('pay-detail', kwargs={'slug': self.slug})

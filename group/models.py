@@ -40,7 +40,7 @@ class Group(models.Model):
     last_updated = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
-        return '{} {} {}'.format(self.name, self.room, self.uniqueId)
+        return '{} {}'.format(self.name, self.room)
 
     def get_absolute_url(self):
         return reverse('parent-detail', kwargs={'slug': self.slug})
