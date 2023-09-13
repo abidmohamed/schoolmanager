@@ -186,38 +186,50 @@ def dashboard(request):
         Group.objects.create(name='student')
         messages.success(request, "You can create users of type Student")
 
-    # students activity stats
-    active_students = Student.objects.filter(is_active=True).count()
-    inactive_students = Student.objects.filter(is_active=False).count()
-    total_students = active_students + inactive_students
-    # Kids activity stats
-    active_kids = Kids.objects.filter(is_active=True).count()
-    inactive_kids = Kids.objects.filter(is_active=False).count()
-    total_kids = active_kids + inactive_kids
-    # students parents with the Most debt
-    top_five_students = Student.objects.filter(debt__gt=0).order_by('-debt')[:5]
-    top_five_parents = Parent.objects.filter(debt__gt=0).order_by('-debt')[:5]
-    # attendance employees & students
-    student_attendance = StudentAttendance.objects.filter(status=False)
-    employee_attendance = EmployeeAttendance.objects.filter(status=False)
-    # payroll for teachers and employees
-    employees_payroll = Payroll.objects.filter(paid=False, pay_type='EMPLOYEE')
-    teachers_payroll = Payroll.objects.filter(paid=False, pay_type='TEACHER')
+    group_name = Group.objects.all().filter(user=request.user)  # get logget user grouped name
+    group_name = str(group_name[0])  # convert to string
 
-    context['active_students'] = active_students
-    context['inactive_students'] = inactive_students
-    context['total_students'] = total_students
-    context['active_kids'] = active_kids
-    context['inactive_kids'] = inactive_kids
-    context['total_kids'] = total_kids
-    context['top_five_students'] = top_five_students
-    context['top_five_parents'] = top_five_parents
-    context['student_attendance'] = student_attendance
-    context['employee_attendance'] = employee_attendance
-    context['employees_payroll'] = employees_payroll
-    context['teachers_payroll'] = teachers_payroll
+    if "teacher" == group_name:
+        # print("Hello Teacher")
+        return redirect('accounts:teacher_dashboard')
+    elif "student" == group_name:
+        return redirect('accounts:student_dashboard')
+    elif "parent" == group_name:
+        return redirect('accounts:parent_dashboard')
+    else:
 
-    return render(request, 'accounts/dashboard.html', context)
+        # students activity stats
+        active_students = Student.objects.filter(is_active=True).count()
+        inactive_students = Student.objects.filter(is_active=False).count()
+        total_students = active_students + inactive_students
+        # Kids activity stats
+        active_kids = Kids.objects.filter(is_active=True).count()
+        inactive_kids = Kids.objects.filter(is_active=False).count()
+        total_kids = active_kids + inactive_kids
+        # students parents with the Most debt
+        top_five_students = Student.objects.filter(debt__gt=0).order_by('-debt')[:5]
+        top_five_parents = Parent.objects.filter(debt__gt=0).order_by('-debt')[:5]
+        # attendance employees & students
+        student_attendance = StudentAttendance.objects.filter(status=False)
+        employee_attendance = EmployeeAttendance.objects.filter(status=False)
+        # payroll for teachers and employees
+        employees_payroll = Payroll.objects.filter(paid=False, pay_type='EMPLOYEE')
+        teachers_payroll = Payroll.objects.filter(paid=False, pay_type='TEACHER')
+
+        context['active_students'] = active_students
+        context['inactive_students'] = inactive_students
+        context['total_students'] = total_students
+        context['active_kids'] = active_kids
+        context['inactive_kids'] = inactive_kids
+        context['total_kids'] = total_kids
+        context['top_five_students'] = top_five_students
+        context['top_five_parents'] = top_five_parents
+        context['student_attendance'] = student_attendance
+        context['employee_attendance'] = employee_attendance
+        context['employees_payroll'] = employees_payroll
+        context['teachers_payroll'] = teachers_payroll
+
+        return render(request, 'accounts/dashboard.html', context)
 
 
 @login_required
