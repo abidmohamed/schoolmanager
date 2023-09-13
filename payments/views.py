@@ -433,7 +433,7 @@ def payroll_paid(request, slug):
 
 class ParentPaymentView(APIView):
 
-    authentication_classes = [SessionAuthentication]  # Use appropriate authentication
+    # authentication_classes = [SessionAuthentication]  # Use appropriate authentication
     permission_classes = [IsAuthenticated]  # Use appropriate permissions
 
     def get(self, request):

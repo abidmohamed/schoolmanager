@@ -494,7 +494,7 @@ def parent_kids_times(request):
 
 class ParentKidsTimesView(APIView):
 
-    authentication_classes = [SessionAuthentication]  # Use appropriate authentication
+    # authentication_classes = [SessionAuthentication]  # Use appropriate authentication
     permission_classes = [IsAuthenticated]  # Use appropriate permissions
 
     def get(self, request):

@@ -579,7 +579,7 @@ class ParentKidsAPIView(APIView):
     """
     API endpoint for retrieving a parent's kids.
     """
-    authentication_classes = [SessionAuthentication]  # Use appropriate authentication
+    # authentication_classes = [SessionAuthentication]  # Use appropriate authentication
     permission_classes = [IsAuthenticated]  # Use appropriate permissions
 
     def get(self, request):
@@ -595,7 +595,7 @@ class ParentKidsAPIView(APIView):
 
 
 class ParentKidDetailsView(APIView):
-    authentication_classes = [SessionAuthentication]  # Use appropriate authentication
+    # authentication_classes = [SessionAuthentication]  # Use appropriate authentication
     permission_classes = [IsAuthenticated]  # Use appropriate permissions
 
     def get(self, request, slug):
