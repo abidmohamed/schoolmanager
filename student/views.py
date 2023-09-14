@@ -26,7 +26,8 @@ from attendance.serializers import StudentAttendanceSerializer, SessionCounterSe
 from group.serializers import GroupSerializer
 from payments.serializers import ParentPaymentSerializer
 from .models import Parent  # Import your Parent model here
-from .serializers import KidsSerializer, ParentProfileSerializer  # Import your Kid serializer here
+from .serializers import KidsSerializer, ParentProfileSerializer, \
+    ParentProfileUpdateSerializer  # Import your Kid serializer here
 
 from accounts.forms import CreateUserForm
 from attendance.models import SessionCounter
@@ -599,12 +600,12 @@ class ParentKidDetailsView(APIView):
     # authentication_classes = [SessionAuthentication]  # Use appropriate authentication
     permission_classes = [IsAuthenticated]  # Use appropriate permissions
 
-    def get(self, request, slug):
+    def get(self, request, id):
         context = {}
 
         # Fetch data
         try:
-            kid = get_object_or_404(Kids, slug=slug)
+            kid = get_object_or_404(Kids, id=id)
             # Groups
             groups = kid.kid_group.all()
             # Attendances
@@ -655,15 +656,20 @@ class ParentKidDetailsView(APIView):
 @permission_classes([IsAuthenticated])
 def getProfile(request):
     user = request.user
-    serializer = ParentProfileSerializer(user, many=False)
+    parent = Parent.objects.get(profile=user)
+    serializer = ParentProfileSerializer(parent, many=False)
     return Response(serializer.data)
 
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def updateProfile(request):
-    user = request.user
-    serializer = ParentProfileSerializer(user, data=request.data, partial=True)
+    parent = Parent.objects.get(profile=request.user)
+
+    # Check if the request data is valid
+    serializer = ParentProfileUpdateSerializer(instance=parent, data=request.data)
     if serializer.is_valid():
-        serializer.save()
-    return Response(serializer.data)
+        serializer.save(instance=parent)
+        return Response({'message': 'Profile updated successfully'})
+    else:
+        return Response(serializer.errors, status=400)
